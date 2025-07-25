@@ -9,6 +9,7 @@ import axios from "axios";
 import PolicyDetails from "../Pages/PolicyDetailsPage/PolicyDetails";
 import QuotePage from "../Pages/QuotePage/QuotePage";
 import PrivateRoute from "../Context/PrivateRoute";
+import ApplicationFormPage from "../Pages/ApplicationFormPage/ApplicationFormPage";
 
 const mainRoute= createBrowserRouter([
 {
@@ -44,6 +45,14 @@ const mainRoute= createBrowserRouter([
       <QuotePage />
     </PrivateRoute>
   )
+},
+{
+  path: "/apply",
+  element: (
+    <PrivateRoute>
+      <ApplicationFormPage />
+    </PrivateRoute>
+  ),
 },
 
 {
