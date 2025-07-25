@@ -7,6 +7,8 @@ import Error from "../Pages/Error";
 import AllPoliciesPage from "../Pages/AllPoliciesPage/AllPoliciesPage";
 import axios from "axios";
 import PolicyDetails from "../Pages/PolicyDetailsPage/PolicyDetails";
+import QuotePage from "../Pages/QuotePage/QuotePage";
+import PrivateRoute from "../Context/PrivateRoute";
 
 const mainRoute= createBrowserRouter([
 {
@@ -34,6 +36,14 @@ const mainRoute= createBrowserRouter([
 {
   path: "/policies/:id",
   element: <PolicyDetails />, 
+},
+{
+  path: "/quote",
+  element: (
+    <PrivateRoute>
+      <QuotePage />
+    </PrivateRoute>
+  )
 },
 
 {
