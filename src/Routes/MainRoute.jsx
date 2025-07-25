@@ -29,9 +29,8 @@ const mainRoute= createBrowserRouter([
 {
   path: "/policies",
   element: <AllPoliciesPage />,
-  loader: () => axios('/policies.json').then(res => res.data),
 },
-  {
+{
 path: "/*",
 Component: Error ,
   },

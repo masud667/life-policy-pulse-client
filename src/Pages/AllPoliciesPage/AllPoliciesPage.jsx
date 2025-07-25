@@ -1,16 +1,35 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Link, useLoaderData } from "react-router";
+import { Link } from "react-router";
 import { FiSearch, FiFilter, FiArrowRight } from "react-icons/fi";
+import axios from "axios";
 import Header from "../../Components/Header";
 
 const AllPoliciesPage = () => {
-  const policies = useLoaderData();
-
+  const [policies, setPolicies] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`http://localhost:5000/policies?page=${currentPage}&limit=${itemsPerPage}`)
+      .then((res) => {
+        setPolicies(res.data.result);
+        setTotal(res.data.total);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching policies:", error);
+        setLoading(false);
+      });
+  }, [currentPage]);
 
   const categories = useMemo(() => {
-    const unique = new Set(policies?.map((p) => p.category));
+    const unique = new Set(policies.map((p) => p.category));
     return Array.from(unique);
   }, [policies]);
 
@@ -18,17 +37,19 @@ const AllPoliciesPage = () => {
     setSelectedCategory(e.target.value);
   };
 
-  const filteredPolicies = policies?.filter((item) => {
-    const matchCategory =
-      selectedCategory === "all" || item?.category === selectedCategory;
-    const matchSearch = item?.title
-      ?.toLowerCase()
-      .includes(search.toLowerCase());
+  const filteredPolicies = policies.filter((item) => {
+    const matchCategory = selectedCategory === "all" || item?.category === selectedCategory;
+    const matchSearch = item?.title?.toLowerCase().includes(search.toLowerCase());
     return matchCategory && matchSearch;
   });
+
+  const totalPages = Math.ceil(total / itemsPerPage);
+
+  if (loading) return <p className="text-center mt-10">Loading policies...</p>;
+
   return (
     <div>
-      <Header></Header>
+      <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 py-12 px-4">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -36,9 +57,7 @@ const AllPoliciesPage = () => {
             <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
               All Life Insurance Policies
             </h1>
-            <p className="text-gray-600 mt-2">
-              Choose the best plan tailored for you
-            </p>
+            <p className="text-gray-600 mt-2">Choose the best plan tailored for you</p>
           </div>
 
           {/* Search & Filter */}
@@ -59,9 +78,10 @@ const AllPoliciesPage = () => {
               <select
                 value={selectedCategory}
                 onChange={handleFilter}
-                className="px-3 py-2 border border-gray-300 rounded-lg">
+                className="px-3 py-2 border border-gray-300 rounded-lg"
+              >
                 <option value="all">All Categories</option>
-                {categories?.map((cat, idx) => (
+                {categories.map((cat, idx) => (
                   <option key={idx} value={cat}>
                     {cat}
                   </option>
@@ -73,15 +93,15 @@ const AllPoliciesPage = () => {
           {/* Stats */}
           <div className="flex gap-4 mb-4">
             <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded">
-              Total: {policies?.length || 0}
+              Total: {total}
             </span>
             <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded">
-              Categories: {categories?.length || 0}
+              Categories: {categories.length || 0}
             </span>
           </div>
 
           {/* Policy Cards */}
-          {filteredPolicies?.length === 0 ? (
+          {filteredPolicies.length === 0 ? (
             <div className="bg-white p-10 rounded-xl shadow text-center">
               <p className="text-gray-500 mb-4">No matching policies found.</p>
               <button
@@ -89,30 +109,33 @@ const AllPoliciesPage = () => {
                   setSearch("");
                   setSelectedCategory("all");
                 }}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg">
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg"
+              >
                 Reset Filters
               </button>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredPolicies?.map((policy) => (
+              {filteredPolicies.map((policy) => (
                 <div
-                  key={policy?.id}
-                  className="bg-white p-6 rounded-xl shadow hover:shadow-md transition">
+                  key={policy?._id}
+                  className="bg-white p-6 rounded-xl shadow hover:shadow-md transition"
+                >
                   <img
                     src={policy?.image}
                     alt={policy?.title}
                     className="w-full h-40 object-cover rounded mb-4"
                   />
                   <h2 className="text-xl font-semibold">{policy?.title}</h2>
-                  <p className="text-sm text-gray-500 mb-2">
-                    {policy?.shortDetails}
-                  </p>
+                  <p className="text-sm text-gray-500 mb-2">{policy?.shortDetails}</p>
                   <div className="flex justify-between items-center mt-4">
                     <span className="font-bold text-purple-600">
-                      {policy?.premium}
+                      {policy?.premium || "Custom Pricing"}
                     </span>
-                    <Link className="bg-gradient-to-r from-blue-600 to-purple-600 btn rounded p-2 text-white hover:bg-gradient-to-l from-blue-600 to-purple-600 flex items-center gap-1">
+                    <Link
+                      to={`/policies/${policy?._id}`}
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 btn rounded p-2 text-white hover:bg-gradient-to-l flex items-center gap-1"
+                    >
                       View Details <FiArrowRight />
                     </Link>
                   </div>
@@ -120,6 +143,23 @@ const AllPoliciesPage = () => {
               ))}
             </div>
           )}
+
+          {/* Pagination */}
+          <div className="flex justify-center mt-8 gap-2">
+            {[...Array(totalPages).keys()].map((number) => (
+              <button
+                key={number}
+                onClick={() => setCurrentPage(number + 1)}
+                className={`px-4 py-2 rounded ${
+                  currentPage === number + 1
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-200 text-gray-700"
+                }`}
+              >
+                {number + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
