@@ -4,6 +4,8 @@ import RootLayout from "../Layouts/RootLayout";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import Error from "../Pages/Error";
+import AllPoliciesPage from "../Pages/AllPoliciesPage/AllPoliciesPage";
+import axios from "axios";
 
 const mainRoute= createBrowserRouter([
 {
@@ -24,6 +26,11 @@ const mainRoute= createBrowserRouter([
       },
     ],
   },
+{
+  path: "/policies",
+  element: <AllPoliciesPage />,
+  loader: () => axios('/policies.json').then(res => res.data),
+},
   {
 path: "/*",
 Component: Error ,

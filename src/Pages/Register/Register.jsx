@@ -5,6 +5,8 @@ import { FaGoogle, FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext";
 import { useForm } from "react-hook-form";
+import Logo from "../../Components/Logo";
+import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -22,54 +24,80 @@ const Register = () => {
 
   const password = watch("password", "");
 
-  const onSubmit = (data) => {
-    setLoading(true);
-    
-    createUser(data.email, data.password)
-      .then(() => {
-        return updateUserProfile(data.name, data.photoURL || "")
-          .then(() => {
-            Swal.fire({
-              icon: "success",
-              title: "Account Created!",
-              text: "Your LifePolicyPulse account has been successfully created",
-              showConfirmButton: false,
-              timer: 2000,
-            });
-            navigate("/");
-          });
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Registration Failed",
-          text: error.message,
-        });
-      })
-      .finally(() => setLoading(false));
-  };
+ const onSubmit = (data) => {
+  setLoading(true);
 
-  const handleGoogleSignIn = () => {
-    setLoading(true);
-    signInWithGoogle()
-      .then(() => {
-        Swal.fire({
-          icon: "success",
-          title: "Google Registration Successful!",
-          showConfirmButton: false,
-          timer: 1500,
+  createUser(data.email, data.password)
+    .then((result) => {
+      const user = result.user;
+
+      return updateUserProfile(data.name, data.photoURL || "")
+        .then(async () => {
+          // 🔽 Save to DB
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+            image: data.photoURL || "https://i.ibb.co/placeholder.png",
+            role: "customer"
+          };
+
+          await axios.post("http://localhost:5000/users", userInfo);
+
+          Swal.fire({
+            icon: "success",
+            title: "Account Created!",
+            text: "Your LifePolicyPulse account has been successfully created",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+
+          navigate("/");
         });
-        navigate("/");
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: "error",
-          title: "Google Registration Failed",
-          text: error.message,
-        });
-      })
-      .finally(() => setLoading(false));
-  };
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Registration Failed",
+        text: error.message,
+      });
+    })
+    .finally(() => setLoading(false));
+};
+const handleGoogleSignIn = () => {
+  setLoading(true);
+
+  signInWithGoogle()
+    .then(async (result) => {
+      const user = result.user;
+
+      // 🔽 Save to DB
+      const userInfo = {
+        name: user.displayName || "N/A",
+        email: user.email,
+        image: user.photoURL || "https://i.ibb.co/placeholder.png",
+        role: "customer"
+      };
+
+      await axios.post("http://localhost:5000/users", userInfo);
+
+      Swal.fire({
+        icon: "success",
+        title: "Google Registration Successful!",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      navigate("/");
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        title: "Google Registration Failed",
+        text: error.message,
+      });
+    })
+    .finally(() => setLoading(false));
+};
 
   return (
     <motion.div
@@ -89,9 +117,7 @@ const Register = () => {
           <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-center">
             <div className="flex justify-center mb-4">
               <div className="bg-white rounded-full p-1.5">
-                <div className="bg-gradient-to-r from-indigo-400 to-purple-400 w-12 h-12 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">LP</span>
-                </div>
+               <Logo></Logo>
               </div>
             </div>
             <motion.h2 className="text-3xl font-bold text-white">

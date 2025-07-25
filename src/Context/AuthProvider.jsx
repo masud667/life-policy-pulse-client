@@ -10,6 +10,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+// import axios from "axios";
+import AuthSecureAxios from "../Hooks/AuthSecureAxios";
 
 
 
@@ -41,6 +43,14 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false)
+      if(currentUser?.email){
+        const userData = {email: currentUser.email};
+        AuthSecureAxios.post('/jwt', userData)
+        .then(res=> {
+          
+        })
+        .catch(error => console.log(error))
+      }
     });
     return () => {
       unsubscribe();

@@ -2,34 +2,51 @@ import { useState, useContext } from 'react';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
+import Logo from './Logo';
+import AuthSecureAxios from '../Hooks/AuthSecureAxios';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-  console.log("🚀 ~ Navbar ~ user:", user)
 
-  const handleLogout = () => {
-    logOut()
-      .then(() => {
-        Swal.fire('Logged Out', 'You have been logged out successfully', 'success');
-      })
-      .catch((error) => {
-        console.error(error);
-        Swal.fire('Error', error.message, 'error');
-      });
-  };
+
+const handleLogout = async () => {
+  const result = await Swal.fire({
+    title: "Are you sure?",
+    text: "Do you really want to logout?",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, logout!",
+  });
+
+  if (result.isConfirmed) {
+    try {
+      await logOut();
+      await AuthSecureAxios.post("/logout"); 
+
+      Swal.fire("Logged Out", "You have been logged out successfully", "success");
+
+    
+      // Navigate("/login");
+    } catch (error) {
+      console.error("Logout error:", error);
+      Swal.fire("Error", error.message, "error");
+    }
+  }
+};
+
 
   return (
-    <nav className="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-xl">
+    <nav className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           {/* Logo Section */}
           <div className="flex-shrink-0 flex items-center">
             <div className="flex items-center space-x-3">
               <div className="bg-white rounded-full p-1.5">
-                <div className="bg-gradient-to-r from-indigo-400 to-purple-400 w-10 h-10 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">LP</span>
-                </div>
+                <Logo></Logo>
               </div>
               <span className="text-white font-bold text-2xl tracking-tighter">
                 LifePolicy<span className="text-amber-300">Pulse</span>
@@ -49,7 +66,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-4">
             {!user ? (
               <>
-                <Link to="/login" className="text-white font-medium hover:text-amber-200 transition-colors px-4 py-2">
+                <Link to="/login" className="text-white font-medium hover:text-amber-200 transition-colors px-4 py-2 border-2 border-amber-300 rounded-full">
                   Login
                 </Link>
                 <Link to="/register" className="bg-amber-400 hover:bg-amber-300 text-indigo-900 font-bold px-5 py-2.5 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
