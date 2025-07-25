@@ -2,161 +2,241 @@
   {
     "id": 1,
     "title": "Term Life Insurance",
-    "image": "/images/term-life.jpg",
+    "image": "https://i.ibb.co/FLYGydN8/1.jpg",
     "category": "Term Life",
     "shortDetails": "Affordable coverage for a specific period with guaranteed premiums.",
-    "premium": "$25/month"
+    "premium": "$25/month",
+    "term": "20 years",
+    "eligibility": ["Ages 18 to 60", "No pre-existing conditions", "Resident of Bangladesh"],
+    "benefits": ["Guaranteed death benefit", "Fixed premiums", "Flexible term options"],
+    "premiumLogic": "Based on applicant age and health history"
   },
   {
     "id": 2,
     "title": "Senior Life Plan",
-    "image": "/images/senior-life.jpg",
+    "image": "https://i.ibb.co/7NynDBhL/2-1.jpg",
     "category": "Senior Plan",
     "shortDetails": "Tailored coverage for seniors with no medical exams required.",
-    "premium": "$89/month"
+    "premium": "$89/month",
+    "term": "Lifetime",
+    "eligibility": ["Ages 50 to 80", "No medical exam", "Resident of Bangladesh"],
+    "benefits": ["Simple application", "Fixed benefit", "Lifetime coverage"],
+    "premiumLogic": "Flat rate based on age group"
   },
   {
     "id": 3,
     "title": "Whole Life Insurance",
-    "image": "/images/whole-life.jpg",
+    "image": "https://i.ibb.co/Nd6R58y1/3-1.jpg",
     "category": "Whole Life",
     "shortDetails": "Lifelong protection with cash value accumulation benefits.",
-    "premium": "$120/month"
+    "premium": "$120/month",
+    "term": "Lifetime",
+    "eligibility": ["Ages 18 to 65", "Medical check-up required"],
+    "benefits": ["Cash value", "Guaranteed lifetime coverage", "Loan options"],
+    "premiumLogic": "Based on age, gender, and medical exam"
   },
   {
     "id": 4,
     "title": "Child Life Insurance",
-    "image": "/images/child-life.jpg",
+    "image": "https://i.ibb.co/5hRpPtCd/4-1.jpg",
     "category": "Child Plan",
     "shortDetails": "Protect your child's future with lifelong coverage and savings.",
-    "premium": "$15/month"
+    "premium": "$15/month",
+    "term": "Until age 25",
+    "eligibility": ["Ages 0 to 14", "Parental consent"],
+    "benefits": ["Lifelong coverage", "Locked-in low premiums", "Cash value growth"],
+    "premiumLogic": "Flat rate based on child's age"
   },
   {
     "id": 5,
     "title": "Family Protection Plan",
-    "image": "/images/family-plan.jpg",
+    "image": "https://i.ibb.co/83Ww5VY/5-1-1.jpg",
     "category": "Family Plan",
     "shortDetails": "Comprehensive coverage for all family members under one plan.",
-    "premium": "$199/month"
+    "premium": "$199/month",
+    "term": "20 years renewable",
+    "eligibility": ["Family of 2-6 members", "Ages 0 to 65"],
+    "benefits": ["Bundle discount", "Custom coverage", "Shared benefits"],
+    "premiumLogic": "Depends on number of members and ages"
   },
   {
     "id": 6,
     "title": "Accidental Death Policy",
-    "image": "/images/accident-policy.jpg",
+    "image": "https://i.ibb.co/Jj1rQD3W/6-1-1.jpg",
     "category": "Accident",
     "shortDetails": "Financial protection in case of accidental death or injury.",
-    "premium": "$12/month"
+    "premium": "$12/month",
+    "term": "Yearly renewable",
+    "eligibility": ["Ages 18 to 65"],
+    "benefits": ["Double payout for accidents", "Low cost", "Quick claim process"],
+    "premiumLogic": "Flat monthly rate"
   },
   {
     "id": 7,
     "title": "Critical Illness Cover",
-    "image": "/images/critical-illness.jpg",
+    "image": "https://i.ibb.co/vxfCq3Pv/7-1.jpg",
     "category": "Health",
     "shortDetails": "Lump sum payout on diagnosis of serious illnesses like cancer, stroke, etc.",
-    "premium": "$34/month"
+    "premium": "$34/month",
+    "term": "10 years",
+    "eligibility": ["Ages 25 to 60", "Medical history required"],
+    "benefits": ["Coverage for major illnesses", "Lump sum payout", "Tax benefits"],
+    "premiumLogic": "Based on age and health status"
   },
   {
     "id": 8,
     "title": "Mortgage Protection Insurance",
-    "image": "/images/mortgage-protection.jpg",
+    "image": "https://i.ibb.co/KpFQ1Jg4/9-1.jpg",
     "category": "Mortgage",
     "shortDetails": "Keep your home secure by covering mortgage payments if you pass away.",
-    "premium": "$45/month"
+    "premium": "$45/month",
+    "term": "Home loan term",
+    "eligibility": ["Home loan borrowers"],
+    "benefits": ["Pays off loan", "Peace of mind", "Low premium"],
+    "premiumLogic": "Linked to outstanding loan balance"
   },
   {
     "id": 9,
     "title": "Disability Income Insurance",
-    "image": "/images/disability-income.jpg",
+    "image": "https://i.ibb.co/fzSkdGJ1/10-1.jpg",
     "category": "Disability",
     "shortDetails": "Monthly income support if you become disabled and unable to work.",
-    "premium": "$40/month"
+    "premium": "$40/month",
+    "term": "Until age 60",
+    "eligibility": ["Ages 21 to 55", "Employed individuals"],
+    "benefits": ["Income replacement", "Rehabilitation support"],
+    "premiumLogic": "Percentage of monthly income"
   },
   {
     "id": 10,
     "title": "Group Life Insurance",
-    "image": "/images/group-life.jpg",
+    "image": "https://i.ibb.co/F4P5nKYM/11-1.jpg",
     "category": "Group",
     "shortDetails": "Ideal for employers to cover all employees under one affordable plan.",
-    "premium": "$20/month per employee"
+    "premium": "$20/month per employee",
+    "term": "Annual renewal",
+    "eligibility": ["Organizations with 5+ employees"],
+    "benefits": ["Affordable group rate", "Tax benefits", "Easy administration"],
+    "premiumLogic": "Fixed rate per employee"
   },
   {
     "id": 11,
     "title": "Travel Life Insurance",
-    "image": "/images/travel-life.jpg",
+    "image": "https://i.ibb.co/S7f24V08/12-1.jpg",
     "category": "Travel",
     "shortDetails": "Life insurance for frequent travelers, with global protection.",
-    "premium": "$18/month"
+    "premium": "$18/month",
+    "term": "Per trip or annual",
+    "eligibility": ["Frequent travelers", "Ages 18 to 65"],
+    "benefits": ["Worldwide coverage", "Emergency services", "Accident coverage"],
+    "premiumLogic": "Per trip or annual fixed rate"
   },
   {
     "id": 12,
     "title": "Return of Premium Plan",
-    "image": "/images/return-premium.jpg",
+    "image": "https://i.ibb.co/939b6wk6/13-1.jpg",
     "category": "Term Life",
     "shortDetails": "Get all your premiums back if you outlive the policy term.",
-    "premium": "$60/month"
+    "premium": "$60/month",
+    "term": "15 years",
+    "eligibility": ["Ages 18 to 55"],
+    "benefits": ["Money-back feature", "Life cover", "No loss"],
+    "premiumLogic": "Slightly higher for refund option"
   },
   {
     "id": 13,
     "title": "Final Expense Insurance",
-    "image": "/images/final-expense.jpg",
+    "image": "https://i.ibb.co/TDtMq75j/15-1.jpg",
     "category": "Burial",
     "shortDetails": "Designed to cover funeral costs and final expenses.",
-    "premium": "$35/month"
+    "premium": "$35/month",
+    "term": "Lifetime",
+    "eligibility": ["Ages 40+"],
+    "benefits": ["Covers burial", "Fast payout", "Simple approval"],
+    "premiumLogic": "Flat rate based on age"
   },
   {
     "id": 14,
     "title": "Joint Life Insurance",
-    "image": "/images/joint-life.jpg",
+    "image": "https://i.ibb.co/9HjQMrYz/14-1.jpg",
     "category": "Couple",
     "shortDetails": "Covers two lives under one policy, ideal for couples.",
-    "premium": "$75/month"
+    "premium": "$75/month",
+    "term": "20 years",
+    "eligibility": ["Married couples", "Ages 25 to 55"],
+    "benefits": ["Single premium", "Dual cover", "Cost saving"],
+    "premiumLogic": "Based on both ages and health"
   },
   {
     "id": 15,
     "title": "Universal Life Insurance",
-    "image": "/images/universal-life.jpg",
+    "image": "https://i.ibb.co/JwdbbZYQ/16-1.jpg",
     "category": "Whole Life",
     "shortDetails": "Flexible life insurance with savings and lifelong coverage.",
-    "premium": "$130/month"
+    "premium": "$130/month",
+    "term": "Lifetime",
+    "eligibility": ["Ages 18 to 65"],
+    "benefits": ["Cash value", "Flexible premiums", "Lifetime cover"],
+    "premiumLogic": "Flexible, linked to interest rates"
   },
   {
     "id": 16,
     "title": "Indexed Universal Life",
-    "image": "/images/indexed-universal.jpg",
+    "image": "https://i.ibb.co/xS0VWdQ3/17-1.jpg",
     "category": "Whole Life",
     "shortDetails": "Earn interest based on market index while keeping death benefits.",
-    "premium": "$145/month"
+    "premium": "$145/month",
+    "term": "Lifetime",
+    "eligibility": ["Ages 21 to 60"],
+    "benefits": ["Market-based returns", "Lifetime protection"],
+    "premiumLogic": "Market index linked premiums"
   },
   {
     "id": 17,
     "title": "Cancer Care Insurance",
-    "image": "/images/cancer-care.jpg",
+    "image": "https://i.ibb.co/TDtMq75j/15-1.jpg",
     "category": "Health",
     "shortDetails": "Provides coverage for cancer diagnosis and treatment expenses.",
-    "premium": "$29/month"
+    "premium": "$29/month",
+    "term": "10 years",
+    "eligibility": ["Ages 25 to 55"],
+    "benefits": ["Early diagnosis benefit", "Treatment cost support"],
+    "premiumLogic": "Fixed rate based on age"
   },
   {
     "id": 18,
     "title": "Long-Term Care Insurance",
-    "image": "/images/long-term-care.jpg",
+    "image": "https://i.ibb.co/TDtMq75j/15-1.jpg",
     "category": "Health",
     "shortDetails": "Covers extended medical care like nursing homes or in-home care.",
-    "premium": "$110/month"
+    "premium": "$110/month",
+    "term": "Lifetime",
+    "eligibility": ["Ages 40 to 70"],
+    "benefits": ["Daily living assistance", "Nursing support"],
+    "premiumLogic": "Based on age and care amount"
   },
   {
     "id": 19,
     "title": "Income Protection Plan",
-    "image": "/images/income-protection.jpg",
+    "image": "https://i.ibb.co/TDtMq75j/15-1.jpg",
     "category": "Disability",
     "shortDetails": "Protects your income during times of illness or injury.",
-    "premium": "$50/month"
+    "premium": "$50/month",
+    "term": "Until retirement",
+    "eligibility": ["Working professionals", "Ages 25 to 55"],
+    "benefits": ["Monthly payout", "Supports rehabilitation"],
+    "premiumLogic": "Percentage of salary"
   },
   {
     "id": 20,
     "title": "Military Family Insurance",
-    "image": "/images/military-family.jpg",
+    "image": "https://i.ibb.co/TDtMq75j/15-1.jpg",
     "category": "Military",
     "shortDetails": "Exclusive life coverage options for military personnel and their families.",
-    "premium": "$70/month"
+    "premium": "$70/month",
+    "term": "20 years",
+    "eligibility": ["Military families", "Active duty or veterans"],
+    "benefits": ["Tailored plans", "Deployment cover", "Survivor support"],
+    "premiumLogic": "Based on rank and risk level"
   }
 ]

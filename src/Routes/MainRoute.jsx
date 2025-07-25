@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import Error from "../Pages/Error";
 import AllPoliciesPage from "../Pages/AllPoliciesPage/AllPoliciesPage";
 import axios from "axios";
+import PolicyDetails from "../Pages/PolicyDetailsPage/PolicyDetails";
 
 const mainRoute= createBrowserRouter([
 {
@@ -30,6 +31,11 @@ const mainRoute= createBrowserRouter([
   path: "/policies",
   element: <AllPoliciesPage />,
 },
+{
+  path: "/policies/:id",
+  element: <PolicyDetails />, 
+},
+
 {
 path: "/*",
 Component: Error ,
