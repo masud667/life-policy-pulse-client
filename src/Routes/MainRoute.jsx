@@ -10,6 +10,8 @@ import PolicyDetails from "../Pages/PolicyDetailsPage/PolicyDetails";
 import QuotePage from "../Pages/QuotePage/QuotePage";
 import PrivateRoute from "../Context/PrivateRoute";
 import ApplicationFormPage from "../Pages/ApplicationFormPage/ApplicationFormPage";
+import BlogArticles from "../Pages/BlogArticles/BlogArticles";
+import PolicyBriefPage from "../Pages/PolicyBriefPage/PolicyBriefPage";
 
 const mainRoute= createBrowserRouter([
 {
@@ -53,6 +55,14 @@ const mainRoute= createBrowserRouter([
       <ApplicationFormPage />
     </PrivateRoute>
   ),
+},
+{
+  path: "/blog",
+  element: <BlogArticles />,
+},
+{
+  path: "/blog/:id",
+  element: <PolicyBriefPage />,
 },
 
 {
