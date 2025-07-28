@@ -1,83 +1,111 @@
+import { useState } from "react";
 import { Link } from "react-router";
+import { 
+  HiHome, 
+  HiUser, 
+  HiShieldCheck, 
+  HiUserGroup, 
+  HiDocumentText,
+  HiDocument,
+  HiCurrencyDollar,
+  HiMenu,
+  HiX
+} from "react-icons/hi";
 
 const Sidebar = ({ role }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  
+  // Navigation items configuration
+  const navItems = [
+    { 
+      path: "/dashboard", 
+      label: "Dashboard", 
+      icon: <HiHome className="h-5 w-5" />,
+      visible: true
+    },
+    { 
+      path: "/dashboard/user", 
+      label: "User Panel", 
+      icon: <HiUser className="h-5 w-5" />,
+      visible: role === "user" 
+    },
+    { 
+      path: "/dashboard/agent", 
+      label: "Agent Panel", 
+      icon: <HiUserGroup className="h-5 w-5" />,
+      visible: role === "agent" 
+    },
+    // Admin specific items
+    { 
+      path: "/dashboard/admin/manage-applications", 
+      label: "Manage Applications", 
+      icon: <HiDocumentText className="h-5 w-5" />,
+      visible: role === "admin" 
+    },
+    { 
+      path: "/dashboard/admin/manage-users", 
+      label: "Manage Users", 
+      icon: <HiUser className="h-5 w-5" />,
+      visible: role === "admin" 
+    },
+    { 
+      path: "/dashboard/admin/manage-policies", 
+      label: "Manage Policies", 
+      icon: <HiDocument className="h-5 w-5" />,
+      visible: role === "admin" 
+    },
+    { 
+      path: "/dashboard/admin/manage-transactions", 
+      label: "Manage Transactions", 
+      icon: <HiCurrencyDollar className="h-5 w-5" />,
+      visible: role === "admin" 
+    }
+  ];
+
   return (
-    <aside className="w-64 bg-gradient-to-b from-blue-600 to-purple-600 min-h-screen p-6 shadow-xl">
-      <div className="mb-10 pt-4">
-        <h1 className="text-2xl font-bold text-white tracking-wide">
-          LifePolicy<span className="text-cyan-400">Pulse</span>
-        </h1>
-        <div className="w-16 h-1 bg-cyan-400 mt-2 rounded-full"></div>
-      </div>
+    <>
+      {/* Mobile Toggle Button */}
+      <button
+        className="fixed top-20 left-4 z-50 lg:hidden bg-indigo-700 text-white p-2 rounded-md shadow-lg"
+        onClick={() => setMobileOpen(!mobileOpen)}
+      >
+        {mobileOpen ? <HiX className="h-6 w-6" /> : <HiMenu className="h-6 w-6" />}
+      </button>
 
-      <ul className="space-y-3">
-        <li className="group">
-          <Link 
-            to="/dashboard" 
-            className="flex items-center gap-3 px-4 py-3 text-gray-200 rounded-lg group-hover:bg-indigo-700 transition-all duration-300 hover:text-white"
-          >
-            <div className="bg-indigo-600 p-2 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
-              </svg>
-            </div>
-            <span className="font-medium">Dashboard</span>
-          </Link>
-        </li>
+      {/* Sidebar */}
+      <aside 
+        className={`fixed lg:static z-40 w-64 min-h-screen p-4 bg-gradient-to-b from-blue-700 via-indigo-800 to-purple-900 shadow-2xl transform transition-transform duration-300 ${
+          mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
+      >
+       
 
-        {role === "user" && (
-          <PanelLink 
-            to="/dashboard/user" 
-            text="User Panel"
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-              </svg>
-            }
-          />
-        )}
-
-        {role === "admin" && (
-          <PanelLink 
-            to="/dashboard/admin" 
-            text="Admin Panel"
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-              </svg>
-            }
-          />
-        )}
-
-        {role === "agent" && (
-          <PanelLink 
-            to="/dashboard/agent" 
-            text="Agent Panel"
-            icon={
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-              </svg>
-            }
-          />
-        )}
-      </ul>
-    </aside>
+        {/* Navigation Items */}
+        <ul className="space-y-1">
+          {navItems.map((item) => 
+            item.visible && (
+              <li key={item.path}>
+                <Link 
+                  to={item.path}
+                  className="flex items-center p-3 text-gray-200 rounded-lg hover:bg-indigo-700/80 transition-all duration-200 hover:text-white group"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <div className="bg-indigo-600 p-2 rounded-lg group-hover:bg-indigo-500 transition-colors">
+                    {item.icon}
+                  </div>
+                  <span className="ml-3 font-medium lg:block hidden">{item.label}</span>
+                  {/* Tooltip for mobile view */}
+                  <span className="ml-3 font-medium lg:hidden absolute left-16 bg-gray-900 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
+                    {item.label}
+                  </span>
+                </Link>
+              </li>
+            )
+          )}
+        </ul>
+      </aside>
+    </>
   );
 };
-
-// Reusable panel link component
-const PanelLink = ({ to, text, icon }) => (
-  <li className="group">
-    <Link 
-      to={to} 
-      className="flex items-center gap-3 px-4 py-3 text-gray-200 rounded-lg group-hover:bg-purple-700/80 transition-all duration-300 hover:text-white"
-    >
-      <div className="bg-purple-600 p-2 rounded-lg">
-        {icon}
-      </div>
-      <span className="font-medium">{text}</span>
-    </Link>
-  </li>
-);
 
 export default Sidebar;

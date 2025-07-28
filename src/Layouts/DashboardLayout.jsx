@@ -7,11 +7,11 @@ import Loading from "../Components/Loading";
 
 const DashboardLayout = () => {
   const { role, loading } = useRole();
-
+const location = useLocation();
   if (loading) return <Loading />;
 if (!role ) return <Navigate to="/login" />;
 
-const location = useLocation();
+
  if (location.pathname === "/dashboard") {
     if (role === "admin") return <Navigate to="/dashboard/admin" />;
     if (role === "agent") return <Navigate to="/dashboard/agent" />;

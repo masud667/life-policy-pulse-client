@@ -65,6 +65,25 @@ const ApplicationFormPage = () => {
   // Form sections with icons
   const formSections = [
     {
+    title: "Policy Selection",
+    icon: <FaNotesMedical className="text-indigo-600" />,
+    fields: [
+      {
+        name: "policyName",
+        label: "Policy Name",
+        icon: <FaNotesMedical className="text-gray-400" />,
+        isSelect: true,
+        options: [
+          { value: "", label: "Select a Policy" },
+          { value: "basic", label: "Basic Life Insurance" },
+          { value: "premium", label: "Premium Life Insurance" },
+          { value: "family", label: "Family Protection Plan" },
+        ],
+        required: true,
+      },
+    ],
+  },
+    {
       title: "Personal Information",
       icon: <FaUser className="text-blue-600" />,
       fields: [

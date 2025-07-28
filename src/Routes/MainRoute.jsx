@@ -14,8 +14,9 @@ import BlogArticles from "../Pages/BlogArticles/BlogArticles";
 import PolicyBriefPage from "../Pages/PolicyBriefPage/PolicyBriefPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import UserDashboard from "../Pages/Dashboard/UserDashboard/UserDashboard";
-import AdminDashboard from "../Pages/Dashboard/AdminDashboard/AdminDashboard";
+import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard";
 import AgentDashboard from "../Pages/Dashboard/AgentDashboard/AgentDashboard";
+import ManageApplications from "../Pages/Dashboard/Admin/ManageApplications";
 
 const mainRoute = createBrowserRouter([
   {
@@ -36,24 +37,30 @@ const mainRoute = createBrowserRouter([
       },
     ],
   },
- {
-  path: "/dashboard",
-  element: <DashboardLayout />,
-  children: [
-    {
-      path: "user",
-      element: <UserDashboard />,
-    },
-    {
-      path: "admin",
-      element: <AdminDashboard />,
-    },
-    {
-      path: "agent",
-      element: <AgentDashboard />,
-    },
-  ],
-},
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "user",
+        element: <UserDashboard />,
+      },
+      {
+        path: "admin",
+        element: <AdminDashboard />,
+        children: [
+          {
+            path: "manage-applications",
+            element: <ManageApplications />,
+          },
+        ],
+      },
+      {
+        path: "agent",
+        element: <AgentDashboard />,
+      },
+    ],
+  },
   {
     path: "/policies",
     element: <AllPoliciesPage />,
