@@ -399,11 +399,9 @@ const PolicyBriefPage = () => {
       <div className="bg-gradient-to-r from-indigo-700 to-purple-800 text-white py-12">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="flex justify-center mb-6">
-            <div className="bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center">
-              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 w-8 h-8 rounded-lg"></div>
-            </div>
+            <Logo></Logo>
           </div>
-          <h3 className="text-xl font-bold mb-4">PolicyPulse Insights</h3>
+          <h3 className="text-xl font-bold mb-4">LifePolicyPulse Insights</h3>
           <p className="max-w-2xl mx-auto text-indigo-200 mb-6">
             Evidence-based policy analysis for effective governance and
             equitable community development

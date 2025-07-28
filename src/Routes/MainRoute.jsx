@@ -12,12 +12,16 @@ import PrivateRoute from "../Context/PrivateRoute";
 import ApplicationFormPage from "../Pages/ApplicationFormPage/ApplicationFormPage";
 import BlogArticles from "../Pages/BlogArticles/BlogArticles";
 import PolicyBriefPage from "../Pages/PolicyBriefPage/PolicyBriefPage";
+import DashboardLayout from "../Layouts/DashboardLayout";
+import UserDashboard from "../Pages/Dashboard/UserDashboard/UserDashboard";
+import AdminDashboard from "../Pages/Dashboard/AdminDashboard/AdminDashboard";
+import AgentDashboard from "../Pages/Dashboard/AgentDashboard/AgentDashboard";
 
-const mainRoute= createBrowserRouter([
-{
+const mainRoute = createBrowserRouter([
+  {
     path: "/",
     element: <RootLayout></RootLayout>,
-     children: [
+    children: [
       {
         index: true,
         Component: Home,
@@ -32,42 +36,60 @@ const mainRoute= createBrowserRouter([
       },
     ],
   },
-{
-  path: "/policies",
-  element: <AllPoliciesPage />,
+ {
+  path: "/dashboard",
+  element: <DashboardLayout />,
+  children: [
+    {
+      path: "user",
+      element: <UserDashboard />,
+    },
+    {
+      path: "admin",
+      element: <AdminDashboard />,
+    },
+    {
+      path: "agent",
+      element: <AgentDashboard />,
+    },
+  ],
 },
-{
-  path: "/policies/:id",
-  element: <PolicyDetails />, 
-},
-{
-  path: "/quote",
-  element: (
-    <PrivateRoute>
-      <QuotePage />
-    </PrivateRoute>
-  )
-},
-{
-  path: "/apply",
-  element: (
-    <PrivateRoute>
-      <ApplicationFormPage />
-    </PrivateRoute>
-  ),
-},
-{
-  path: "/blog",
-  element: <BlogArticles />,
-},
-{
-  path: "/blog/:id",
-  element: <PolicyBriefPage />,
-},
-
-{
-path: "/*",
-Component: Error ,
+  {
+    path: "/policies",
+    element: <AllPoliciesPage />,
   },
-])
+  {
+    path: "/policies/:id",
+    element: <PolicyDetails />,
+  },
+  {
+    path: "/quote",
+    element: (
+      <PrivateRoute>
+        <QuotePage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/apply",
+    element: (
+      <PrivateRoute>
+        <ApplicationFormPage />
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/blog",
+    element: <BlogArticles />,
+  },
+  {
+    path: "/blog/:id",
+    element: <PolicyBriefPage />,
+  },
+
+  {
+    path: "/*",
+    Component: Error,
+  },
+]);
 export default mainRoute;

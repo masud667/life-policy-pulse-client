@@ -38,7 +38,7 @@ const Register = () => {
             name: data.name,
             email: data.email,
             image: data.photoURL || "https://i.ibb.co/placeholder.png",
-            role: "customer"
+            role: "user"
           };
 
           await axios.post("http://localhost:5000/users", userInfo);

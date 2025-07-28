@@ -1,14 +1,13 @@
 import { useState, useContext } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
 import Logo from './Logo';
 import AuthSecureAxios from '../Hooks/AuthSecureAxios';
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logOut } = useContext(AuthContext);
-
+ const navigate = useNavigate()
 
 const handleLogout = async () => {
   const result = await Swal.fire({
@@ -25,11 +24,10 @@ const handleLogout = async () => {
     try {
       await logOut();
       await AuthSecureAxios.post("/logout"); 
-
       Swal.fire("Logged Out", "You have been logged out successfully", "success");
 
-    
-      // Navigate("/login");
+      navigate("/login");
+      
     } catch (error) {
       console.error("Logout error:", error);
       Swal.fire("Error", error.message, "error");
