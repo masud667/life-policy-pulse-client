@@ -215,7 +215,7 @@ const ManageApplications = () => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div className="flex space-x-2">
-                      {app.status === "Pending" && !app.agentEmail && (
+                   
                         <button
                           onClick={() => handleApprove(app._id)}
                           className="text-green-600 hover:text-green-900 bg-green-50 hover:bg-green-100 p-2 rounded-md transition"
@@ -223,7 +223,7 @@ const ManageApplications = () => {
                         >
                           <HiCheck className="h-5 w-5" />
                         </button>
-                      )}
+                     
                       
                       <button
                         onClick={() => handleReject(app._id)}

@@ -17,6 +17,8 @@ import UserDashboard from "../Pages/Dashboard/UserDashboard/UserDashboard";
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard";
 import AgentDashboard from "../Pages/Dashboard/AgentDashboard/AgentDashboard";
 import ManageApplications from "../Pages/Dashboard/Admin/ManageApplications";
+import DashboardHome from "../Pages/Dashboard/Admin/DashboardHome";
+import ManageUserPage from "../Pages/Dashboard/Admin/ManageUserPage";
 
 const mainRoute = createBrowserRouter([
   {
@@ -50,8 +52,16 @@ const mainRoute = createBrowserRouter([
         element: <AdminDashboard />,
         children: [
           {
+            index: true,
+            element: <DashboardHome/>,
+          },
+          {
             path: "manage-applications",
             element: <ManageApplications />,
+          },
+          {
+            path: "manage-users",
+            element: <ManageUserPage />,
           },
         ],
       },

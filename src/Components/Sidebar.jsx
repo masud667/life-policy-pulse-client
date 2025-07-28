@@ -66,7 +66,7 @@ const Sidebar = ({ role }) => {
     <>
       {/* Mobile Toggle Button */}
       <button
-        className="fixed top-20 left-4 z-50 lg:hidden bg-indigo-700 text-white p-2 rounded-md shadow-lg"
+        className="fixed top-20 left-4 z-50 lg:hidden bg-blue-600 text-white p-2 rounded-md shadow-lg"
         onClick={() => setMobileOpen(!mobileOpen)}
       >
         {mobileOpen ? <HiX className="h-6 w-6" /> : <HiMenu className="h-6 w-6" />}
@@ -74,7 +74,7 @@ const Sidebar = ({ role }) => {
 
       {/* Sidebar */}
       <aside 
-        className={`fixed lg:static z-40 w-64 min-h-screen p-4 bg-gradient-to-b from-blue-700 via-indigo-800 to-purple-900 shadow-2xl transform transition-transform duration-300 ${
+        className={`fixed lg:static z-40 w-64 min-h-screen p-4 bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-900 shadow-2xl transform transition-transform duration-300 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
