@@ -6,6 +6,7 @@ import ApplicationDetailsModal from "./ApplicationDetailsModal";
 
 const ManageApplications = () => {
   const queryClient = useQueryClient();
+
   const [selectedApp, setSelectedApp] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
@@ -61,11 +62,7 @@ const ManageApplications = () => {
     return matchesSearch && matchesStatus;
   });
 
-  if (isLoading) return (
-    <div className="flex justify-center items-center h-64">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-600"></div>
-    </div>
-  );
+  
 
   if (isError) return (
     <div className="text-center py-10">

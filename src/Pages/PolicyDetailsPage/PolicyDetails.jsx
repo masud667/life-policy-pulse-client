@@ -19,6 +19,7 @@ const PolicyDetails = () => {
         setIsLoading(true);
         const res = await axios.get(`http://localhost:5000/policies/${id}`);
         setPolicy(res.data);
+       
       } catch (error) {
         console.error("Error fetching policy:", error);
       } finally {

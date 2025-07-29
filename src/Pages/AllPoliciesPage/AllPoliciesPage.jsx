@@ -133,7 +133,7 @@ const AllPoliciesPage = () => {
                       {policy?.premium || "Custom Pricing"}
                     </span>
                     <Link
-                      to={`/policies/${policy?._id}`}
+                      to={`/policies/${policy._id}`}
                       className="bg-gradient-to-r from-blue-600 to-purple-600 btn rounded p-2 text-white hover:bg-gradient-to-l flex items-center gap-1"
                     >
                       View Details <FiArrowRight />

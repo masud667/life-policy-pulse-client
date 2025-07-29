@@ -15,10 +15,15 @@ import PolicyBriefPage from "../Pages/PolicyBriefPage/PolicyBriefPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
 import UserDashboard from "../Pages/Dashboard/UserDashboard/UserDashboard";
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard";
-import AgentDashboard from "../Pages/Dashboard/AgentDashboard/AgentDashboard";
+import AgentDashboard from "../Pages/Dashboard/Agent/AgentDashboard";
 import ManageApplications from "../Pages/Dashboard/Admin/ManageApplications";
 import DashboardHome from "../Pages/Dashboard/Admin/DashboardHome";
 import ManageUserPage from "../Pages/Dashboard/Admin/ManageUserPage";
+import ManagePolicies from "../Pages/Dashboard/Admin/ManagePolicies";
+import ManageTransactions from "../Pages/Dashboard/Admin/ManageTransactions";
+import ManageBlogs from "../Pages/Dashboard/Agent/ManageBlogs";
+import AgentHome from "../Pages/Dashboard/Agent/AgentHome";
+import PolicyClearance from "../Pages/Dashboard/Agent/PolicyClearance";
 
 const mainRoute = createBrowserRouter([
   {
@@ -63,11 +68,35 @@ const mainRoute = createBrowserRouter([
             path: "manage-users",
             element: <ManageUserPage />,
           },
+          {
+            path: "manage-policies",
+            element: <ManagePolicies />,
+          },
+          {
+            path: "manage-transactions",
+            element: <ManageTransactions />,
+          }
+  
         ],
       },
       {
         path: "agent",
-        element: <AgentDashboard />,
+        element: <AgentHome></AgentHome>,
+       children: [
+        {
+          index: true,
+          element :  <AgentDashboard />,
+        },
+        {
+        path: "manage-blogs",
+        element: <ManageBlogs />,
+      },
+        {
+        path: "policy-claims",
+        element: <PolicyClearance />,
+      },
+
+        ]
       },
     ],
   },

@@ -29,9 +29,16 @@ const Sidebar = ({ role }) => {
       icon: <HiUser className="h-5 w-5" />,
       visible: role === "user" 
     },
+   
     { 
-      path: "/dashboard/agent", 
-      label: "Agent Panel", 
+      path: "/dashboard/agent/manage-blogs", 
+      label: "Manage Blogs", 
+      icon: <HiUserGroup className="h-5 w-5" />,
+      visible: role === "agent" 
+    },
+    { 
+      path: "/dashboard/agent/policy-claims", 
+      label: "Policy Claims", 
       icon: <HiUserGroup className="h-5 w-5" />,
       visible: role === "agent" 
     },

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { FaUserShield, FaUserAltSlash, FaTrash, FaSearch, FaUser, FaUsers, FaUserPlus, FaEllipsisV } from "react-icons/fa";
+import Loading from "../../../Components/Loading";
 
 const ManageUserPage = () => {
   const [users, setUsers] = useState([]);
@@ -86,13 +87,11 @@ const ManageUserPage = () => {
     regular: users.filter(u => u.role === "user").length,
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-indigo-600"></div>
-      </div>
-    );
-  }
+   if (loading) {
+      return (
+        <Loading />
+      );
+    }
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-indigo-50 min-h-screen p-3 md:p-8">
