@@ -4,8 +4,10 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
 import Logo from './Logo';
 import AuthSecureAxios from '../Hooks/AuthSecureAxios';
+import ProfilePage from './ProfilePage';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showProfile, setShowProfile] = useState(true);
   const { user, logOut } = useContext(AuthContext);
  const navigate = useNavigate()
 
@@ -36,6 +38,7 @@ const handleLogout = async () => {
 };
 
 
+    
   return (
     <nav className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,7 +76,7 @@ const handleLogout = async () => {
               </>
             ) : (
               <div className="flex items-center space-x-6">
-               <Link to="/profile" className="flex items-center space-x-2 group">
+               <Link to={'/profile'} className="flex items-center space-x-2 group">
   {user?.photoURL ? (
     <img
       src={user.photoURL}
@@ -85,8 +88,9 @@ const handleLogout = async () => {
   )}
   <span className="text-white font-medium group-hover:text-amber-200 transition-colors">
     My Profile
-  </span>
+  </span> 
 </Link>
+
 
                 <button onClick={handleLogout} className="text-white font-medium hover:text-red-300 transition-colors flex items-center space-x-1">
                   <span>Logout</span>

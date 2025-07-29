@@ -13,7 +13,6 @@ import ApplicationFormPage from "../Pages/ApplicationFormPage/ApplicationFormPag
 import BlogArticles from "../Pages/BlogArticles/BlogArticles";
 import PolicyBriefPage from "../Pages/PolicyBriefPage/PolicyBriefPage";
 import DashboardLayout from "../Layouts/DashboardLayout";
-import UserDashboard from "../Pages/Dashboard/UserDashboard/UserDashboard";
 import AdminDashboard from "../Pages/Dashboard/Admin/AdminDashboard";
 import AgentDashboard from "../Pages/Dashboard/Agent/AgentDashboard";
 import ManageApplications from "../Pages/Dashboard/Admin/ManageApplications";
@@ -24,6 +23,10 @@ import ManageTransactions from "../Pages/Dashboard/Admin/ManageTransactions";
 import ManageBlogs from "../Pages/Dashboard/Agent/ManageBlogs";
 import AgentHome from "../Pages/Dashboard/Agent/AgentHome";
 import PolicyClearance from "../Pages/Dashboard/Agent/PolicyClearance";
+import MyPolicies from "../Pages/Dashboard/Customer/MyPolicies";
+import PaymentStatus from "../Pages/Dashboard/Customer/PaymentStatus";
+import UserDashboard from "../Pages/Dashboard/Customer/UserDashboard";
+import ProfilePage from "../Components/ProfilePage";
 
 const mainRoute = createBrowserRouter([
   {
@@ -42,6 +45,10 @@ const mainRoute = createBrowserRouter([
         path: "/register",
         Component: Register,
       },
+      {
+        path: "/profile",
+        Component: ProfilePage,
+      },
     ],
   },
   {
@@ -51,6 +58,16 @@ const mainRoute = createBrowserRouter([
       {
         path: "user",
         element: <UserDashboard />,
+        children: [
+           {
+            index: true,
+            element: <MyPolicies/>,
+          },
+            {
+            path: "payment-status",
+            element: <PaymentStatus />,
+          },
+        ]
       },
       {
         path: "admin",

@@ -24,18 +24,19 @@ const Sidebar = ({ role }) => {
       visible: true
     },
     { 
-      path: "/dashboard/user", 
-      label: "User Panel", 
-      icon: <HiUser className="h-5 w-5" />,
-      visible: role === "user" 
-    },
-   
-    { 
       path: "/dashboard/agent/manage-blogs", 
       label: "Manage Blogs", 
       icon: <HiUserGroup className="h-5 w-5" />,
       visible: role === "agent" 
     },
+    { 
+      path: "/dashboard/user/payment-status", 
+      label: "Payment Status", 
+      icon: <HiUser className="h-5 w-5" />,
+      visible: role === "user" 
+    },
+   
+    
     { 
       path: "/dashboard/agent/policy-claims", 
       label: "Policy Claims", 
