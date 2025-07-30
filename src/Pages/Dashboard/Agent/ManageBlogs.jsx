@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../../Context/AuthContext";
 import { Button, Dialog } from "@headlessui/react";
+import AuthSecureAxios from "../../../Hooks/AuthSecureAxios";
 
 const ManageBlogs = () => {
   const { user } = useContext(AuthContext);
@@ -15,7 +16,7 @@ const ManageBlogs = () => {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${API_URL}/blogs?email=${user.email}`);
+      const res = await AuthSecureAxios.get(`/blogs?email=${user.email}`);
       setBlogs(res.data);
       setError("");
     } catch (err) {
@@ -34,7 +35,7 @@ const ManageBlogs = () => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;
     
     try {
-      await axios.delete(`${API_URL}/blogs/${id}`);
+      await AuthSecureAxios.delete(`/blogs/${id}`);
       fetchBlogs();
     } catch (err) {
       setError("Failed to delete blog");
@@ -49,13 +50,13 @@ const ManageBlogs = () => {
     
     try {
       if (editData) {
-        await axios.put(`${API_URL}/blogs/${editData._id}`, {
+        await AuthSecureAxios.put(`/blogs/${editData._id}`, {
           ...data,
           authorEmail: user.email,
           authorName: user.displayName
         });
       } else {
-        await axios.post(`${API_URL}/blogs`, {
+        await AuthSecureAxios.post(`/blogs`, {
           ...data,
           authorEmail: user.email,
           authorName: user.displayName

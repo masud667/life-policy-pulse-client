@@ -270,10 +270,7 @@ const ProfilePage = ({ user, onClose }) => {
         </div>
       </main>
       
-      {/* Footer */}
-      <footer className="py-4 text-center text-gray-500 text-sm">
-        © 2023 Profile Settings. All rights reserved.
-      </footer>
+      
     </div>
   );
 };

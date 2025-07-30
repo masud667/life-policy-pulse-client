@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const AuthSecureAxios = axios.create({
-  baseURL: "http://localhost:5000",
-  withCredentials: true
+  baseURL: "https://life-policy-pulse-server.vercel.app",
+  withCredentials: true,
 });
 
 export default AuthSecureAxios;

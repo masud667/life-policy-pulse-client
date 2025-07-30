@@ -1,8 +1,18 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { FaUserShield, FaUserAltSlash, FaTrash, FaSearch, FaUser, FaUsers, FaUserPlus, FaEllipsisV } from "react-icons/fa";
+import {
+  FaUserShield,
+  FaUserAltSlash,
+  FaTrash,
+  FaSearch,
+  FaUser,
+  FaUsers,
+  FaUserPlus,
+  FaEllipsisV,
+} from "react-icons/fa";
 import Loading from "../../../Components/Loading";
+import AuthSecureAxios from "../../../Hooks/AuthSecureAxios";
 
 const ManageUserPage = () => {
   const [users, setUsers] = useState([]);
@@ -13,7 +23,8 @@ const ManageUserPage = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/users");
+      const res = await AuthSecureAxios.get("/users"
+      );
       setUsers(res.data);
     } catch (error) {
       Swal.fire("Error", "Failed to load users", "error");
@@ -28,7 +39,9 @@ const ManageUserPage = () => {
 
   const promoteToAgent = async (id) => {
     try {
-      await axios.patch(`http://localhost:5000/users/promote/${id}`);
+      await AuthSecureAxios.patch(
+        `/users/promote/${id}`
+      );
       fetchUsers();
       Swal.fire("Success", "User promoted to Agent", "success");
     } catch (error) {
@@ -38,7 +51,9 @@ const ManageUserPage = () => {
 
   const demoteToUser = async (id) => {
     try {
-      await axios.patch(`http://localhost:5000/users/demote/${id}`);
+      await AuthSecureAxios.patch(
+        `/users/demote/${id}`
+      );
       fetchUsers();
       Swal.fire("Success", "Agent demoted to user", "info");
     } catch (error) {
@@ -59,7 +74,9 @@ const ManageUserPage = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:5000/users/${id}`);
+        await AuthSecureAxios.delete(
+          `/users/${id}`
+        );
         fetchUsers();
         Swal.fire("Deleted!", "User has been deleted.", "success");
       } catch (error) {
@@ -69,29 +86,27 @@ const ManageUserPage = () => {
   };
 
   // Filter users based on search and role
-  const filteredUsers = users.filter(user => {
-    const matchesSearch = 
+  const filteredUsers = users.filter((user) => {
+    const matchesSearch =
       user.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email?.toLowerCase().includes(searchTerm.toLowerCase());
-    
+
     const matchesRole = roleFilter === "all" || user.role === roleFilter;
-    
+
     return matchesSearch && matchesRole;
   });
 
   // User statistics
   const userStats = {
     total: users.length,
-    admins: users.filter(u => u.role === "admin").length,
-    agents: users.filter(u => u.role === "agent").length,
-    regular: users.filter(u => u.role === "user").length,
+    admins: users.filter((u) => u.role === "admin").length,
+    agents: users.filter((u) => u.role === "agent").length,
+    regular: users.filter((u) => u.role === "user").length,
   };
 
-   if (loading) {
-      return (
-        <Loading />
-      );
-    }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="bg-gradient-to-br from-gray-50 to-indigo-50 min-h-screen p-3 md:p-8">
@@ -120,44 +135,60 @@ const ManageUserPage = () => {
           <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-indigo-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">Total Users</p>
-                <p className="text-lg md:text-2xl font-bold mt-1">{userStats.total}</p>
+                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                  Total Users
+                </p>
+                <p className="text-lg md:text-2xl font-bold mt-1">
+                  {userStats.total}
+                </p>
               </div>
               <div className="p-2 md:p-3 bg-indigo-100 rounded-lg text-indigo-600">
                 <FaUsers className="text-base md:text-xl" />
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-green-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">Admins</p>
-                <p className="text-lg md:text-2xl font-bold mt-1">{userStats.admins}</p>
+                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                  Admins
+                </p>
+                <p className="text-lg md:text-2xl font-bold mt-1">
+                  {userStats.admins}
+                </p>
               </div>
               <div className="p-2 md:p-3 bg-green-100 rounded-lg text-green-600">
                 <FaUserShield className="text-base md:text-xl" />
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-blue-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">Agents</p>
-                <p className="text-lg md:text-2xl font-bold mt-1">{userStats.agents}</p>
+                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                  Agents
+                </p>
+                <p className="text-lg md:text-2xl font-bold mt-1">
+                  {userStats.agents}
+                </p>
               </div>
               <div className="p-2 md:p-3 bg-blue-100 rounded-lg text-blue-600">
                 <FaUserShield className="text-base md:text-xl" />
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-purple-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">Regular Users</p>
-                <p className="text-lg md:text-2xl font-bold mt-1">{userStats.regular}</p>
+                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                  Regular Users
+                </p>
+                <p className="text-lg md:text-2xl font-bold mt-1">
+                  {userStats.regular}
+                </p>
               </div>
               <div className="p-2 md:p-3 bg-purple-100 rounded-lg text-purple-600">
                 <FaUser className="text-base md:text-xl" />
@@ -179,23 +210,21 @@ const ManageUserPage = () => {
               />
               <FaSearch className="absolute left-3 top-2.5 md:top-3 text-gray-400" />
             </div>
-            
+
             <div className="flex gap-2">
               <select
                 value={roleFilter}
                 onChange={(e) => setRoleFilter(e.target.value)}
-                className="px-3 py-2 md:px-4 md:py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-300 focus:border-transparent text-sm md:text-base flex-grow"
-              >
+                className="px-3 py-2 md:px-4 md:py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-indigo-300 focus:border-transparent text-sm md:text-base flex-grow">
                 <option value="all">All Roles</option>
                 <option value="admin">Admin</option>
                 <option value="agent">Agent</option>
                 <option value="user">User</option>
               </select>
-              
-              <button 
+
+              <button
                 onClick={fetchUsers}
-                className="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium flex items-center text-sm md:text-base"
-              >
+                className="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium flex items-center text-sm md:text-base">
                 <FaSearch className="md:mr-2" />
                 <span className="hidden md:inline">Refresh</span>
               </button>
@@ -209,23 +238,39 @@ const ManageUserPage = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Registered</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    #
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Email
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Role
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Registered
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {filteredUsers.length === 0 ? (
                   <tr>
                     <td colSpan="6" className="px-6 py-8 text-center">
-                      <div className="text-gray-500 text-lg">No users found</div>
-                      <button 
-                        onClick={() => { setSearchTerm(""); setRoleFilter("all"); }}
-                        className="mt-4 text-indigo-600 hover:text-indigo-800 flex items-center justify-center mx-auto"
-                      >
+                      <div className="text-gray-500 text-lg">
+                        No users found
+                      </div>
+                      <button
+                        onClick={() => {
+                          setSearchTerm("");
+                          setRoleFilter("all");
+                        }}
+                        className="mt-4 text-indigo-600 hover:text-indigo-800 flex items-center justify-center mx-auto">
                         Clear filters
                       </button>
                     </td>
@@ -242,8 +287,12 @@ const ManageUserPage = () => {
                             {user.name?.charAt(0) || "U"}
                           </div>
                           <div>
-                            <div className="font-medium text-gray-900">{user.name || "N/A"}</div>
-                            <div className="text-sm text-gray-500">ID: {user._id.substring(0, 8)}</div>
+                            <div className="font-medium text-gray-900">
+                              {user.name || "N/A"}
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              ID: {user._id.substring(0, 8)}
+                            </div>
                           </div>
                         </div>
                       </td>
@@ -251,11 +300,14 @@ const ManageUserPage = () => {
                         {user.email}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                          user.role === "admin" ? "bg-red-100 text-red-800" :
-                          user.role === "agent" ? "bg-blue-100 text-blue-800" :
-                          "bg-green-100 text-green-800"
-                        }`}>
+                        <span
+                          className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                            user.role === "admin"
+                              ? "bg-red-100 text-red-800"
+                              : user.role === "agent"
+                              ? "bg-blue-100 text-blue-800"
+                              : "bg-green-100 text-green-800"
+                          }`}>
                           {user.role}
                         </span>
                       </td>
@@ -268,29 +320,26 @@ const ManageUserPage = () => {
                             <button
                               onClick={() => promoteToAgent(user._id)}
                               className="text-blue-600 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 p-2 rounded-md transition flex items-center"
-                              title="Promote to Agent"
-                            >
+                              title="Promote to Agent">
                               <FaUserShield className="mr-1" />
                               <span className="hidden sm:inline">Promote</span>
                             </button>
                           )}
-                          
+
                           {user.role === "agent" && (
                             <button
                               onClick={() => demoteToUser(user._id)}
                               className="text-yellow-600 hover:text-yellow-900 bg-yellow-50 hover:bg-yellow-100 p-2 rounded-md transition flex items-center"
-                              title="Demote to User"
-                            >
+                              title="Demote to User">
                               <FaUserAltSlash className="mr-1" />
                               <span className="hidden sm:inline">Demote</span>
                             </button>
                           )}
-                          
+
                           <button
                             onClick={() => deleteUser(user._id)}
                             className="text-red-600 hover:text-red-900 bg-red-50 hover:bg-red-100 p-2 rounded-md transition flex items-center"
-                            title="Delete User"
-                          >
+                            title="Delete User">
                             <FaTrash className="mr-1" />
                             <span className="hidden sm:inline">Delete</span>
                           </button>
@@ -309,10 +358,12 @@ const ManageUserPage = () => {
           {filteredUsers.length === 0 ? (
             <div className="bg-white rounded-lg shadow p-6 text-center">
               <div className="text-gray-500 text-lg">No users found</div>
-              <button 
-                onClick={() => { setSearchTerm(""); setRoleFilter("all"); }}
-                className="mt-4 text-indigo-600 hover:text-indigo-800"
-              >
+              <button
+                onClick={() => {
+                  setSearchTerm("");
+                  setRoleFilter("all");
+                }}
+                className="mt-4 text-indigo-600 hover:text-indigo-800">
                 Clear filters
               </button>
             </div>
@@ -326,8 +377,12 @@ const ManageUserPage = () => {
                         {user.name?.charAt(0) || "U"}
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">{user.name || "N/A"}</div>
-                        <div className="text-sm text-gray-500">{user.email}</div>
+                        <div className="font-medium text-gray-900">
+                          {user.name || "N/A"}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {user.email}
+                        </div>
                       </div>
                     </div>
                     <div className="relative">
@@ -336,49 +391,49 @@ const ManageUserPage = () => {
                       </button>
                     </div>
                   </div>
-                  
+
                   <div className="mt-3 flex justify-between items-center">
-                    <span className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                      user.role === "admin" ? "bg-red-100 text-red-800" :
-                      user.role === "agent" ? "bg-blue-100 text-blue-800" :
-                      "bg-green-100 text-green-800"
-                    }`}>
+                    <span
+                      className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                        user.role === "admin"
+                          ? "bg-red-100 text-red-800"
+                          : user.role === "agent"
+                          ? "bg-blue-100 text-blue-800"
+                          : "bg-green-100 text-green-800"
+                      }`}>
                       {user.role}
                     </span>
-                    
+
                     <div className="text-xs text-gray-500">
                       {new Date(user.createdAt).toLocaleDateString()}
                     </div>
                   </div>
-                  
+
                   <div className="mt-4 flex space-x-2">
                     {user.role === "user" && (
                       <button
                         onClick={() => promoteToAgent(user._id)}
                         className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 py-2 rounded-md text-sm flex items-center justify-center"
-                        title="Promote to Agent"
-                      >
+                        title="Promote to Agent">
                         <FaUserShield className="mr-1" />
                         Promote
                       </button>
                     )}
-                    
+
                     {user.role === "agent" && (
                       <button
                         onClick={() => demoteToUser(user._id)}
                         className="flex-1 bg-yellow-50 hover:bg-yellow-100 text-yellow-700 py-2 rounded-md text-sm flex items-center justify-center"
-                        title="Demote to User"
-                      >
+                        title="Demote to User">
                         <FaUserAltSlash className="mr-1" />
                         Demote
                       </button>
                     )}
-                    
+
                     <button
                       onClick={() => deleteUser(user._id)}
                       className="flex-1 bg-red-50 hover:bg-red-100 text-red-700 py-2 rounded-md text-sm flex items-center justify-center"
-                      title="Delete User"
-                    >
+                      title="Delete User">
                       <FaTrash className="mr-1" />
                       Delete
                     </button>

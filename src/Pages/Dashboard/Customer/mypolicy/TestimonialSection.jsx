@@ -16,7 +16,7 @@ const TestimonialSection = ({ testimonials }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {testimonials.map(testimonial => (
           <div 
-            key={testimonial.id} 
+            key={testimonial._id} 
             className="bg-white p-6 rounded-xl shadow-sm border border-gray-100"
           >
             <div className="flex items-center mb-4">

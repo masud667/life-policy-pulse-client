@@ -15,7 +15,7 @@ import {
 const Sidebar = ({ role }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   
-  // Navigation items configuration
+  // Navigation items 
   const navItems = [
     { 
       path: "/dashboard", 

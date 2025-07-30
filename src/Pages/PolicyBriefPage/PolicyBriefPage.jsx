@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import axios from "axios";
 import Logo from "../../Components/Logo";
+import AuthSecureAxios from "../../Hooks/AuthSecureAxios";
 
 const PolicyBriefPage = () => {
   const { id } = useParams();
@@ -25,17 +26,24 @@ const PolicyBriefPage = () => {
     const fetchBlog = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/blogs/${id}`);
+        const response = await AuthSecureAxios.get(
+          `/blogs/${id}`
+        );
         setBlog(response.data);
 
         // Simulate related content fetch
-        const allBlogs = await axios.get("http://localhost:5000/blogs");
+        const allBlogs = await AuthSecureAxios.get(
+          "/blogs"
+        );
         setRelatedBlogs(allBlogs.data.filter((b) => b._id !== id).slice(0, 3));
 
         // Update visit count
-        await axios.patch(`http://localhost:5000/blogs/${id}`, {
-          visits: response.data.visits + 1,
-        });
+        await axios.patch(
+          `https://life-policy-pulse-server.vercel.app/blogs/${id}`,
+          {
+            visits: response.data.visits + 1,
+          }
+        );
 
         setLoading(false);
       } catch (error) {

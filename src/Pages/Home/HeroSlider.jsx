@@ -64,7 +64,7 @@ const HeroSlider = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+            <h1 className=" px-4 text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
               Life Insurance
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 Reimagined
@@ -92,7 +92,7 @@ const HeroSlider = () => {
               ))}
             </div>
             
-            <div className="flex flex-wrap gap-4 mt-10">
+            <div className="flex flex-wrap gap-4 mt-10 px-4">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

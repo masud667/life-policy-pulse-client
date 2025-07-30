@@ -16,7 +16,9 @@ const AllPoliciesPage = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5000/policies?page=${currentPage}&limit=${itemsPerPage}`)
+      .get(
+        `https://life-policy-pulse-server.vercel.app/policies?page=${currentPage}&limit=${itemsPerPage}`
+      )
       .then((res) => {
         setPolicies(res.data.result);
         setTotal(res.data.total);
@@ -38,8 +40,11 @@ const AllPoliciesPage = () => {
   };
 
   const filteredPolicies = policies.filter((item) => {
-    const matchCategory = selectedCategory === "all" || item?.category === selectedCategory;
-    const matchSearch = item?.title?.toLowerCase().includes(search.toLowerCase());
+    const matchCategory =
+      selectedCategory === "all" || item?.category === selectedCategory;
+    const matchSearch = item?.title
+      ?.toLowerCase()
+      .includes(search.toLowerCase());
     return matchCategory && matchSearch;
   });
 
@@ -57,7 +62,9 @@ const AllPoliciesPage = () => {
             <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
               All Life Insurance Policies
             </h1>
-            <p className="text-gray-600 mt-2">Choose the best plan tailored for you</p>
+            <p className="text-gray-600 mt-2">
+              Choose the best plan tailored for you
+            </p>
           </div>
 
           {/* Search & Filter */}
@@ -78,8 +85,7 @@ const AllPoliciesPage = () => {
               <select
                 value={selectedCategory}
                 onChange={handleFilter}
-                className="px-3 py-2 border border-gray-300 rounded-lg"
-              >
+                className="px-3 py-2 border border-gray-300 rounded-lg">
                 <option value="all">All Categories</option>
                 {categories.map((cat, idx) => (
                   <option key={idx} value={cat}>
@@ -109,8 +115,7 @@ const AllPoliciesPage = () => {
                   setSearch("");
                   setSelectedCategory("all");
                 }}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg"
-              >
+                className="bg-blue-600 text-white px-6 py-2 rounded-lg">
                 Reset Filters
               </button>
             </div>
@@ -119,23 +124,23 @@ const AllPoliciesPage = () => {
               {filteredPolicies.map((policy) => (
                 <div
                   key={policy?._id}
-                  className="bg-white p-6 rounded-xl shadow hover:shadow-md transition"
-                >
+                  className="bg-white p-6 rounded-xl shadow hover:shadow-md transition">
                   <img
                     src={policy?.image}
                     alt={policy?.title}
                     className="w-full h-40 object-cover rounded mb-4"
                   />
                   <h2 className="text-xl font-semibold">{policy?.title}</h2>
-                  <p className="text-sm text-gray-500 mb-2">{policy?.shortDetails}</p>
+                  <p className="text-sm text-gray-500 mb-2">
+                    {policy?.shortDetails}
+                  </p>
                   <div className="flex justify-between items-center mt-4">
                     <span className="font-bold text-purple-600">
                       {policy?.premium || "Custom Pricing"}
                     </span>
                     <Link
                       to={`/policies/${policy._id}`}
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 btn rounded p-2 text-white hover:bg-gradient-to-l flex items-center gap-1"
-                    >
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 btn rounded p-2 text-white hover:bg-gradient-to-l flex items-center gap-1">
                       View Details <FiArrowRight />
                     </Link>
                   </div>
@@ -154,8 +159,7 @@ const AllPoliciesPage = () => {
                   currentPage === number + 1
                     ? "bg-blue-600 text-white"
                     : "bg-gray-200 text-gray-700"
-                }`}
-              >
+                }`}>
                 {number + 1}
               </button>
             ))}

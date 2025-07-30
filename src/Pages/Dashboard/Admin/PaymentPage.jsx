@@ -7,6 +7,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import axios from "axios";
+import AuthSecureAxios from "../../../Hooks/AuthSecureAxios";
 
 const stripePromise = loadStripe("pk_test_..."); // Public key
 
@@ -16,8 +17,11 @@ const CheckoutForm = ({ amount, policy }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    axios
-      .post("http://localhost:5000/stripe/create-payment-intent", { amount })
+    AuthSecureAxios
+      .post(
+        "/stripe/create-payment-intent",
+        { amount }
+      )
       .then((res) => setClientSecret(res.data.clientSecret));
   }, [amount]);
 
@@ -32,14 +36,17 @@ const CheckoutForm = ({ amount, policy }) => {
 
     if (result.paymentIntent?.status === "succeeded") {
       // ✅ Save transaction manually
-      await axios.post("http://localhost:5000/transactions", {
-        transactionId: result.paymentIntent.id,
-        policyName: policy.title,
-        email: "user@example.com", // from AuthContext
-        amount,
-        status: "Success",
-        date: new Date(),
-      });
+      await AuthSecureAxios.post(
+        "/transactions",
+        {
+          transactionId: result.paymentIntent.id,
+          policyName: policy.title,
+          email: "user@example.com", // from AuthContext
+          amount,
+          status: "Success",
+          date: new Date(),
+        }
+      );
 
       alert("Payment successful!");
     } else {
@@ -60,7 +67,10 @@ const CheckoutForm = ({ amount, policy }) => {
 const PaymentPage = ({ policy }) => {
   return (
     <Elements stripe={stripePromise}>
-      <CheckoutForm amount={parseFloat(policy.basePremiumRate)} policy={policy} />
+      <CheckoutForm
+        amount={parseFloat(policy.basePremiumRate)}
+        policy={policy}
+      />
     </Elements>
   );
 };
