@@ -30,7 +30,7 @@ const HeroSlider = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 relative overflow-hidden ">
       {/* Floating background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -58,20 +58,20 @@ const HeroSlider = () => {
       {/* Main content */}
       <div className="container mx-auto px-4 py-20 md:py-28 flex flex-col md:flex-row items-center relative z-10">
         {/* Text content */}
-        <div className="md:w-1/2 mb-16 md:mb-0">
+        <div className="md:w-1/2 w-11/12 mx-auto mb-16 md:mb-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className=" px-4 text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
-              Life Insurance
+            <h1 className=" px-4 text-3xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+              Life <br></br> Insurance
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
                 Reimagined
               </span>
             </h1>
             
-            <div className="h-24 md:h-32 overflow-hidden relative mb-6">
+            <div className="h-28 md:h-32 overflow-hidden relative mb-6">
               {slides.map((slide, index) => (
                 <motion.div
                   key={index}
@@ -84,19 +84,20 @@ const HeroSlider = () => {
                   transition={{ duration: 0.6 }}
                 >
                   <div className="flex items-start">
-                    <span className="text-4xl mr-4 mt-1">{slide.icon}</span>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-800">{slide.title}</h2>
+                    <span className="text-3xl mr-4 mt-1">{slide.icon}</span>
+                    <h2 className="text-2xl md:text-4xl font-bold text-gray-800">{slide.title}</h2>
                   </div>
-                  <p className="text-lg md:text-xl text-gray-600 mt-4 ml-12 max-w-lg">{slide.subtitle}</p>
+                  <p className="text-lg md:text-xl text-gray-600 mt-4 ml-5 max-w-lg">{slide.subtitle}</p>
                 </motion.div>
               ))}
             </div>
             
-            <div className="flex flex-wrap gap-4 mt-10 px-4">
+            <div className="flex flex-wrap justify-start gap-4 mt-10 px-2">
               <motion.button
+              href="/apply"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center"
+                className="px-4 py-2 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all flex items-center"
               >
                 <span>Get a Free Quote</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
@@ -107,13 +108,13 @@ const HeroSlider = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-gray-800 font-bold rounded-xl border-2 border-gray-200 shadow-sm hover:shadow-md transition-all"
+                className="px-4 py-2 md:px-8 md:py-4 bg-white text-gray-800 font-bold rounded-xl border-2 border-gray-200 shadow-sm hover:shadow-md transition-all"
               >
                 How It Works
               </motion.button>
             </div>
             
-            <div className="flex items-center mt-12">
+            <div className="flex flex-col gap-3 md:flex-row items-center mt-12">
               <div className="flex -space-x-3 mr-6">
                 {[1, 2, 3, 4].map((item) => (
                   <div 
@@ -140,8 +141,8 @@ const HeroSlider = () => {
         </div>
         
         {/* Card slider */}
-        <div className="md:w-1/2 w-full relative">
-          <div className="relative h-[500px] w-full max-w-md mx-auto">
+        <div className="md:w-1/2 w-10/12 mx-auto relative">
+          <div className="relative h-[520px] w-full max-w-md mx-auto">
             {slides.map((slide, index) => (
               <motion.div
                 key={index}
@@ -166,21 +167,21 @@ const HeroSlider = () => {
                 onClick={() => setActiveSlide(index)}
               >
                 <div className="h-1/4 bg-gradient-to-r from-blue-500 to-purple-600 p-6 relative ">
-                  <div className="absolute  top-6 right-6 bg-white/20 p-3 rounded-full">
+                  <div className="absolute  top-0 right-0 bg-white/20 p-3 rounded-full">
                     <span className="text-2xl">{slide.icon}</span>
                   </div>
                   <h3 className="text-2xl font-bold text-white mt-4">{slide.title}</h3>
                 </div>
                 
                 <div className="p-6">
-                  <p className="text-gray-700 mb-6">{slide.subtitle}</p>
+                  <p className="text-gray-700 mb-3 md:mb-6">{slide.subtitle}</p>
                   
-                  <div className="flex items-center mb-6">
+                  <div className="flex items-center mb-2 md:mb-6">
                     <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
                     <span className="text-gray-600">Instant approval</span>
                   </div>
                   
-                  <div className="flex items-center mb-6">
+                  <div className="flex items-center mb-2 md:mb-6">
                     <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
                     <span className="text-gray-600">Adjustable coverage</span>
                   </div>

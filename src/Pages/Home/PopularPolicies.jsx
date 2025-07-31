@@ -111,7 +111,7 @@ const PopularPolicies = () => {
                     </div>
                     <div>
                       <div className="text-xs text-gray-500">Coverage</div>
-                      <div className="font-bold text-gray-800">{policy.coverageAmount}</div>
+                      <div className="font-bold text-gray-800">{policy.coverageRange}</div>
                     </div>
                   </div>
                   
@@ -121,7 +121,7 @@ const PopularPolicies = () => {
                     </div>
                     <div>
                       <div className="text-xs text-gray-500">Term</div>
-                      <div className="font-bold text-gray-800">{policy.termDuration}</div>
+                      <div className="font-bold text-gray-800">{policy.term}</div>
                     </div>
                   </div>
                 </div>
@@ -155,7 +155,7 @@ const PopularPolicies = () => {
         
         <div className="text-center mt-16">
           <a 
-            href="/all-policies" 
+            href="/policies" 
             className="inline-flex items-center text-lg font-medium text-blue-600 hover:text-purple-700 transition-colors"
           >
             View All Insurance Policies

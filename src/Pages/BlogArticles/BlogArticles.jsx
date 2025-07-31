@@ -47,7 +47,7 @@ const BlogArticles = () => {
               className="bg-white rounded-2xl shadow-xl overflow-hidden border border-indigo-100 transition-all duration-300 hover:shadow-2xl hover:border-indigo-200">
               <div className="relative">
                 <img
-                  src={blog.image}
+                  src={blog?.image}
                   alt={blog.title}
                   className="w-full h-52 object-cover"
                 />
