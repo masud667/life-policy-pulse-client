@@ -29,7 +29,7 @@ const ReviewModal = ({ policy, onClose, onSubmit }) => {
           </div>
           
           <div className="mt-2 text-gray-600">
-            For: <span className="font-semibold">{policy.name}</span>
+            For: <span className="font-semibold">{policy.title}</span>
           </div>
           
           <div className="mt-6">

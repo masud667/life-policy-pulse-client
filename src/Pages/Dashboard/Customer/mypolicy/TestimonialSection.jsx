@@ -21,7 +21,7 @@ const TestimonialSection = ({ testimonials }) => {
           >
             <div className="flex items-center mb-4">
               <div className="mr-4 w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
-                <span className="text-blue-800 font-bold">{testimonial.author.charAt(0)}</span>
+                <span className="text-blue-800 font-bold">{testimonial.author}</span>
               </div>
               <div>
                 <h4 className="font-semibold text-gray-800">{testimonial.author}</h4>

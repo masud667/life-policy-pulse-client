@@ -1,0 +1,50 @@
+[
+  {
+    "userName": "Sarah Ahmed",
+    "userImage": "https://i.ibb.co/JqLp7Gk/user1.jpg",
+    "rating": 5,
+    "message": "I'm truly satisfied with the service. The policy process was smooth and transparent. Highly recommended!",
+    "policyName": "Premium Life Shield",
+    "date": "2025-07-20"
+  },
+  {
+    "userName": "Rahim Uddin",
+    "userImage": "https://i.ibb.co/mzKbW5N/user2.jpg",
+    "rating": 4,
+    "message": "Good customer support and easy documentation. Got my policy approved within a few days!",
+    "policyName": "Family Secure Plan",
+    "date": "2025-07-18"
+  },
+  {
+    "userName": "Nusrat Jahan",
+    "userImage": "https://i.ibb.co/4fdZKT6/user3.jpg",
+    "rating": 5,
+    "message": "Great experience! I was guided at every step. Loved the agent support.",
+    "policyName": "Smart Term Life",
+    "date": "2025-07-15"
+  },
+  {
+    "userName": "Mehedi Hasan",
+    "userImage": "https://i.ibb.co/rMqbW3P/user4.jpg",
+    "rating": 4,
+    "message": "Very professional service. The online dashboard makes tracking policies easier.",
+    "policyName": "Secure Future Plan",
+    "date": "2025-07-10"
+  },
+  {
+    "userName": "Tanisha Rahman",
+    "userImage": "https://i.ibb.co/k9NdjPr/user5.jpg",
+    "rating": 5,
+    "message": "Loved the fast processing and the options available. Got exactly what I needed.",
+    "policyName": "Lifetime Coverage Pro",
+    "date": "2025-07-08"
+  },
+  {
+    "userName": "Fahim Chowdhury",
+    "userImage": "https://i.ibb.co/28gZ3bG/user6.jpg",
+    "rating": 4,
+    "message": "Affordable premium and great flexibility in policy terms. Recommended for young professionals!",
+    "policyName": "Young Saver Plan",
+    "date": "2025-07-05"
+  }
+]
