@@ -9,13 +9,18 @@ import {
   HiDocument,
   HiCurrencyDollar,
   HiMenu,
-  HiX
+  HiX,
+  HiNewspaper,
+  HiClipboardCheck,
+  HiCash,
+  HiCollection
 } from "react-icons/hi";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Sidebar = ({ role }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   
-  // Navigation items 
+  // Navigation items with corrected icons
   const navItems = [
     { 
       path: "/dashboard", 
@@ -26,40 +31,44 @@ const Sidebar = ({ role }) => {
     { 
       path: "/dashboard/agent/manage-blogs", 
       label: "Manage Blogs", 
-      icon: <HiUserGroup className="h-5 w-5" />,
+      icon: <HiNewspaper className="h-5 w-5" />,
       visible: role === "agent" 
     },
     { 
       path: "/dashboard/user/payment-status", 
       label: "Payment Status", 
-      icon: <HiUser className="h-5 w-5" />,
+      icon: <HiCash className="h-5 w-5" />,
       visible: role === "user" 
     },
-   
-    
+    { 
+      path: "/dashboard/user/claim-request", 
+      label: "Claim Request", 
+      icon: <HiClipboardCheck className="h-5 w-5" />,
+      visible: role === "user" 
+    },
     { 
       path: "/dashboard/agent/policy-claims", 
       label: "Policy Claims", 
-      icon: <HiUserGroup className="h-5 w-5" />,
+      icon: <HiShieldCheck className="h-5 w-5" />,
       visible: role === "agent" 
     },
     // Admin specific items
     { 
       path: "/dashboard/admin/manage-applications", 
       label: "Manage Applications", 
-      icon: <HiDocumentText className="h-5 w-5" />,
+      icon: <HiCollection className="h-5 w-5" />,
       visible: role === "admin" 
     },
     { 
       path: "/dashboard/admin/manage-users", 
       label: "Manage Users", 
-      icon: <HiUser className="h-5 w-5" />,
+      icon: <HiUserGroup className="h-5 w-5" />,
       visible: role === "admin" 
     },
     { 
       path: "/dashboard/admin/manage-policies", 
       label: "Manage Policies", 
-      icon: <HiDocument className="h-5 w-5" />,
+      icon: <HiDocumentText className="h-5 w-5" />,
       visible: role === "admin" 
     },
     { 
@@ -74,44 +83,93 @@ const Sidebar = ({ role }) => {
     <>
       {/* Mobile Toggle Button */}
       <button
-        className="fixed top-20 left-4 z-50 lg:hidden bg-blue-600 text-white p-2 rounded-md shadow-lg"
+        className="fixed top-20 left-4 z-50 lg:hidden border border-blue-600 text-black p-2 rounded-md shadow-lg"
         onClick={() => setMobileOpen(!mobileOpen)}
       >
-        {mobileOpen ? <HiX className="h-6 w-6" /> : <HiMenu className="h-6 w-6" />}
+        {mobileOpen ? <HiX className="h-5 w-5" /> : <HiMenu className="h-5 w-5" />}
       </button>
 
-      {/* Sidebar */}
-      <aside 
-        className={`fixed lg:static z-40 w-64 min-h-screen p-4 bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-900 shadow-2xl transform transition-transform duration-300 ${
-          mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-        }`}
-      >
-       
+      {/* Desktop Sidebar */}
+      <aside className="hidden lg:block w-64 min-h-screen p-4 bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-900 shadow-2xl">
+        <div className="flex items-center justify-center mb-8 mt-4">
+          <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl">
+            <h1 className="text-white text-xl font-bold text-center">Dashboard</h1>
+          </div>
+        </div>
 
         {/* Navigation Items */}
         <ul className="space-y-1">
           {navItems.map((item) => 
             item.visible && (
-              <li key={item.path}>
+              <motion.li 
+                key={item.path}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
                 <Link 
                   to={item.path}
                   className="flex items-center p-3 text-gray-200 rounded-lg hover:bg-indigo-700/80 transition-all duration-200 hover:text-white group"
-                  onClick={() => setMobileOpen(false)}
                 >
                   <div className="bg-indigo-600 p-2 rounded-lg group-hover:bg-indigo-500 transition-colors">
                     {item.icon}
                   </div>
-                  <span className="ml-3 font-medium lg:block hidden">{item.label}</span>
-                  {/* Tooltip for mobile view */}
-                  <span className="ml-3 font-medium lg:hidden absolute left-16 bg-gray-900 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                    {item.label}
-                  </span>
+                  <span className="ml-3 font-medium">{item.label}</span>
                 </Link>
-              </li>
+              </motion.li>
             )
           )}
         </ul>
       </aside>
+
+      {/* Mobile Sidebar with Animation */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.aside
+            initial={{ x: -300 }}
+            animate={{ x: 0 }}
+            exit={{ x: -300 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed z-40 w-64 min-h-screen p-4 bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-900 shadow-2xl lg:hidden"
+          >
+            <div className="flex items-center justify-between mb-8 mt-4 px-2">
+              <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl">
+                <h1 className="text-white text-xl font-bold">Dashboard</h1>
+              </div>
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="text-white p-2 rounded-full hover:bg-indigo-700"
+              >
+                <HiX className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Navigation Items */}
+            <ul className="space-y-1">
+              {navItems.map((item) => 
+                item.visible && (
+                  <motion.li 
+                    key={item.path}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    <Link 
+                      to={item.path}
+                      className="flex items-center p-3 text-gray-200 rounded-lg hover:bg-indigo-700/80 transition-all duration-200 hover:text-white group"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      <div className="bg-indigo-600 p-2 rounded-lg group-hover:bg-indigo-500 transition-colors">
+                        {item.icon}
+                      </div>
+                      <span className="ml-3 font-medium">{item.label}</span>
+                    </Link>
+                  </motion.li>
+                )
+              )}
+            </ul>
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </>
   );
 };

@@ -27,6 +27,7 @@ import MyPolicies from "../Pages/Dashboard/Customer/MyPolicies";
 import PaymentStatus from "../Pages/Dashboard/Customer/PaymentStatus";
 import UserDashboard from "../Pages/Dashboard/Customer/UserDashboard";
 import ProfilePage from "../Components/ProfilePage";
+import ClaimRequestPage from "../Pages/Dashboard/Customer/ClaimRequestPage ";
 
 const mainRoute = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const mainRoute = createBrowserRouter([
             {
             path: "payment-status",
             element: <PaymentStatus />,
+          },
+            {
+            path: "claim-request",
+            element: <ClaimRequestPage />,
           },
         ]
       },

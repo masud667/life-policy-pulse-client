@@ -411,128 +411,86 @@ const PolicyClearance = () => {
         )}
 
         {/* Modal for Claim Details */}
-        {isModalOpen && selectedClaim && (
-          <div className="fixed inset-0 z-50 overflow-y-auto">
-            <div className="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-              <div
-                className="fixed inset-0 transition-opacity"
-                aria-hidden="true">
-                <div
-                  className="absolute inset-0 bg-gray-500 opacity-75"
-                  onClick={closeModal}></div>
-              </div>
+       {isModalOpen && selectedClaim && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
+    <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl overflow-hidden">
+      <div className="p-6">
+        <div className="flex justify-between items-center">
+          <h3 className="text-xl font-bold text-gray-800">
+            {selectedClaim.title}
+          </h3>
+          <button onClick={closeModal} className="text-gray-500 hover:text-gray-700">
+            <FaTimes className="h-5 w-5" />
+          </button>
+        </div>
 
-              <span
-                className="hidden sm:inline-block sm:align-middle sm:h-screen"
-                aria-hidden="true">
-                &#8203;
-              </span>
-
-              <div className="inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full">
-                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                  <div className="sm:flex sm:items-start">
-                    <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
-                      <FaEye className="h-6 w-6 text-blue-600" />
-                    </div>
-                    <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-                      <div className="flex justify-between items-center">
-                        <h3 className="text-lg leading-6 font-bold text-gray-900">
-                          {selectedClaim.title}
-                        </h3>
-                        <button
-                          type="button"
-                          className="text-gray-400 hover:text-gray-500"
-                          onClick={closeModal}>
-                          <FaTimes className="h-5 w-5" />
-                        </button>
-                      </div>
-                      <div className="mt-2">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                          <div>
-                            <p className="text-sm text-gray-500">Policy ID</p>
-                            <p className="font-medium">
-                              {selectedClaim._id.slice(-8)}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="text-sm text-gray-500">Status</p>
-                            <span
-                              className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${
-                                selectedClaim.status === "Approved"
-                                  ? "bg-green-100 text-green-800"
-                                  : "bg-yellow-100 text-yellow-800"
-                              }`}>
-                              {selectedClaim.status}
-                            </span>
-                          </div>
-                          <div>
-                            <p className="text-sm text-gray-500">Premium</p>
-                            <p className="font-medium">
-                              ${selectedClaim.premium}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="text-sm text-gray-500">Category</p>
-                            <p className="font-medium">
-                              {selectedClaim.category}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="text-sm text-gray-500">Duration</p>
-                            <p className="font-medium">
-                              {selectedClaim.durationOptions}
-                            </p>
-                          </div>
-                          <div>
-                            <p className="text-sm text-gray-500">Created At</p>
-                            <p className="font-medium">
-                              {selectedClaim.createdAt
-                                ? new Date(
-                                    selectedClaim.createdAt
-                                  ).toLocaleDateString()
-                                : "N/A"}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="mt-6">
-                          <p className="text-sm text-gray-500 mb-2">
-                            Description
-                          </p>
-                          <div className="bg-gray-50 p-4 rounded-lg">
-                            <p className="whitespace-pre-line">
-                              {selectedClaim.description ||
-                                "No description available"}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                  <button
-                    type="button"
-                    onClick={() => handleApprove(selectedClaim._id)}
-                    disabled={selectedClaim.status === "Approved"}
-                    className={`w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 text-base font-medium text-white sm:ml-3 sm:w-auto sm:text-sm ${
-                      selectedClaim.status === "Approved"
-                        ? "bg-green-600 cursor-not-allowed opacity-70"
-                        : "bg-blue-600 hover:bg-blue-700"
-                    }`}>
-                    Approve Claim
-                  </button>
-                  <button
-                    type="button"
-                    onClick={closeModal}
-                    className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
+        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-sm text-gray-500">Policy ID</p>
+            <p className="font-medium">{selectedClaim._id.slice(-8)}</p>
           </div>
-        )}
+          <div>
+            <p className="text-sm text-gray-500">Status</p>
+            <span
+              className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${
+                selectedClaim.status === "Approved"
+                  ? "bg-green-100 text-green-800"
+                  : "bg-yellow-100 text-yellow-800"
+              }`}>
+              {selectedClaim.status}
+            </span>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">Premium</p>
+            <p className="font-medium">${selectedClaim.premium}</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">Category</p>
+            <p className="font-medium">{selectedClaim.category}</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">Duration</p>
+            <p className="font-medium">{selectedClaim.durationOptions}</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">Created At</p>
+            <p className="font-medium">
+              {selectedClaim.createdAt
+                ? new Date(selectedClaim.createdAt).toLocaleDateString()
+                : "N/A"}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <p className="text-sm text-gray-500 mb-2">Description</p>
+          <div className="bg-gray-50 p-4 rounded-lg text-sm text-gray-700 whitespace-pre-line">
+            {selectedClaim.description || "No description available"}
+          </div>
+        </div>
+      </div>
+
+      <div className="px-6 py-4 bg-gray-100 flex justify-end gap-3">
+        <button
+          onClick={closeModal}
+          className="px-4 py-2 rounded-lg bg-white border text-gray-700 hover:bg-gray-200">
+          Close
+        </button>
+        <button
+          onClick={() => handleApprove(selectedClaim._id)}
+          disabled={selectedClaim.status === "Approved"}
+          className={`px-4 py-2 rounded-lg text-white font-medium ${
+            selectedClaim.status === "Approved"
+              ? "bg-green-500 cursor-not-allowed opacity-60"
+              : "bg-blue-600 hover:bg-blue-700"
+          }`}>
+          {selectedClaim.status === "Approved" ? "Already Approved" : "Approve Claim"}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
       </div>
     </div>
   );
