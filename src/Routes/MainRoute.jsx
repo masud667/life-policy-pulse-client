@@ -94,10 +94,10 @@ const mainRoute = createBrowserRouter([
             path: "manage-policies",
             element: <ManagePolicies />,
           },
-          {
-            path: "manage-transactions",
-            element: <ManageTransactions />,
-          }
+          // {
+          //   path: "manage-transactions",
+          //   element: <ManageTransactions />,
+          // }
   
         ],
       },

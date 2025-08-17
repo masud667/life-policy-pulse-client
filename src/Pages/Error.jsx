@@ -10,8 +10,8 @@ const Error = () => {
         content="We couldn't find the page you're looking for"
       />
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center px-4">
-        <div className="max-w-4xl w-full text-center">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center py-12">
+        <div className="w-11/12  text-center">
           {/* Animated floating elements */}
           <div className="relative">
             <motion.div
@@ -96,23 +96,7 @@ const Error = () => {
               </Link>
             </motion.div>
 
-            {/* Additional options */}
-            <div className="mt-12 flex flex-wrap justify-center gap-4">
-              {["Support Center", "Policy Documents", "Contact Agent"].map(
-                (item, index) => (
-                  <motion.a
-                    key={index}
-                    href="#"
-                    className="text-blue-600 hover:text-purple-600 font-medium transition-colors"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.7 + index * 0.1 }}
-                    whileHover={{ scale: 1.1 }}>
-                    {item}
-                  </motion.a>
-                )
-              )}
-            </div>
+           
           </motion.div>
 
           {/* Animated floating insurance card */}

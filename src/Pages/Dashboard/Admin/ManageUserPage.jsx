@@ -395,7 +395,7 @@ const ManageUserPage = () => {
                     </span>
 
                     <div className="text-xs text-gray-500">
-                      {new Date(user.createdAt).toLocaleDateString()}
+                      {new Date(user.registrationDate).toLocaleDateString()}
                     </div>
                   </div>
 

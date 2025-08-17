@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Context/AuthContext";
 import AuthSecureAxios from "../../../Hooks/AuthSecureAxios";
+import Loading from "../../../Components/Loading";
 
 const ClaimRequestPage = () => {
   const [policies, setPolicies] = useState([]);
@@ -90,10 +91,7 @@ const ClaimRequestPage = () => {
       </h2>
 
       {isLoading ? (
-        <div className="text-center py-8">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
-          <p className="mt-2 text-gray-600">Loading policies and claims...</p>
-        </div>
+       <Loading />
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

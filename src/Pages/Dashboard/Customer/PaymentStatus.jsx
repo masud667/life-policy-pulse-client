@@ -69,7 +69,7 @@ const PaymentStatus = () => {
             </p>
           </div>
           <div className="mt-4 md:mt-0">
-            <button className="btn btn-primary rounded-xl">
+            <button className="btn rounded-xl py-2 px-4  flex items-center bg-indigo-600 text-white hover:bg-indigo-600/80">
               <FaMoneyBillWave className="mr-2" /> Make Bulk Payment
             </button>
           </div>

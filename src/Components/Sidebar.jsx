@@ -71,12 +71,12 @@ const Sidebar = ({ role }) => {
       icon: <HiDocumentText className="h-5 w-5" />,
       visible: role === "admin" 
     },
-    { 
-      path: "/dashboard/admin/manage-transactions", 
-      label: "Manage Transactions", 
-      icon: <HiCurrencyDollar className="h-5 w-5" />,
-      visible: role === "admin" 
-    }
+    // { 
+    //   path: "/dashboard/admin/manage-transactions", 
+    //   label: "Manage Transactions", 
+    //   icon: <HiCurrencyDollar className="h-5 w-5" />,
+    //   visible: role === "admin" 
+    // }
   ];
 
   return (
