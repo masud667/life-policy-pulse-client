@@ -1,7 +1,5 @@
 import axios from 'axios';
-
 axios.defaults.withCredentials = true;
-
 
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";

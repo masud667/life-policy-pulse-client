@@ -55,6 +55,7 @@ const AuthProvider = ({ children }) => {
       unsubscribe();
     };
   }, []);
+  
   const userInfo = {
     createUser,
     signInWithGoogle,

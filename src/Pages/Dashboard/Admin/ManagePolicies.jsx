@@ -10,14 +10,13 @@ import { HiRefresh } from "react-icons/hi";
 const ManagePolicies = () => {
   const [policies, setPolicies] = useState([]);
   const [editingPolicy, setEditingPolicy] = useState(null);
-  console.log("🚀 ~ ManagePolicies ~ editingPolicy:", editingPolicy)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
-   const [total, setTotal] = useState(0);
-   const [currentPage, setCurrentPage] = useState(1);
-const itemsPerPage = 9;
+  const [total, setTotal] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
   const {
     register,
     handleSubmit,
@@ -29,7 +28,9 @@ const itemsPerPage = 9;
   const fetchPolicies = async () => {
     try {
       setLoading(true);
-      const res = await AuthSecureAxios.get(`/policies?page=${currentPage}&limit=${itemsPerPage}`);
+      const res = await AuthSecureAxios.get(
+        `/policies?page=${currentPage}&limit=${itemsPerPage}`
+      );
       setPolicies(res.data.result);
       setTotal(res.data.total);
     } catch (error) {
@@ -61,28 +62,27 @@ const itemsPerPage = 9;
     setEditingPolicy(null);
     reset();
   };
-const totalPages = Math.ceil(total / itemsPerPage);
-const onSubmit = async (data) => {
-  try {
-    // Remove _id if present in form data
-    const { _id, ...payload } = data;
+  const totalPages = Math.ceil(total / itemsPerPage);
+  const onSubmit = async (data) => {
+    try {
+      // Remove _id if present in form data
+      const { _id, ...payload } = data;
 
-    if (editingPolicy) {
-      await AuthSecureAxios.patch(`/policies/${editingPolicy._id}`, payload);
-      Swal.fire("Updated!", "Policy updated successfully", "success");
-    } else {
-      await AuthSecureAxios.post("/policies", payload);
-      Swal.fire("Added!", "Policy added successfully", "success");
+      if (editingPolicy) {
+        await AuthSecureAxios.patch(`/policies/${editingPolicy._id}`, payload);
+        Swal.fire("Updated!", "Policy updated successfully", "success");
+      } else {
+        await AuthSecureAxios.post("/policies", payload);
+        Swal.fire("Added!", "Policy added successfully", "success");
+      }
+
+      closeModal();
+      fetchPolicies();
+    } catch (error) {
+      console.error(error.response?.data || error.message);
+      Swal.fire("Error", "Failed to save policy", "error");
     }
-
-    closeModal();
-    fetchPolicies();
-  } catch (error) {
-    console.error(error.response?.data || error.message);
-    Swal.fire("Error", "Failed to save policy", "error");
-  }
-};
-
+  };
 
   const deletePolicy = async (id) => {
     const confirm = await Swal.fire({
@@ -154,9 +154,7 @@ const onSubmit = async (data) => {
                 <p className="text-gray-500 text-xs md:text-sm font-medium">
                   Total Policies
                 </p>
-                <p className="text-lg md:text-2xl font-bold mt-1">
-                  {total}
-                </p>
+                <p className="text-lg md:text-2xl font-bold mt-1">{total}</p>
               </div>
               <div className="p-2 md:p-3 bg-indigo-100 rounded-lg text-indigo-600">
                 <svg
@@ -516,21 +514,21 @@ const onSubmit = async (data) => {
             </div>
           )}
         </div>
-  {/* Pagination */}
-          <div className="flex justify-center mt-8 gap-2">
-            {[...Array(totalPages).keys()].map((number) => (
-              <button
-                key={number}
-                onClick={() => setCurrentPage(number + 1)}
-                className={`px-4 py-2 rounded ${
-                  currentPage === number + 1
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 text-gray-700"
-                }`}>
-                {number + 1}
-              </button>
-            ))}
-          </div>
+        {/* Pagination */}
+        <div className="flex justify-center mt-8 gap-2">
+          {[...Array(totalPages).keys()].map((number) => (
+            <button
+              key={number}
+              onClick={() => setCurrentPage(number + 1)}
+              className={`px-4 py-2 rounded ${
+                currentPage === number + 1
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}>
+              {number + 1}
+            </button>
+          ))}
+        </div>
         {/* Modal */}
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">

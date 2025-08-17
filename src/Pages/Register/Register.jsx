@@ -38,8 +38,9 @@ const Register = () => {
             const userInfo = {
               name: data.name,
               email: data.email,
-              image: data.photoURL || "https://i.ibb.co/placeholder.png",
+              image: data.photoURL || "https://i.ibb.co.com/RpkLjKn7/user.png",
               role: "user",
+              registrationDate: new Date().toISOString(),
             };
 
             await axios.post(

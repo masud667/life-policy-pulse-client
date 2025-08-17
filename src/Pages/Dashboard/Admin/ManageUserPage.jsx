@@ -117,10 +117,6 @@ const ManageUserPage = () => {
                 Manage user accounts and roles
               </p>
             </div>
-            <button className="mt-1 px-3 py-2 md:px-5 md:py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium flex items-center justify-center transition text-sm">
-              <FaUserPlus className="mr-1 md:mr-2" />
-              <span className="hidden md:inline">Add User</span>
-            </button>
           </div>
         </div>
 
@@ -306,7 +302,7 @@ const ManageUserPage = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        {new Date(user.createdAt).toLocaleDateString()}
+                        {new Date(user.registrationDate).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex space-x-2">
