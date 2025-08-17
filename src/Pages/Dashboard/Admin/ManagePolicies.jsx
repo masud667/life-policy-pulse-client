@@ -10,6 +10,7 @@ import { HiRefresh } from "react-icons/hi";
 const ManagePolicies = () => {
   const [policies, setPolicies] = useState([]);
   const [editingPolicy, setEditingPolicy] = useState(null);
+  console.log("🚀 ~ ManagePolicies ~ editingPolicy:", editingPolicy)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -61,22 +62,27 @@ const itemsPerPage = 9;
     reset();
   };
 const totalPages = Math.ceil(total / itemsPerPage);
+const onSubmit = async (data) => {
+  try {
+    // Remove _id if present in form data
+    const { _id, ...payload } = data;
 
-  const onSubmit = async (data) => {
-    try {
-      if (editingPolicy) {
-        await AuthSecureAxios.patch(`/policies/${editingPolicy._id}`, data);
-        Swal.fire("Updated!", "Policy updated successfully", "success");
-      } else {
-        await AuthSecureAxios.post("/policies", data);
-        Swal.fire("Added!", "Policy added successfully", "success");
-      }
-      closeModal();
-      fetchPolicies();
-    } catch (error) {
-      Swal.fire("Error", "Failed to save policy", "error");
+    if (editingPolicy) {
+      await AuthSecureAxios.patch(`/policies/${editingPolicy._id}`, payload);
+      Swal.fire("Updated!", "Policy updated successfully", "success");
+    } else {
+      await AuthSecureAxios.post("/policies", payload);
+      Swal.fire("Added!", "Policy added successfully", "success");
     }
-  };
+
+    closeModal();
+    fetchPolicies();
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+    Swal.fire("Error", "Failed to save policy", "error");
+  }
+};
+
 
   const deletePolicy = async (id) => {
     const confirm = await Swal.fire({
@@ -174,10 +180,10 @@ const totalPages = Math.ceil(total / itemsPerPage);
             <div className="flex justify-between items-center">
               <div>
                 <p className="text-gray-500 text-xs md:text-sm font-medium">
-                  Health Policies
+                  Term Life Policies
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
-                  {policies?.filter((p) => p.category === "Health").length}
+                  {policies?.filter((p) => p.category === "Term Life").length}
                 </p>
               </div>
               <div className="p-2 md:p-3 bg-green-100 rounded-lg text-green-600">
@@ -230,10 +236,10 @@ const totalPages = Math.ceil(total / itemsPerPage);
             <div className="flex justify-between items-center">
               <div>
                 <p className="text-gray-500 text-xs md:text-sm font-medium">
-                  Property Policies
+                  Senior Policies
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
-                  {policies.filter((p) => p.category === "Property").length}
+                  {policies.filter((p) => p.category === "Senior").length}
                 </p>
               </div>
               <div className="p-2 md:p-3 bg-purple-100 rounded-lg text-purple-600">
