@@ -35,7 +35,7 @@ const ManageBlogs = () => {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;
-    
+
     try {
       await AuthSecureAxios.delete(`/blogs/${id}`);
       fetchBlogs();
@@ -49,19 +49,19 @@ const ManageBlogs = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData);
-    
+
     try {
-      if (editData){
+      if (editData) {
         await AuthSecureAxios.put(`/blogs/${editData._id}`, {
           ...data,
           authorEmail: user.email,
-          authorName: user.displayName
+          authorName: user.displayName,
         });
       } else {
         await AuthSecureAxios.post(`/blogs`, {
           ...data,
           authorEmail: user.email,
-          authorName: user.displayName
+          authorName: user.displayName,
         });
       }
       setModal(false);
@@ -74,13 +74,15 @@ const ManageBlogs = () => {
   };
 
   return (
-    <div className="p-4 max-w-7xl mx-auto">
+    <div className="p-4 w-11/12 mx-auto">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
         <h2 className="text-2xl font-bold text-gray-800">Manage Blogs</h2>
-        <button 
-          onClick={() => { setEditData(null); setModal(true); }}
-          className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition flex items-center gap-2"
-        >
+        <button
+          onClick={() => {
+            setEditData(null);
+            setModal(true);
+          }}
+          className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md transition flex items-center gap-2">
           <FaPlus className="text-sm" /> New Blog
         </button>
       </div>
@@ -98,15 +100,26 @@ const ManageBlogs = () => {
       ) : blogs.length === 0 ? (
         <div className="text-center py-12 bg-gray-50 rounded-lg border border-gray-200">
           <div className="mx-auto w-16 h-16 flex items-center justify-center bg-indigo-100 rounded-full mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 w-8 text-indigo-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+              />
             </svg>
           </div>
-          <p className="text-gray-500 mb-4">You haven't created any blogs yet</p>
-          <button 
+          <p className="text-gray-500 mb-4">
+            You haven't created any blogs yet
+          </p>
+          <button
             onClick={() => setModal(true)}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md flex items-center gap-2 mx-auto"
-          >
+            className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md flex items-center gap-2 mx-auto">
             <FaPlus className="text-sm" /> Create Your First Blog
           </button>
         </div>
@@ -117,38 +130,53 @@ const ManageBlogs = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Publish Date</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Title
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Author
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Publish Date
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {blogs.map((blog) => (
                   <tr key={blog._id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap max-w-xs truncate">
-                      <div className="text-sm font-medium text-gray-900">{blog.title}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-500">{blog.authorName}</div>
+                      <div className="text-sm font-medium text-gray-900">
+                        {blog.title}
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-500">
-                        {new Date(blog.publishDate || blog.createdAt).toLocaleDateString()}
+                        {blog.authorName}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-500">
+                        {new Date(
+                          blog.publishDate || blog.createdAt
+                        ).toLocaleDateString()}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <div className="flex space-x-3">
                         <button
-                          onClick={() => { setEditData(blog); setModal(true); }}
-                          className="text-indigo-600 hover:text-indigo-900 flex items-center gap-1"
-                        >
+                          onClick={() => {
+                            setEditData(blog);
+                            setModal(true);
+                          }}
+                          className="text-indigo-600 hover:text-indigo-900 flex items-center gap-1">
                           <HiOutlinePencil className="h-4 w-4" /> Edit
                         </button>
                         <button
                           onClick={() => handleDelete(blog._id)}
-                          className="text-red-600 hover:text-red-900 flex items-center gap-1"
-                        >
+                          className="text-red-600 hover:text-red-900 flex items-center gap-1">
                           <HiOutlineTrash className="h-4 w-4" /> Delete
                         </button>
                       </div>
@@ -162,27 +190,32 @@ const ManageBlogs = () => {
           {/* Mobile Card View */}
           <div className="md:hidden grid grid-cols-1 gap-4">
             {blogs.map((blog) => (
-              <div key={blog._id} className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+              <div
+                key={blog._id}
+                className="bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
                 <div className="flex justify-between items-start">
                   <div>
                     <h3 className="font-medium text-gray-900">{blog.title}</h3>
                     <p className="text-sm text-gray-500 mt-1">
-                      {new Date(blog.publishDate || blog.createdAt).toLocaleDateString()}
+                      {new Date(
+                        blog.publishDate || blog.createdAt
+                      ).toLocaleDateString()}
                     </p>
                   </div>
                   <div className="flex gap-2">
                     <button
-                      onClick={() => { setEditData(blog); setModal(true); }}
+                      onClick={() => {
+                        setEditData(blog);
+                        setModal(true);
+                      }}
                       className="text-indigo-600 hover:text-indigo-900 p-1"
-                      title="Edit"
-                    >
+                      title="Edit">
                       <HiOutlinePencil className="h-5 w-5" />
                     </button>
                     <button
                       onClick={() => handleDelete(blog._id)}
                       className="text-red-600 hover:text-red-900 p-1"
-                      title="Delete"
-                    >
+                      title="Delete">
                       <HiOutlineTrash className="h-5 w-5" />
                     </button>
                   </div>
@@ -199,14 +232,13 @@ const ManageBlogs = () => {
       )}
 
       {/* Blog Modal */}
-      <Dialog 
-        open={modal} 
+      <Dialog
+        open={modal}
         onClose={() => {
           setModal(false);
           setEditData(null);
         }}
-        className="relative z-50"
-      >
+        className="relative z-50">
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <Dialog.Panel className="w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg bg-white shadow-xl">
@@ -217,58 +249,64 @@ const ManageBlogs = () => {
             </div>
             <form onSubmit={handleSave} className="p-5 space-y-5">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Title</label>
-                <input 
-                  name="title" 
-                  defaultValue={editData?.title || ""} 
-                  required 
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Title
+                </label>
+                <input
+                  name="title"
+                  defaultValue={editData?.title || ""}
+                  required
                   placeholder="Blog title"
                   className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
-                <textarea 
-                  name="content" 
-                  defaultValue={editData?.content || ""} 
-                  required 
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Content
+                </label>
+                <textarea
+                  name="content"
+                  defaultValue={editData?.content || ""}
+                  required
                   placeholder="Write your blog content here..."
                   rows={8}
                   className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Publish Date</label>
-                <input 
-                  name="publishDate" 
-                  type="date" 
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Publish Date
+                </label>
+                <input
+                  name="publishDate"
+                  type="date"
                   defaultValue={
-                    editData?.publishDate 
-                      ? new Date(editData.publishDate).toISOString().split('T')[0] 
-                      : new Date().toISOString().split('T')[0]
-                  } 
-                  required 
+                    editData?.publishDate
+                      ? new Date(editData.publishDate)
+                          .toISOString()
+                          .split("T")[0]
+                      : new Date().toISOString().split("T")[0]
+                  }
+                  required
                   className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                 />
               </div>
-              
+
               <div className="flex flex-col sm:flex-row justify-end gap-3 pt-4 border-t border-gray-200">
-                <button 
-                  type="button" 
+                <button
+                  type="button"
                   onClick={() => {
                     setModal(false);
                     setEditData(null);
                   }}
-                  className="px-5 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition"
-                >
+                  className="px-5 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition">
                   Cancel
                 </button>
-                <button 
+                <button
                   type="submit"
-                  className="px-5 py-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
-                >
+                  className="px-5 py-2.5 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition">
                   {editData ? "Update Blog" : "Create Blog"}
                 </button>
               </div>

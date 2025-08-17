@@ -87,28 +87,28 @@ useEffect(() => {
   return (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-4">
+      <div className="py-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-          <h2 className="text-2xl font-bold text-white mb-2 md:mb-0">Manage Applications</h2>
+          <h2 className="text-2xl font-bold mb-2 px-3 md:mb-0">Manage Applications</h2>
           <div className="flex flex-col sm:flex-row gap-3">
-            <div className="relative">
+            <div className="relative mx-4 pt-4">
               <input
                 type="text"
                 placeholder="Search applications..."
-                className="pl-10 pr-4 py-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                className="pl-10 pr-4 py-2 rounded-lg w-full focus:outline-none border border-indigo-300"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <HiOutlineSearch className="absolute left-3 top-3 text-gray-400 text-xl" />
+              <HiOutlineSearch className="absolute left-3 top-7 text-gray-400 text-xl" />
             </div>
             
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300"
+              className="px-4 mx-4 rounded-lg focus:outline-none border p-2 border-indigo-300"
             >
               <option value="all">All Statuses</option>
-              <option value="Pending">Pending</option>
+              <option value="pending">Pending</option>
               <option value="Assigned">Assigned</option>
               <option value="Approved">Approved</option>
               <option value="Rejected">Rejected</option>
@@ -119,23 +119,23 @@ useEffect(() => {
 
       {/* Stats Bar */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-gray-50 border-b">
-        <div className="bg-white rounded-lg p-4 shadow-sm">
+        <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-gray-900">
           <div className="text-gray-500 text-sm">Total</div>
           <div className="text-2xl font-bold">{applications.length}</div>
         </div>
-        <div className="bg-white rounded-lg p-4 shadow-sm">
+        <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-yellow-600">
           <div className="text-gray-500 text-sm">Pending</div>
           <div className="text-2xl font-bold text-yellow-600">
             {applications.filter(a => a.status === "pending").length}
           </div>
         </div>
-        <div className="bg-white rounded-lg p-4 shadow-sm">
+        <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-red-600">
           <div className="text-gray-500 text-sm">Rejected</div>
-          <div className="text-2xl font-bold text-blue-600">
+          <div className="text-2xl font-bold text-red-600">
             {applications.filter(a => a.status === "Rejected").length}
           </div>
         </div>
-        <div className="bg-white rounded-lg p-4 shadow-sm">
+        <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-green-600">
           <div className="text-gray-500 text-sm">Approved</div>
           <div className="text-2xl font-bold text-green-600">
             {applications.filter(a => a.status === "Approved").length}
@@ -146,7 +146,7 @@ useEffect(() => {
       {/* Table */}
      <div className="overflow-x-auto">
   {/* Desktop Table (hidden on mobile) */}
-  <table className="min-w-full divide-y divide-gray-200 hidden md:table">
+  <table className="min-w-full divide-y divide-gray-200 hidden lg:table">
     <thead className="bg-gray-50">
       <tr>
         <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applicant</th>
@@ -173,7 +173,7 @@ useEffect(() => {
       ) : (
         filteredApplications.map((app) => (
           <tr key={app._id} className="hover:bg-gray-50 transition">
-            <td className="px-6 py-4 whitespace-nowrap">
+            <td className="px-2 py-4 whitespace-nowrap">
               <div className="flex items-center">
                 <div className="bg-indigo-100 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
                   {app.fullName?.charAt(0) || "U"}
@@ -252,7 +252,7 @@ useEffect(() => {
   </table>
 
   {/* Mobile Table (simulated with grid) */}
-  <div className="md:hidden">
+  <div className="lg:hidden">
     {filteredApplications.length === 0 ? (
       <div className="text-center py-8">
         <div className="text-gray-500 text-lg">No applications found</div>

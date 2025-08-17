@@ -46,8 +46,8 @@ const PopularPolicies = () => {
   }
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-purple-50">
-      <div className="max-w-7xl mx-auto">
+    <div className="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+      <div className="w-11/12 mx-auto">
         <div className="text-center mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}

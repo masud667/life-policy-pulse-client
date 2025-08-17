@@ -31,7 +31,7 @@ useEffect(() => {
           <FaQuoteLeft className="text-indigo-600 text-2xl mr-2" />
           <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Customer Reviews</h2>
         </div>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 w-11/12 mx-auto">
           Hear what our customers have to say about their experience
         </p>
       </div>

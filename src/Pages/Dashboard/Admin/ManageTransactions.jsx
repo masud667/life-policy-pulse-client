@@ -49,15 +49,13 @@ const ManageTransactions = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    AuthSecureAxios
-      .get("/transactions")
-      .then((res) => {
-        setTransactions(res.data);
-        setTotalIncome(
-          res.data.reduce((sum, t) => sum + (t.amount || 0), 0) / 100
-        );
-        setLoading(false);
-      });
+    AuthSecureAxios.get("/transactions").then((res) => {
+      setTransactions(res.data);
+      setTotalIncome(
+        res.data.reduce((sum, t) => sum + (t.amount || 0), 0) / 100
+      );
+      setLoading(false);
+    });
   }, []);
 
   // Filter transactions based on status and search
@@ -112,7 +110,7 @@ const ManageTransactions = () => {
   };
 
   return (
-    <div className="p-4 md:p-6 max-w-7xl mx-auto">
+    <div className="p-4 md:p-6 w-11/12 mx-auto">
       <div className="flex flex-col md:flex-row justify-between gap-4 mb-6">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">

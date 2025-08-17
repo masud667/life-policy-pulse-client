@@ -26,15 +26,11 @@ const PolicyBriefPage = () => {
     const fetchBlog = async () => {
       try {
         setLoading(true);
-        const response = await AuthSecureAxios.get(
-          `/blogs/${id}`
-        );
+        const response = await AuthSecureAxios.get(`/blogs/${id}`);
         setBlog(response.data);
 
         // Simulate related content fetch
-        const allBlogs = await AuthSecureAxios.get(
-          "/blogs"
-        );
+        const allBlogs = await AuthSecureAxios.get("/blogs");
         setRelatedBlogs(allBlogs.data.filter((b) => b._id !== id).slice(0, 3));
 
         // Update visit count
@@ -102,7 +98,7 @@ const PolicyBriefPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-indigo-25 to-violet-50">
       {/* Navigation */}
       <div className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="w-11/12 mx-auto px-4 py-4 flex justify-between items-center">
           <a href="/" className="flex items-center gap-2">
             <div className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
               <div className="flex items-center space-x-3">

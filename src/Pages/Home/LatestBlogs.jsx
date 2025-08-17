@@ -38,7 +38,7 @@ const LatestBlogs = () => {
 
     return () => clearTimeout(timer);
   }, []);
- 
+
   // Function to format date
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "short", day: "numeric" };
@@ -46,9 +46,7 @@ const LatestBlogs = () => {
   };
 
   if (loading) {
-    return (
-      <Loading />
-    );
+    return <Loading />;
   }
 
   if (error) {
@@ -67,8 +65,8 @@ const LatestBlogs = () => {
   }
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-indigo-50">
-      <div className="max-w-7xl mx-auto">
+    <div className="py-16  bg-gradient-to-b from-white to-indigo-50">
+      <div className="w-11/12 mx-auto">
         <div className="text-center mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -148,7 +146,6 @@ const LatestBlogs = () => {
                     Read more
                     <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
                   </motion.a>
-                  
                 </div>
               </div>
             </motion.div>

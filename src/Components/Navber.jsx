@@ -4,7 +4,6 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../Context/AuthContext';
 import Logo from './Logo';
 import AuthSecureAxios from '../Hooks/AuthSecureAxios';
-import ProfilePage from './ProfilePage';
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showProfile, setShowProfile] = useState(true);
@@ -37,11 +36,9 @@ const handleLogout = async () => {
   }
 };
 
-
-    
   return (
-    <nav className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-xl ">
+      <div className="w-11/12 mx-auto">
         <div className="flex justify-between h-20">
           {/* Logo Section */}
           <div className="flex-shrink-0 flex items-center">

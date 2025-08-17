@@ -1,31 +1,48 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  HiUsers, 
-  HiDocumentText, 
-  HiClock, 
-  HiCheckCircle, 
+import React, { useState, useEffect } from "react";
+import {
+  HiUsers,
+  HiDocumentText,
+  HiClock,
+  HiCheckCircle,
   HiCurrencyDollar,
   HiChartBar,
   HiArrowUp,
   HiArrowDown,
-  HiRefresh
-} from 'react-icons/hi';
-import { Bar, Pie } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
-import Loading from '../../../Components/Loading';
+  HiRefresh,
+} from "react-icons/hi";
+import { Bar, Pie } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from "chart.js";
+import Loading from "../../../Components/Loading";
 
 // Register Chart.js components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
 
 const DashboardHome = () => {
   const [loading, setLoading] = useState(true);
   const [metrics, setMetrics] = useState(null);
-  const [timeFilter, setTimeFilter] = useState('month');
+  const [timeFilter, setTimeFilter] = useState("month");
 
   // Simulate data fetching
   useEffect(() => {
     const fetchData = () => {
-      // Simulate API call delay
+      
       setTimeout(() => {
         setMetrics({
           totalUsers: 1245,
@@ -40,12 +57,37 @@ const DashboardHome = () => {
           applicationTrends: [45, 52, 48, 65, 72, 60, 78, 85, 80, 92, 88, 95],
           statusDistribution: [298, 28, 30],
           recentActivity: [
-            { id: 1, user: 'Sarah Johnson', action: 'submitted application', time: '10 mins ago' },
-            { id: 2, user: 'Michael Chen', action: 'approved policy', time: '25 mins ago' },
-            { id: 3, user: 'David Williams', action: 'updated profile', time: '1 hour ago' },
-            { id: 4, user: 'Emma Rodriguez', action: 'requested support', time: '2 hours ago' },
-            { id: 5, user: 'Alex Thompson', action: 'completed payment', time: '3 hours ago' },
-          ]
+            {
+              id: 1,
+              user: "Sarah Johnson",
+              action: "submitted application",
+              time: "10 mins ago",
+            },
+            {
+              id: 2,
+              user: "Michael Chen",
+              action: "approved policy",
+              time: "25 mins ago",
+            },
+            {
+              id: 3,
+              user: "David Williams",
+              action: "updated profile",
+              time: "1 hour ago",
+            },
+            {
+              id: 4,
+              user: "Emma Rodriguez",
+              action: "requested support",
+              time: "2 hours ago",
+            },
+            {
+              id: 5,
+              user: "Alex Thompson",
+              action: "completed payment",
+              time: "3 hours ago",
+            },
+          ],
         });
         setLoading(false);
       }, 800);
@@ -56,37 +98,50 @@ const DashboardHome = () => {
 
   // Chart data for application trends
   const applicationTrendsData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    labels: [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ],
     datasets: [
       {
-        label: 'Applications',
+        label: "Applications",
         data: metrics?.applicationTrends || [],
-        backgroundColor: 'rgba(99, 102, 241, 0.8)',
-        borderColor: 'rgba(99, 102, 241, 1)',
+        backgroundColor: "rgba(99, 102, 241, 0.8)",
+        borderColor: "rgba(99, 102, 241, 1)",
         borderWidth: 1,
-      }
-    ]
+      },
+    ],
   };
 
   // Chart data for application status distribution
   const statusDistributionData = {
-    labels: ['Approved', 'Pending', 'Rejected'],
+    labels: ["Approved", "Pending", "Rejected"],
     datasets: [
       {
         data: metrics?.statusDistribution || [],
         backgroundColor: [
-          'rgba(72, 187, 120, 0.8)',
-          'rgba(251, 189, 35, 0.8)',
-          'rgba(240, 101, 72, 0.8)'
+          "rgba(72, 187, 120, 0.8)",
+          "rgba(251, 189, 35, 0.8)",
+          "rgba(240, 101, 72, 0.8)",
         ],
         borderColor: [
-          'rgba(72, 187, 120, 1)',
-          'rgba(251, 189, 35, 1)',
-          'rgba(240, 101, 72, 1)'
+          "rgba(72, 187, 120, 1)",
+          "rgba(251, 189, 35, 1)",
+          "rgba(240, 101, 72, 1)",
         ],
         borderWidth: 1,
-      }
-    ]
+      },
+    ],
   };
 
   // Options for bar chart
@@ -94,11 +149,11 @@ const DashboardHome = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
       title: {
         display: true,
-        text: 'Monthly Application Trends',
+        text: "Monthly Application Trends",
       },
     },
   };
@@ -108,11 +163,11 @@ const DashboardHome = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top',
+        position: "top",
       },
       title: {
         display: true,
-        text: 'Application Status Distribution',
+        text: "Application Status Distribution",
       },
     },
   };
@@ -130,8 +185,15 @@ const DashboardHome = () => {
         </div>
       </div>
       {change !== undefined && (
-        <div className={`mt-4 flex items-center text-sm font-medium ${changeType === 'positive' ? 'text-green-600' : 'text-red-600'}`}>
-          {changeType === 'positive' ? <HiArrowUp className="mr-1" /> : <HiArrowDown className="mr-1" />}
+        <div
+          className={`mt-4 flex items-center text-sm font-medium ${
+            changeType === "positive" ? "text-green-600" : "text-red-600"
+          }`}>
+          {changeType === "positive" ? (
+            <HiArrowUp className="mr-1" />
+          ) : (
+            <HiArrowDown className="mr-1" />
+          )}
           {change}%
         </div>
       )}
@@ -139,70 +201,67 @@ const DashboardHome = () => {
   );
 
   // Loading state
-   if (loading) {
-      return (
-        <Loading />
-      );
-    }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className=" bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex justify-between items-center">
+      <div className="py-2">
+        <div className="">
+          <div className="flex flex-col lg:flex-row gap-4 justify-between items-center lg:px-16">
             <div>
               <h1 className="text-2xl font-bold">Admin Dashboard</h1>
-              <p className="text-indigo-200 mt-1">Welcome back! Here's what's happening today.</p>
+              <p className="text-indigo-500 mt-1">
+                Welcome back! Here's what's happening today.
+              </p>
             </div>
             <div className="flex items-center space-x-4">
               <div className="relative">
-                <select 
+                <select
                   value={timeFilter}
                   onChange={(e) => setTimeFilter(e.target.value)}
-                  className="bg-indigo-700 border-0 rounded-lg px-4 py-2 text-white focus:ring-2 focus:ring-indigo-300"
-                >
+                  className="bg-indigo-700 border-0 rounded-lg px-4 py-2 text-white">
                   <option value="week">Last Week</option>
                   <option value="month">Last Month</option>
                   <option value="quarter">Last Quarter</option>
                   <option value="year">Last Year</option>
                 </select>
               </div>
-              <button className="bg-white text-indigo-600 p-2 rounded-lg hover:bg-indigo-50 transition">
-                <HiRefresh className="h-5 w-5" />
-              </button>
+             
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+      <div className="w-11/12 mx-auto px-4 sm:px-6 py-8">
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <MetricCard 
-            title="Total Users" 
-            value={metrics.totalUsers} 
-            icon={<HiUsers className="h-6 w-6" />} 
-            change={metrics.userGrowth} 
-            changeType="positive" 
+          <MetricCard
+            title="Total Users"
+            value={metrics.totalUsers}
+            icon={<HiUsers className="h-6 w-6" />}
+            change={metrics.userGrowth}
+            changeType="positive"
           />
-          <MetricCard 
-            title="Total Applications" 
-            value={metrics.totalApplications} 
-            icon={<HiDocumentText className="h-6 w-6" />} 
+          <MetricCard
+            title="Total Applications"
+            value={metrics.totalApplications}
+            icon={<HiDocumentText className="h-6 w-6" />}
           />
-          <MetricCard 
-            title="Pending Applications" 
-            value={metrics.pendingApplications} 
-            icon={<HiClock className="h-6 w-6" />} 
+          <MetricCard
+            title="Pending Applications"
+            value={metrics.pendingApplications}
+            icon={<HiClock className="h-6 w-6" />}
           />
-          <MetricCard 
-            title="Revenue" 
-            value={`$${metrics.revenue.toLocaleString()}`} 
-            icon={<HiCurrencyDollar className="h-6 w-6" />} 
-            change={metrics.revenueChange} 
-            changeType="positive" 
+          <MetricCard
+            title="Revenue"
+            value={`$${metrics.revenue.toLocaleString()}`}
+            icon={<HiCurrencyDollar className="h-6 w-6" />}
+            change={metrics.revenueChange}
+            changeType="positive"
           />
         </div>
 
@@ -223,11 +282,15 @@ const DashboardHome = () => {
         {/* Recent Activity */}
         <div className="bg-white rounded-xl shadow-md overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-800">Recent Activity</h2>
+            <h2 className="text-lg font-semibold text-gray-800">
+              Recent Activity
+            </h2>
           </div>
           <ul className="divide-y divide-gray-200">
             {metrics.recentActivity.map((activity) => (
-              <li key={activity.id} className="px-6 py-4 hover:bg-gray-50 transition">
+              <li
+                key={activity.id}
+                className="px-6 py-4 hover:bg-gray-50 transition">
                 <div className="flex items-center">
                   <div className="bg-indigo-100 rounded-full p-3 text-indigo-600 mr-4">
                     <HiCheckCircle className="h-5 w-5" />
@@ -240,9 +303,7 @@ const DashboardHome = () => {
                       {activity.action}
                     </p>
                   </div>
-                  <div className="text-sm text-gray-500">
-                    {activity.time}
-                  </div>
+                  <div className="text-sm text-gray-500">{activity.time}</div>
                 </div>
               </li>
             ))}

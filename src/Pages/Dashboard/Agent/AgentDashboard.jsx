@@ -53,11 +53,11 @@ const AgentDashboard = () => {
         status: newStatus,
         policyId,
       });
-      
+
       if (newStatus === "Approved") {
         await AuthSecureAxios.patch(`/policies/${policyId}/purchase`);
       }
-      
+
       // Refresh applications after status change
       await fetchApplications();
     } catch (err) {
@@ -90,7 +90,7 @@ const AgentDashboard = () => {
   };
 
   return (
-    <div className="p-4 max-w-7xl mx-auto">
+    <div className="p-4 w-11/12 mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
@@ -106,8 +106,7 @@ const AgentDashboard = () => {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="appearance-none py-2 pl-3 pr-10 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm"
-            >
+              className="appearance-none py-2 pl-3 pr-10 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
               <option value="All">All Statuses</option>
               <option value="Pending">Pending</option>
               <option value="Approved">Approved</option>
@@ -125,8 +124,7 @@ const AgentDashboard = () => {
             <p className="font-medium">{error}</p>
             <button
               onClick={fetchApplications}
-              className="mt-2 text-red-800 underline hover:text-red-900"
-            >
+              className="mt-2 text-red-800 underline hover:text-red-900">
               Retry
             </button>
           </div>
@@ -197,10 +195,15 @@ const AgentDashboard = () => {
                       <select
                         value={app.status}
                         onChange={(e) =>
-                          handleStatusChange(app._id, e.target.value, app.policyId)
+                          handleStatusChange(
+                            app._id,
+                            e.target.value,
+                            app.policyId
+                          )
                         }
-                        className={`text-sm font-medium ${statusStyles[app.status]} rounded-full px-3 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500`}
-                      >
+                        className={`text-sm font-medium ${
+                          statusStyles[app.status]
+                        } rounded-full px-3 py-1 focus:outline-none focus:ring-2 focus:ring-indigo-500`}>
                         <option value="Pending">Pending</option>
                         <option value="Approved">Approved</option>
                         <option value="Rejected">Rejected</option>
@@ -209,8 +212,7 @@ const AgentDashboard = () => {
                     <td className="px-6 py-4 text-center">
                       <button
                         onClick={() => openModal(app)}
-                        className="text-indigo-600 hover:text-indigo-900 flex items-center justify-center gap-1"
-                      >
+                        className="text-indigo-600 hover:text-indigo-900 flex items-center justify-center gap-1">
                         <FiEye className="h-4 w-4" />
                         View
                       </button>
@@ -239,7 +241,10 @@ const AgentDashboard = () => {
                       </p>
                     </div>
                   </div>
-                  <span className={`text-xs font-medium ${statusStyles[app.status]} rounded-full px-2.5 py-1`}>
+                  <span
+                    className={`text-xs font-medium ${
+                      statusStyles[app.status]
+                    } rounded-full px-2.5 py-1`}>
                     {app.status}
                   </span>
                 </div>
@@ -254,10 +259,15 @@ const AgentDashboard = () => {
                     <select
                       value={app.status}
                       onChange={(e) =>
-                        handleStatusChange(app._id, e.target.value, app.policyId)
+                        handleStatusChange(
+                          app._id,
+                          e.target.value,
+                          app.policyId
+                        )
                       }
-                      className={`text-xs font-medium rounded-full px-3 py-1 focus:outline-none focus:ring-1 focus:ring-indigo-500 ${statusStyles[app.status]}`}
-                    >
+                      className={`text-xs font-medium rounded-full px-3 py-1 focus:outline-none focus:ring-1 focus:ring-indigo-500 ${
+                        statusStyles[app.status]
+                      }`}>
                       <option value="Pending">Pending</option>
                       <option value="Approved">Approved</option>
                       <option value="Rejected">Rejected</option>
@@ -265,8 +275,7 @@ const AgentDashboard = () => {
 
                     <button
                       onClick={() => openModal(app)}
-                      className="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center gap-1"
-                    >
+                      className="text-indigo-600 hover:text-indigo-800 text-sm font-medium flex items-center gap-1">
                       <FiEye className="h-4 w-4" />
                       Details
                     </button>
@@ -299,34 +308,39 @@ const AgentDashboard = () => {
                     <h3 className="text-lg font-bold text-gray-900">
                       {selectedApp.fullName || selectedApp.customerName}
                     </h3>
-                    <p className="text-gray-600">{selectedApp.userEmail || selectedApp.customerEmail}</p>
-                    <span className={`mt-2 inline-block text-sm font-medium rounded-full px-2.5 py-1 ${statusStyles[selectedApp.status]}`}>
+                    <p className="text-gray-600">
+                      {selectedApp.userEmail || selectedApp.customerEmail}
+                    </p>
+                    <span
+                      className={`mt-2 inline-block text-sm font-medium rounded-full px-2.5 py-1 ${
+                        statusStyles[selectedApp.status]
+                      }`}>
                       {selectedApp.status}
                     </span>
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <InfoItem 
-                    icon={FiFileText} 
-                    label="Policy" 
-                    value={selectedApp.policyName || selectedApp.policyTitle} 
+                  <InfoItem
+                    icon={FiFileText}
+                    label="Policy"
+                    value={selectedApp.policyName || selectedApp.policyTitle}
                   />
-                  <InfoItem 
-                    icon={FiCreditCard} 
-                    label="NID Number" 
-                    value={selectedApp.nidNumber || "Not provided"} 
+                  <InfoItem
+                    icon={FiCreditCard}
+                    label="NID Number"
+                    value={selectedApp.nidNumber || "Not provided"}
                   />
-                  <InfoItem 
-                    icon={FiMapPin} 
-                    label="Address" 
-                    value={selectedApp.address || "Not provided"} 
+                  <InfoItem
+                    icon={FiMapPin}
+                    label="Address"
+                    value={selectedApp.address || "Not provided"}
                   />
                   {selectedApp.healthConditions?.length > 0 && (
-                    <InfoItem 
-                      icon={FiHeart} 
-                      label="Health Conditions" 
-                      value={selectedApp.healthConditions.join(", ")} 
+                    <InfoItem
+                      icon={FiHeart}
+                      label="Health Conditions"
+                      value={selectedApp.healthConditions.join(", ")}
                     />
                   )}
                 </div>
@@ -334,28 +348,33 @@ const AgentDashboard = () => {
                 <div className="mt-6 flex gap-3">
                   <button
                     onClick={() => {
-                      handleStatusChange(selectedApp._id, "Approved", selectedApp.policyId);
+                      handleStatusChange(
+                        selectedApp._id,
+                        "Approved",
+                        selectedApp.policyId
+                      );
                       closeModal();
                     }}
-                    className="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2"
-                  >
+                    className="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2">
                     <FiCheckCircle className="h-5 w-5" />
                     Approve
                   </button>
                   <button
                     onClick={() => {
-                      handleStatusChange(selectedApp._id, "Rejected", selectedApp.policyId);
+                      handleStatusChange(
+                        selectedApp._id,
+                        "Rejected",
+                        selectedApp.policyId
+                      );
                       closeModal();
                     }}
-                    className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2"
-                  >
+                    className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2">
                     <FiXCircle className="h-5 w-5" />
                     Reject
                   </button>
                   <button
                     onClick={closeModal}
-                    className="flex-1 border border-gray-300 hover:bg-gray-50 py-2 px-4 rounded-lg transition"
-                  >
+                    className="flex-1 border border-gray-300 hover:bg-gray-50 py-2 px-4 rounded-lg transition">
                     Close
                   </button>
                 </div>

@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import { FaEdit, FaTrash, FaPlus, FaSearch, FaTimes } from "react-icons/fa";
 import Loading from "../../../Components/Loading";
 import AuthSecureAxios from "../../../Hooks/AuthSecureAxios";
+import { HiRefresh } from "react-icons/hi";
 
 const ManagePolicies = () => {
   const [policies, setPolicies] = useState([]);
@@ -13,7 +14,9 @@ const ManagePolicies = () => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
-
+   const [total, setTotal] = useState(0);
+   const [currentPage, setCurrentPage] = useState(1);
+const itemsPerPage = 9;
   const {
     register,
     handleSubmit,
@@ -25,8 +28,9 @@ const ManagePolicies = () => {
   const fetchPolicies = async () => {
     try {
       setLoading(true);
-      const res = await AuthSecureAxios.get("/Policies");
+      const res = await AuthSecureAxios.get(`/policies?page=${currentPage}&limit=${itemsPerPage}`);
       setPolicies(res.data.result);
+      setTotal(res.data.total);
     } catch (error) {
       Swal.fire("Error", "Failed to load policies", "error");
     } finally {
@@ -36,7 +40,7 @@ const ManagePolicies = () => {
 
   useEffect(() => {
     fetchPolicies();
-  }, []);
+  }, [currentPage]);
 
   const openModal = (policy = null) => {
     setEditingPolicy(policy);
@@ -56,20 +60,15 @@ const ManagePolicies = () => {
     setEditingPolicy(null);
     reset();
   };
+const totalPages = Math.ceil(total / itemsPerPage);
 
   const onSubmit = async (data) => {
     try {
       if (editingPolicy) {
-        await AuthSecureAxios.patch(
-          `/policies/${editingPolicy._id}`,
-          data
-        );
+        await AuthSecureAxios.patch(`/policies/${editingPolicy._id}`, data);
         Swal.fire("Updated!", "Policy updated successfully", "success");
       } else {
-        await AuthSecureAxios.post(
-          "/policies",
-          data
-        );
+        await AuthSecureAxios.post("/policies", data);
         Swal.fire("Added!", "Policy added successfully", "success");
       }
       closeModal();
@@ -93,9 +92,7 @@ const ManagePolicies = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await AuthSecureAxios.delete(
-          `/policies/${id}`
-        );
+        await AuthSecureAxios.delete(`/policies/${id}`);
         fetchPolicies();
         Swal.fire("Deleted!", "Policy has been deleted", "success");
       } catch (error) {
@@ -124,8 +121,8 @@ const ManagePolicies = () => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-indigo-50 min-h-screen p-3 md:p-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-gradient-to-br from-gray-50 to-indigo-50 px-5">
+      <div className="">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 md:mb-8">
           <div>
@@ -152,7 +149,7 @@ const ManagePolicies = () => {
                   Total Policies
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
-                  {policies?.length}
+                  {total}
                 </p>
               </div>
               <div className="p-2 md:p-3 bg-indigo-100 rounded-lg text-indigo-600">
@@ -288,7 +285,7 @@ const ManagePolicies = () => {
               <button
                 onClick={fetchPolicies}
                 className="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium flex items-center text-sm md:text-base">
-                <FaSearch className="md:mr-2" />
+                <HiRefresh className="md:mr-2" />
                 <span className="hidden md:inline">Refresh</span>
               </button>
             </div>
@@ -296,15 +293,15 @@ const ManagePolicies = () => {
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden md:block bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="hidden lg:block bg-white rounded-xl shadow-md overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     #
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Policy
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -349,10 +346,10 @@ const ManagePolicies = () => {
                     <tr
                       key={policy._id}
                       className="hover:bg-gray-50 transition">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td className="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {idx + 1}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-2 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div className="bg-indigo-100 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
                             {policy.title?.charAt(0) || "P"}
@@ -513,7 +510,21 @@ const ManagePolicies = () => {
             </div>
           )}
         </div>
-
+  {/* Pagination */}
+          <div className="flex justify-center mt-8 gap-2">
+            {[...Array(totalPages).keys()].map((number) => (
+              <button
+                key={number}
+                onClick={() => setCurrentPage(number + 1)}
+                className={`px-4 py-2 rounded ${
+                  currentPage === number + 1
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-200 text-gray-700"
+                }`}>
+                {number + 1}
+              </button>
+            ))}
+          </div>
         {/* Modal */}
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">

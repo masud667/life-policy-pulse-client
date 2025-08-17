@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { FiSearch, FiFilter, FiArrowRight } from "react-icons/fi";
 import axios from "axios";
 import Header from "../../Components/Header";
+import Loading from "../../Components/Loading";
 
 const AllPoliciesPage = () => {
   const [policies, setPolicies] = useState([]);
@@ -50,13 +51,13 @@ const AllPoliciesPage = () => {
 
   const totalPages = Math.ceil(total / itemsPerPage);
 
-  if (loading) return <p className="text-center mt-10">Loading policies...</p>;
+  if (loading) return <Loading />;
 
   return (
     <div>
       <Header />
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
+      <div className=" bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 py-32 ">
+        <div className="w-11/12 mx-auto">
           {/* Header */}
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">

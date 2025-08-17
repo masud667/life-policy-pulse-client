@@ -90,12 +90,7 @@ const Sidebar = ({ role }) => {
       </button>
 
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:block w-64 min-h-screen p-4 bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-900 shadow-2xl">
-        <div className="flex items-center justify-center mb-8 mt-4">
-          <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl">
-            <h1 className="text-white text-xl font-bold text-center">Dashboard</h1>
-          </div>
-        </div>
+      <aside className="hidden lg:block fixed top-0 left-0 w-64 h-screen p-4 bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-900 shadow-2xl pt-26">
 
         {/* Navigation Items */}
         <ul className="space-y-1">
@@ -129,20 +124,9 @@ const Sidebar = ({ role }) => {
             animate={{ x: 0 }}
             exit={{ x: -300 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed z-40 w-64 min-h-screen p-4 bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-900 shadow-2xl lg:hidden"
+            className="fixed z-40 w-64 min-h-screen p-4 bg-gradient-to-b from-blue-600 via-indigo-600 to-purple-900 shadow-2xl lg:hidden pt-26"
           >
-            <div className="flex items-center justify-between mb-8 mt-4 px-2">
-              <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl">
-                <h1 className="text-white text-xl font-bold">Dashboard</h1>
-              </div>
-              <button
-                onClick={() => setMobileOpen(false)}
-                className="text-white p-2 rounded-full hover:bg-indigo-700"
-              >
-                <HiX className="h-6 w-6" />
-              </button>
-            </div>
-
+           
             {/* Navigation Items */}
             <ul className="space-y-1">
               {navItems.map((item) => 

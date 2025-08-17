@@ -13,6 +13,7 @@ import {
 } from "react-icons/fa";
 import Loading from "../../../Components/Loading";
 import AuthSecureAxios from "../../../Hooks/AuthSecureAxios";
+import { HiRefresh } from "react-icons/hi";
 
 const ManageUserPage = () => {
   const [users, setUsers] = useState([]);
@@ -23,8 +24,7 @@ const ManageUserPage = () => {
   const fetchUsers = async () => {
     try {
       setLoading(true);
-      const res = await AuthSecureAxios.get("/users"
-      );
+      const res = await AuthSecureAxios.get("/users");
       setUsers(res.data);
     } catch (error) {
       Swal.fire("Error", "Failed to load users", "error");
@@ -39,9 +39,7 @@ const ManageUserPage = () => {
 
   const promoteToAgent = async (id) => {
     try {
-      await AuthSecureAxios.patch(
-        `/users/promote/${id}`
-      );
+      await AuthSecureAxios.patch(`/users/promote/${id}`);
       fetchUsers();
       Swal.fire("Success", "User promoted to Agent", "success");
     } catch (error) {
@@ -51,9 +49,7 @@ const ManageUserPage = () => {
 
   const demoteToUser = async (id) => {
     try {
-      await AuthSecureAxios.patch(
-        `/users/demote/${id}`
-      );
+      await AuthSecureAxios.patch(`/users/demote/${id}`);
       fetchUsers();
       Swal.fire("Success", "Agent demoted to user", "info");
     } catch (error) {
@@ -74,9 +70,7 @@ const ManageUserPage = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await AuthSecureAxios.delete(
-          `/users/${id}`
-        );
+        await AuthSecureAxios.delete(`/users/${id}`);
         fetchUsers();
         Swal.fire("Deleted!", "User has been deleted.", "success");
       } catch (error) {
@@ -109,8 +103,8 @@ const ManageUserPage = () => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-indigo-50 min-h-screen p-3 md:p-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-gradient-to-br from-gray-50 to-indigo-50 min-h-screen ">
+      <div className="w-11/12 mx-auto">
         {/* Header - Mobile Optimized */}
         <div className="flex flex-col mb-6 md:mb-8">
           <div className="flex justify-between items-start">
@@ -225,7 +219,7 @@ const ManageUserPage = () => {
               <button
                 onClick={fetchUsers}
                 className="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium flex items-center text-sm md:text-base">
-                <FaSearch className="md:mr-2" />
+                <HiRefresh className="md:mr-2" />
                 <span className="hidden md:inline">Refresh</span>
               </button>
             </div>
@@ -233,7 +227,7 @@ const ManageUserPage = () => {
         </div>
 
         {/* Desktop Table - Hidden on Mobile */}
-        <div className="hidden md:block bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="hidden lg:block bg-white rounded-xl shadow-md overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
@@ -354,7 +348,7 @@ const ManageUserPage = () => {
         </div>
 
         {/* Mobile User Cards - Hidden on Desktop */}
-        <div className="md:hidden">
+        <div className="lg:hidden">
           {filteredUsers.length === 0 ? (
             <div className="bg-white rounded-lg shadow p-6 text-center">
               <div className="text-gray-500 text-lg">No users found</div>

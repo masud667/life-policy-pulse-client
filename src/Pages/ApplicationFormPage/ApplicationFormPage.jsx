@@ -184,11 +184,11 @@ const ApplicationFormPage = () => {
   return (
     <div>
       <Header></Header>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-12 px-4 sm:px-6">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-4xl mx-auto">
+          className="w-11/12 mx-auto">
           <div className="text-center mb-12">
             <motion.h1
               className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 mb-4"
@@ -198,7 +198,7 @@ const ApplicationFormPage = () => {
               Life Insurance Application
             </motion.h1>
             <motion.p
-              className="text-lg text-gray-600 max-w-2xl mx-auto"
+              className="text-lg text-gray-600 w-11/12 mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}>
@@ -401,28 +401,7 @@ const ApplicationFormPage = () => {
             </form>
           </motion.div>
 
-          {/* Support Section */}
-          <motion.div
-            className="mt-8 bg-white rounded-2xl shadow-lg p-6 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.0 }}>
-            <h3 className="text-lg font-bold text-gray-800 mb-4">
-              Need Assistance?
-            </h3>
-            <p className="text-gray-600 mb-4">
-              Our insurance specialists are ready to help you complete your
-              application.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="py-3 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:opacity-90">
-                Chat with an Agent
-              </button>
-              <button className="py-3 px-6 bg-white text-blue-600 border border-blue-300 rounded-lg font-medium hover:bg-blue-50">
-                Schedule a Call
-              </button>
-            </div>
-          </motion.div>
+       
         </motion.div>
       </div>
     </div>

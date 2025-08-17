@@ -29,9 +29,7 @@ const PolicyDetails = () => {
     const fetchPolicy = async () => {
       try {
         setIsLoading(true);
-        const res = await AuthSecureAxios.get(
-          `/policies/${id}`
-        );
+        const res = await AuthSecureAxios.get(`/policies/${id}`);
         setPolicy(res.data);
       } catch (error) {
         console.error("Error fetching policy:", error);
@@ -53,7 +51,7 @@ const PolicyDetails = () => {
 
   if (!policy) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 p-6">
+      <div className="flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50 p-6">
         <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md text-center">
           <div className="bg-gradient-to-r from-blue-100 to-purple-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6">
             <FaShieldAlt className="text-3xl text-blue-600" />
@@ -76,10 +74,10 @@ const PolicyDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
+    <div className=" bg-gradient-to-br from-blue-50 to-purple-50">
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16 px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="w-11/12 mx-auto">
           <Link
             to="/policies"
             className="inline-flex items-center text-blue-200 hover:text-white mb-6">
@@ -112,14 +110,14 @@ const PolicyDetails = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-5xl mx-auto px-6 py-12">
+      <div className="w-11/12 mx-auto py-12">
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Left Column - Policy Details */}
-          <div className="lg:w-2/3">
+          <div className="w-11/12 mx-auto">
             {/* Tabs */}
             <div className="flex border-b border-gray-200 mb-8">
               <button
-                className={`py-3 px-6 font-medium text-lg ${
+                className={`py-3 px-2 font-medium text-lg ${
                   activeTab === "overview"
                     ? "border-b-2 border-blue-600 text-blue-600"
                     : "text-gray-600 hover:text-gray-900"
@@ -128,7 +126,7 @@ const PolicyDetails = () => {
                 Overview
               </button>
               <button
-                className={`py-3 px-6 font-medium text-lg ${
+                className={`py-3 px-2 font-medium text-lg ${
                   activeTab === "benefits"
                     ? "border-b-2 border-blue-600 text-blue-600"
                     : "text-gray-600 hover:text-gray-900"
@@ -137,7 +135,7 @@ const PolicyDetails = () => {
                 Benefits
               </button>
               <button
-                className={`py-3 px-6 font-medium text-lg ${
+                className={`py-3 px-2 font-medium text-lg ${
                   activeTab === "eligibility"
                     ? "border-b-2 border-blue-600 text-blue-600"
                     : "text-gray-600 hover:text-gray-900"
@@ -373,7 +371,16 @@ const PolicyDetails = () => {
                 onClick={handleGetQuote}
                 className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 hover:from-yellow-500 hover:to-yellow-600 font-bold px-8 py-4 rounded-lg shadow-lg inline-flex items-center">
                 Get Your Quote Now
-                <FiArrowRight className="ml-2 text-xl" />
+                <motion.span
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 1.2,
+                    ease: "easeInOut",
+                  }}
+                  className="ml-2 inline-block">
+                  <FiArrowRight className="text-xl" />
+                </motion.span>
               </motion.button>
             </div>
           </div>
@@ -458,25 +465,6 @@ const PolicyDetails = () => {
                     </span>
                   </li>
                 </ul>
-              </div>
-
-              {/* Support Card */}
-              <div className="mt-8 bg-white rounded-2xl shadow-lg p-6">
-                <h3 className="font-bold text-lg text-gray-800 mb-4">
-                  Need Help Deciding?
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Our insurance specialists are ready to help you choose the
-                  right coverage.
-                </p>
-                <div className="space-y-3">
-                  <button className="w-full py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium hover:opacity-90">
-                    Chat with an Expert
-                  </button>
-                  <button className="w-full py-3 bg-white text-blue-600 border border-blue-300 rounded-lg font-medium hover:bg-blue-50">
-                    Schedule a Call
-                  </button>
-                </div>
               </div>
             </div>
           </div>

@@ -21,7 +21,7 @@ if (!role ) return <Navigate to="/login" />;
     <div><Header></Header>
     <div className="flex">
       <Sidebar role={role} />
-      <div className="flex-1 p-4">
+      <div className="flex-1 py-4">
         <Outlet />
       </div>
     </div></div>
