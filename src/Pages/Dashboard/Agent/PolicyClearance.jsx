@@ -113,79 +113,79 @@ const PolicyClearance = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 md:mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold  text-base-content">
               Policy Clearance
             </h1>
-            <p className="text-gray-600 mt-1">
+            <p className=" text-base-content mt-1">
               Manage and approve insurance claims
             </p>
           </div>
           <div className="flex items-center space-x-3 mt-4 md:mt-0">
             <button
               onClick={refreshData}
-              className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow hover:shadow-md transition-all">
+              className="flex items-center gap-2 px-4 py-2  bg-base-100 rounded-lg shadow hover:shadow-md transition-all">
               <FaSync className="text-blue-500" />
-              <span className="text-gray-700 font-medium">Refresh</span>
+              <span className=" text-base-content font-medium">Refresh</span>
             </button>
           </div>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-white rounded-xl shadow p-4 flex items-center justify-between">
+          <div className=" bg-base-100 rounded-xl shadow p-4 flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Total Claims</p>
-              <h3 className="text-2xl font-bold text-gray-800 mt-1">
+              <p className=" text-base-content text-sm">Total Claims</p>
+              <h3 className="text-2xl font-bold  text-base-content mt-1">
                 {claims.length}
               </h3>
             </div>
-            <div className="bg-blue-100 p-3 rounded-full">
+            <div className=" bg-base-300 p-3 rounded-full">
               <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
-                <span className="text-white font-bold">T</span>
+                <span className=" text-base-content font-bold">T</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow p-4 flex items-center justify-between">
+          <div className=" bg-base-100 rounded-xl shadow p-4 flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Pending Approval</p>
-              <h3 className="text-2xl font-bold text-gray-800 mt-1">
+              <p className=" text-base-content text-sm">Pending Approval</p>
+              <h3 className="text-2xl font-bold  text-base-content mt-1">
                 {claims.filter((c) => c.status === "Pending").length}
               </h3>
             </div>
             <div className="bg-yellow-100 p-3 rounded-full">
               <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center">
-                <span className="text-white font-bold">P</span>
+                <span className=" text-base-content font-bold">P</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow p-4 flex items-center justify-between">
+          <div className=" bg-base-100 rounded-xl shadow p-4 flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Approved</p>
-              <h3 className="text-2xl font-bold text-gray-800 mt-1">
+              <p className=" text-base-content text-sm">Approved</p>
+              <h3 className="text-2xl font-bold  text-base-content mt-1">
                 {claims.filter((c) => c.status === "Approved").length}
               </h3>
             </div>
             <div className="bg-green-100 p-3 rounded-full">
               <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
-                <span className="text-white font-bold">A</span>
+                <span className=" text-base-content font-bold">A</span>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow p-4 flex items-center justify-between">
+          <div className=" bg-base-100 rounded-xl shadow p-4 flex items-center justify-between">
             <div>
-              <p className="text-gray-500 text-sm">Average Amount</p>
-              <h3 className="text-2xl font-bold text-gray-800 mt-1">
+              <p className=" text-base-content text-sm">Average Amount</p>
+              <h3 className="text-2xl font-bold  text-base-content mt-1">
                 $
                 {claims.reduce((acc, claim) => acc + claim.premium, 0) /
                   claims.length || 0}
               </h3>
             </div>
-            <div className="bg-purple-100 p-3 rounded-full">
+            <div className=" bg-base-200 p-3 rounded-full">
               <div className="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center">
-                <span className="text-white font-bold">$</span>
+                <span className=" text-base-content font-bold">$</span>
               </div>
             </div>
           </div>
@@ -205,19 +205,19 @@ const PolicyClearance = () => {
             <Loading />
           </div>
         ) : claims.length === 0 ? (
-          <div className="bg-white rounded-xl shadow-sm p-8 text-center">
+          <div className=" bg-base-100 rounded-xl shadow-sm p-8 text-center">
             <div className="max-w-md mx-auto">
               <div className="w-24 h-24 mx-auto bg-gray-100 rounded-full flex items-center justify-center mb-6">
-                <FaEye className="text-gray-400 text-3xl" />
+                <FaEye className=" text-base-content text-3xl" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">
+              <h3 className="text-2xl font-bold  text-base-content mb-2">
                 No Claims Found
               </h3>
-              <p className="text-gray-600 mb-6">
+              <p className=" text-base-content mb-6">
                 There are currently no claims pending clearance.
               </p>
               <button
-                className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all"
+                className="px-6 py-3 bg-blue-600 hover:bg-blue-700  text-base-content rounded-lg font-medium transition-all"
                 onClick={refreshData}>
                 Refresh Data
               </button>
@@ -226,75 +226,75 @@ const PolicyClearance = () => {
         ) : (
           <>
             {/* Desktop/Tablet View */}
-            <div className="hidden md:block bg-white rounded-xl shadow overflow-hidden">
+            <div className="hidden md:block  bg-base-100 rounded-xl shadow overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                  <thead className="bg-gray-50">
+                  <thead className=" bg-base-50">
                     <tr>
                       <th
                         scope="col"
-                        className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        className="px-6 py-4 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                         Policy
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        className="px-6 py-4 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                         Premium
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        className="px-6 py-4 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                         Category
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        className="px-6 py-4 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                         Duration
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        className="px-6 py-4 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                         Status
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        className="px-6 py-4 text-right text-xs font-medium  text-base-content uppercase tracking-wider">
                         Actions
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
+                  <tbody className=" bg-base-100 divide-y divide-gray-200">
                     {claims.map((claim) => (
                       <tr
                         key={claim._id}
-                        className="hover:bg-gray-50 transition-colors">
+                        className="hover: bg-base-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <div className="flex-shrink-0 h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <div className="flex-shrink-0 h-10 w-10  bg-base-300 rounded-lg flex items-center justify-center">
                               <span className="text-blue-600 font-bold">P</span>
                             </div>
                             <div className="ml-4">
-                              <div className="text-sm font-medium text-gray-900">
+                              <div className="text-sm font-medium  text-base-content">
                                 {claim.title}
                               </div>
-                              <div className="text-sm text-gray-500">
+                              <div className="text-sm  text-base-content">
                                 ID: {claim._id.slice(-8)}
                               </div>
                             </div>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900 font-semibold">
+                          <div className="text-sm  text-base-content font-semibold">
                             ${claim.premium}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">
+                          <div className="text-sm  text-base-content">
                             {claim.category}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm text-gray-900">
+                          <div className="text-sm  text-base-content">
                             {claim.durationOptions}
                           </div>
                         </td>
@@ -345,11 +345,13 @@ const PolicyClearance = () => {
               {claims.map((claim) => (
                 <div
                   key={claim._id}
-                  className="bg-white rounded-xl shadow overflow-hidden">
+                  className=" bg-base-100 rounded-xl shadow overflow-hidden">
                   <div className="p-4 border-b border-gray-100 flex justify-between items-center">
                     <div>
-                      <h3 className="font-bold text-gray-900">{claim.title}</h3>
-                      <p className="text-sm text-gray-500">
+                      <h3 className="font-bold  text-base-content">
+                        {claim.title}
+                      </h3>
+                      <p className="text-sm  text-base-content">
                         ID: {claim._id.slice(-8)}
                       </p>
                     </div>
@@ -365,20 +367,20 @@ const PolicyClearance = () => {
 
                   <div className="p-4 grid grid-cols-2 gap-3">
                     <div>
-                      <p className="text-xs text-gray-500">Premium</p>
+                      <p className="text-xs  text-base-content">Premium</p>
                       <p className="font-medium">${claim.premium}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500">Category</p>
+                      <p className="text-xs  text-base-content">Category</p>
                       <p className="font-medium">{claim.category}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-500">Duration</p>
+                      <p className="text-xs  text-base-content">Duration</p>
                       <p className="font-medium">{claim.durationOptions}</p>
                     </div>
                   </div>
 
-                  <div className="px-4 py-3 bg-gray-50 flex justify-between">
+                  <div className="px-4 py-3  bg-base-50 flex justify-between">
                     <button
                       onClick={() => openClaimDetails(claim)}
                       className="text-blue-600 hover:text-blue-800 flex items-center gap-1 text-sm">
@@ -406,26 +408,26 @@ const PolicyClearance = () => {
         {/* Modal for Claim Details */}
         {isModalOpen && selectedClaim && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 px-4">
-            <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl overflow-hidden">
+            <div className=" bg-base-100 rounded-xl shadow-xl w-full max-w-2xl overflow-hidden">
               <div className="p-6">
                 <div className="flex justify-between items-center">
-                  <h3 className="text-xl font-bold text-gray-800">
+                  <h3 className="text-xl font-bold  text-base-content">
                     {selectedClaim.title}
                   </h3>
                   <button
                     onClick={closeModal}
-                    className="text-gray-500 hover:text-gray-700">
+                    className=" text-base-content hover: text-base-content">
                     <FaTimes className="h-5 w-5" />
                   </button>
                 </div>
 
                 <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <p className="text-sm text-gray-500">Policy ID</p>
+                    <p className="text-sm  text-base-content">Policy ID</p>
                     <p className="font-medium">{selectedClaim._id.slice(-8)}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Status</p>
+                    <p className="text-sm  text-base-content">Status</p>
                     <span
                       className={`px-2.5 py-0.5 text-xs font-medium rounded-full ${
                         selectedClaim.status === "Approved"
@@ -436,21 +438,21 @@ const PolicyClearance = () => {
                     </span>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Premium</p>
+                    <p className="text-sm  text-base-content">Premium</p>
                     <p className="font-medium">${selectedClaim.premium}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Category</p>
+                    <p className="text-sm  text-base-content">Category</p>
                     <p className="font-medium">{selectedClaim.category}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Duration</p>
+                    <p className="text-sm  text-base-content">Duration</p>
                     <p className="font-medium">
                       {selectedClaim.durationOptions}
                     </p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Created At</p>
+                    <p className="text-sm  text-base-content">Created At</p>
                     <p className="font-medium">
                       {selectedClaim.createdAt
                         ? new Date(selectedClaim.createdAt).toLocaleDateString()
@@ -460,8 +462,8 @@ const PolicyClearance = () => {
                 </div>
 
                 <div className="mt-6">
-                  <p className="text-sm text-gray-500 mb-2">Description</p>
-                  <div className="bg-gray-50 p-4 rounded-lg text-sm text-gray-700 whitespace-pre-line">
+                  <p className="text-sm  text-base-content mb-2">Description</p>
+                  <div className=" bg-base-50 p-4 rounded-lg text-sm  text-base-content whitespace-pre-line">
                     {selectedClaim.description || "No description available"}
                   </div>
                 </div>
@@ -470,13 +472,13 @@ const PolicyClearance = () => {
               <div className="px-6 py-4 bg-gray-100 flex justify-end gap-3">
                 <button
                   onClick={closeModal}
-                  className="px-4 py-2 rounded-lg bg-white border text-gray-700 hover:bg-gray-200">
+                  className="px-4 py-2 rounded-lg  bg-base-100 border  text-base-content hover: bg-base-200">
                   Close
                 </button>
                 <button
                   onClick={() => handleApprove(selectedClaim._id)}
                   disabled={selectedClaim.status === "Approved"}
-                  className={`px-4 py-2 rounded-lg text-white font-medium ${
+                  className={`px-4 py-2 rounded-lg  text-base-content font-medium ${
                     selectedClaim.status === "Approved"
                       ? "bg-green-500 cursor-not-allowed opacity-60"
                       : "bg-blue-600 hover:bg-blue-700"

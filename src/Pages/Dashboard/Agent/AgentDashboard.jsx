@@ -93,10 +93,10 @@ const AgentDashboard = () => {
     <div className="p-4 w-11/12 mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
         <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+          <h2 className="text-2xl md:text-3xl font-bold  text-base-content">
             Assigned Customers
           </h2>
-          <p className="text-gray-600 mt-1">
+          <p className=" text-base-content mt-1">
             Manage customer applications and policies
           </p>
         </div>
@@ -106,13 +106,13 @@ const AgentDashboard = () => {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="appearance-none py-2 pl-3 pr-10 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+              className="appearance-none py-2 pl-3 pr-10 border border-gray-300 rounded-lg  bg-base-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
               <option value="All">All Statuses</option>
               <option value="Pending">Pending</option>
               <option value="Approved">Approved</option>
               <option value="Rejected">Rejected</option>
             </select>
-            <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
+            <FiChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2  text-base-content pointer-events-none" />
           </div>
         </div>
       </div>
@@ -134,14 +134,14 @@ const AgentDashboard = () => {
       {loading && <Loading />}
 
       {!loading && !error && filteredApplications.length === 0 && (
-        <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-          <div className="mx-auto w-16 h-16 flex items-center justify-center bg-indigo-100 rounded-full mb-4">
+        <div className=" bg-base-100 rounded-xl shadow-sm p-8 text-center">
+          <div className="mx-auto w-16 h-16 flex items-center justify-center bg-base-300 rounded-full mb-4">
             <FiFileText className="text-indigo-600 text-2xl" />
           </div>
-          <h3 className="text-lg font-medium text-gray-900 mb-1">
+          <h3 className="text-lg font-medium  text-base-content mb-1">
             No applications found
           </h3>
-          <p className="text-gray-500 max-w-md mx-auto">
+          <p className=" text-base-content max-w-md mx-auto">
             {statusFilter === "All"
               ? "You don't have any customer applications assigned to you yet."
               : `No applications with "${statusFilter}" status found.`}
@@ -152,43 +152,43 @@ const AgentDashboard = () => {
       {!loading && !error && filteredApplications.length > 0 && (
         <>
           {/* Desktop Table */}
-          <div className="hidden md:block overflow-x-auto bg-white rounded-xl shadow-sm">
+          <div className="hidden md:block overflow-x-auto  bg-base-100 rounded-xl shadow-sm">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className=" bg-base-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Customer
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Policy
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Status
                   </th>
-                  <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-center text-xs font-medium  text-base-content uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className=" bg-base-100 divide-y divide-gray-200">
                 {filteredApplications.map((app) => (
-                  <tr key={app._id} className="hover:bg-gray-50">
+                  <tr key={app._id} className="hover: bg-base-50">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                        <div className="flex-shrink-0 w-10 h-10 bg-base-300 rounded-full flex items-center justify-center">
                           <FiUser className="text-indigo-600" />
                         </div>
                         <div className="ml-4">
-                          <div className="text-sm font-medium text-gray-900">
+                          <div className="text-sm font-medium  text-base-content">
                             {app.fullName || app.customerName}
                           </div>
-                          <div className="text-sm text-gray-500">
+                          <div className="text-sm  text-base-content">
                             {app.userEmail || app.customerEmail}
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-900">
+                    <td className="px-6 py-4 text-sm  text-base-content">
                       {app.policyName || app.policyTitle}
                     </td>
                     <td className="px-6 py-4">
@@ -212,7 +212,7 @@ const AgentDashboard = () => {
                     <td className="px-6 py-4 text-center">
                       <button
                         onClick={() => openModal(app)}
-                        className="text-indigo-600 hover:text-indigo-900 flex items-center justify-center gap-1">
+                        className="text-indigo-600 hover:text-indigo-600 flex items-center justify-center gap-1">
                         <FiEye className="h-4 w-4" />
                         View
                       </button>
@@ -226,17 +226,19 @@ const AgentDashboard = () => {
           {/* Mobile Cards */}
           <div className="md:hidden grid grid-cols-1 gap-4 mt-4">
             {filteredApplications.map((app) => (
-              <div key={app._id} className="bg-white rounded-xl shadow-sm p-4">
+              <div
+                key={app._id}
+                className=" bg-base-100 rounded-xl shadow-sm p-4">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-base-300 rounded-full flex items-center justify-center">
                       <FiUser className="text-indigo-600" />
                     </div>
                     <div className="ml-3">
-                      <h3 className="text-sm font-medium text-gray-900">
+                      <h3 className="text-sm font-medium  text-base-content">
                         {app.fullName || app.customerName}
                       </h3>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs  text-base-content">
                         {app.userEmail || app.customerEmail}
                       </p>
                     </div>
@@ -250,8 +252,8 @@ const AgentDashboard = () => {
                 </div>
 
                 <div className="mt-4 pl-1">
-                  <div className="flex items-center text-sm text-gray-600 mb-2">
-                    <FiFileText className="mr-2 text-gray-400" />
+                  <div className="flex items-center text-sm  text-base-content mb-2">
+                    <FiFileText className="mr-2  text-base-content" />
                     <span>{app.policyName || app.policyTitle}</span>
                   </div>
 
@@ -291,9 +293,9 @@ const AgentDashboard = () => {
       <Dialog open={isOpen} onClose={closeModal} className="relative z-50">
         <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
         <div className="fixed inset-0 flex items-center justify-center p-4">
-          <Dialog.Panel className="w-full max-w-md rounded-xl bg-white shadow-xl overflow-hidden">
+          <Dialog.Panel className="w-full max-w-md rounded-xl  bg-base-100 shadow-xl overflow-hidden">
             <div className="bg-indigo-600 p-5">
-              <Dialog.Title className="text-xl font-bold text-white">
+              <Dialog.Title className="text-xl font-bold  text-base-content">
                 Customer Profile
               </Dialog.Title>
             </div>
@@ -301,14 +303,14 @@ const AgentDashboard = () => {
             {selectedApp && (
               <div className="p-5 max-h-[70vh] overflow-y-auto space-y-4">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center">
+                  <div className="w-16 h-16 bg-base-300 rounded-full flex items-center justify-center">
                     <FiUser className="text-indigo-600 text-2xl" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900">
+                    <h3 className="text-lg font-bold  text-base-content">
                       {selectedApp.fullName || selectedApp.customerName}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className=" text-base-content">
                       {selectedApp.userEmail || selectedApp.customerEmail}
                     </p>
                     <span
@@ -355,7 +357,7 @@ const AgentDashboard = () => {
                       );
                       closeModal();
                     }}
-                    className="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2">
+                    className="flex-1 bg-green-500 hover:bg-green-600  text-base-content py-2 px-4 rounded-lg flex items-center justify-center gap-2">
                     <FiCheckCircle className="h-5 w-5" />
                     Approve
                   </button>
@@ -368,13 +370,13 @@ const AgentDashboard = () => {
                       );
                       closeModal();
                     }}
-                    className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2">
+                    className="flex-1 bg-red-500 hover:bg-red-600  text-base-content py-2 px-4 rounded-lg flex items-center justify-center gap-2">
                     <FiXCircle className="h-5 w-5" />
                     Reject
                   </button>
                   <button
                     onClick={closeModal}
-                    className="flex-1 border border-gray-300 hover:bg-gray-50 py-2 px-4 rounded-lg transition">
+                    className="flex-1 border border-gray-300 hover: bg-base-50 py-2 px-4 rounded-lg transition">
                     Close
                   </button>
                 </div>
@@ -390,10 +392,10 @@ const AgentDashboard = () => {
 const InfoItem = ({ icon: Icon, label, value }) => (
   <div className="flex items-start">
     <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center">
-      <Icon className="text-gray-600" />
+      <Icon className=" text-base-content" />
     </div>
     <div className="ml-3">
-      <p className="text-sm text-gray-500">{label}</p>
+      <p className="text-sm  text-base-content">{label}</p>
       <p className="font-medium">{value}</p>
     </div>
   </div>

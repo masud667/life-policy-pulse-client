@@ -61,15 +61,15 @@ const PaymentStatus = () => {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+            <h1 className="text-3xl md:text-4xl font-bold  text-base-content">
               Payment Dashboard
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className=" text-base-content mt-2">
               Manage your insurance policy payments
             </p>
           </div>
           <div className="mt-4 md:mt-0">
-            <button className="btn rounded-xl py-2 px-4  flex items-center bg-indigo-600 text-white hover:bg-indigo-600/80">
+            <button className="btn rounded-xl py-2 px-4  flex items-center bg-indigo-600  text-base-content hover:bg-indigo-600/80">
               <FaMoneyBillWave className="mr-2" /> Make Bulk Payment
             </button>
           </div>
@@ -77,23 +77,33 @@ const PaymentStatus = () => {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <div className="bg-white rounded-xl shadow-md p-5 border-l-4 border-blue-500">
-            <h3 className="text-gray-500 text-sm font-medium">
+          <div className=" bg-base-100 rounded-xl shadow-md p-5 border-l-4 border-blue-500">
+            <h3 className=" text-base-content text-sm font-medium">
               Total Policies
             </h3>
-            <p className="text-3xl font-bold text-gray-800">{stats.total}</p>
+            <p className="text-3xl font-bold  text-base-content">
+              {stats.total}
+            </p>
           </div>
-          <div className="bg-white rounded-xl shadow-md p-5 border-l-4 border-green-500">
-            <h3 className="text-gray-500 text-sm font-medium">Paid Policies</h3>
-            <p className="text-3xl font-bold text-gray-800">{stats.paid}</p>
+          <div className=" bg-base-100 rounded-xl shadow-md p-5 border-l-4 border-green-500">
+            <h3 className=" text-base-content text-sm font-medium">
+              Paid Policies
+            </h3>
+            <p className="text-3xl font-bold  text-base-content">
+              {stats.paid}
+            </p>
           </div>
-          <div className="bg-white rounded-xl shadow-md p-5 border-l-4 border-red-500">
-            <h3 className="text-gray-500 text-sm font-medium">Due Policies</h3>
-            <p className="text-3xl font-bold text-gray-800">{stats.due}</p>
+          <div className=" bg-base-100 rounded-xl shadow-md p-5 border-l-4 border-red-500">
+            <h3 className=" text-base-content text-sm font-medium">
+              Due Policies
+            </h3>
+            <p className="text-3xl font-bold  text-base-content">{stats.due}</p>
           </div>
-          <div className="bg-white rounded-xl shadow-md p-5 border-l-4 border-purple-500">
-            <h3 className="text-gray-500 text-sm font-medium">Total Premium</h3>
-            <p className="text-3xl font-bold text-gray-800">
+          <div className=" bg-base-100 rounded-xl shadow-md p-5 border-l-4 border-purple-500">
+            <h3 className=" text-base-content text-sm font-medium">
+              Total Premium
+            </h3>
+            <p className="text-3xl font-bold  text-base-content">
               ${stats.totalAmount.toFixed(2)}
             </p>
           </div>
@@ -106,14 +116,14 @@ const PaymentStatus = () => {
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
             </div>
           ) : policies.length === 0 ? (
-            <div className="bg-white rounded-xl shadow-md p-8 text-center">
+            <div className=" bg-base-100 rounded-xl shadow-md p-8 text-center">
               <div className="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4">
                 <FaInfoCircle className="text-blue-500 text-3xl" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              <h3 className="text-xl font-semibold  text-base-content mb-2">
                 No policies found
               </h3>
-              <p className="text-gray-600">
+              <p className=" text-base-content">
                 You don't have any approved policies requiring payment at this
                 time.
               </p>
@@ -122,7 +132,7 @@ const PaymentStatus = () => {
             policies.map((policy, index) => (
               <div
                 key={policy._id}
-                className={`bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 ${
+                className={` bg-base-100 rounded-xl shadow-md overflow-hidden transition-all duration-300 ${
                   activePolicy === policy._id ? "ring-2 ring-blue-500" : ""
                 }`}>
                 <div
@@ -134,14 +144,14 @@ const PaymentStatus = () => {
                   onClick={() => togglePolicyDetails(policy._id)}>
                   <div className="flex-1">
                     <div className="flex items-center">
-                      <div className="bg-blue-100 rounded-lg p-2 mr-4">
-                        <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16" />
+                      <div className=" bg-base-300 rounded-lg p-2 mr-4">
+                        <div className=" bg-base-200 border-2 border-dashed rounded-xl w-16 h-16" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-gray-800">
+                        <h3 className="text-xl font-bold  text-base-content">
                           {policy.policyName}
                         </h3>
-                        <p className="text-gray-600">
+                        <p className=" text-base-content">
                           Policy ID: {policy._id.substring(0, 8)}
                         </p>
                       </div>
@@ -150,24 +160,24 @@ const PaymentStatus = () => {
 
                   <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mt-4 md:mt-0 w-full md:w-auto">
                     <div className="flex items-center">
-                      <div className="bg-blue-100 p-2 rounded-lg mr-3">
+                      <div className=" bg-base-300 p-2 rounded-lg mr-3">
                         <FaMoneyBillWave className="text-blue-600" />
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500">Premium</p>
-                        <p className="font-semibold text-gray-800">
+                        <p className="text-sm  text-base-content">Premium</p>
+                        <p className="font-semibold  text-base-content">
                           ${policy.premium}
                         </p>
                       </div>
                     </div>
 
                     <div className="flex items-center">
-                      <div className="bg-purple-100 p-2 rounded-lg mr-3">
+                      <div className=" bg-base-200 p-2 rounded-lg mr-3">
                         <FaCalendarAlt className="text-purple-600" />
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500">Frequency</p>
-                        <p className="font-semibold text-gray-800">
+                        <p className="text-sm  text-base-content">Frequency</p>
+                        <p className="font-semibold  text-base-content">
                           {policy.frequency}
                         </p>
                       </div>
@@ -187,7 +197,7 @@ const PaymentStatus = () => {
                         )}
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500">Status</p>
+                        <p className="text-sm  text-base-content">Status</p>
                         <p
                           className={
                             policy.paymentStatus === "Paid"
@@ -222,37 +232,47 @@ const PaymentStatus = () => {
 
                 {/* Expandable Details */}
                 {activePolicy === policy._id && (
-                  <div className="bg-gray-50 p-5 border-t border-gray-200">
+                  <div className=" bg-base-50 p-5 border-t border-gray-200">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div>
-                        <h4 className="font-semibold text-gray-700 mb-3">
+                        <h4 className="font-semibold  text-base-content mb-3">
                           Policy Details
                         </h4>
                         <ul className="space-y-2">
                           <li className="flex justify-between text-sm">
-                            <span className="text-gray-500">Start Date:</span>
-                            <span className="text-gray-800">Jan 15, 2023</span>
+                            <span className=" text-base-content">
+                              Start Date:
+                            </span>
+                            <span className=" text-base-content">
+                              Jan 15, 2023
+                            </span>
                           </li>
                           <li className="flex justify-between text-sm">
-                            <span className="text-gray-500">End Date:</span>
-                            <span className="text-gray-800">Jan 15, 2024</span>
+                            <span className=" text-base-content">
+                              End Date:
+                            </span>
+                            <span className=" text-base-content">
+                              Jan 15, 2024
+                            </span>
                           </li>
                           <li className="flex justify-between text-sm">
-                            <span className="text-gray-500">Coverage:</span>
-                            <span className="text-gray-800">$500,000</span>
+                            <span className=" text-base-content">
+                              Coverage:
+                            </span>
+                            <span className=" text-base-content">$500,000</span>
                           </li>
                         </ul>
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-gray-700 mb-3">
+                        <h4 className="font-semibold  text-base-content mb-3">
                           Payment History
                         </h4>
                         <div className="space-y-3">
                           <div className="flex justify-between items-center text-sm">
                             <div>
                               <div className="font-medium">Payment #1</div>
-                              <div className="text-gray-500 text-xs">
+                              <div className=" text-base-content text-xs">
                                 Jan 15, 2023
                               </div>
                             </div>
@@ -264,7 +284,7 @@ const PaymentStatus = () => {
                           <div className="flex justify-between items-center text-sm">
                             <div>
                               <div className="font-medium">Payment #2</div>
-                              <div className="text-gray-500 text-xs">
+                              <div className=" text-base-content text-xs">
                                 Due: Feb 15, 2023
                               </div>
                             </div>
@@ -284,7 +304,7 @@ const PaymentStatus = () => {
                       </div>
 
                       <div>
-                        <h4 className="font-semibold text-gray-700 mb-3">
+                        <h4 className="font-semibold  text-base-content mb-3">
                           Actions
                         </h4>
                         <div className="flex flex-wrap gap-2">
@@ -308,16 +328,16 @@ const PaymentStatus = () => {
         </div>
 
         {/* Payment Tips */}
-        <div className="bg-white rounded-xl shadow-md p-6 mt-8">
+        <div className=" bg-base-100 rounded-xl shadow-md p-6 mt-8">
           <div className="flex items-start">
-            <div className="bg-blue-100 p-3 rounded-lg mr-4">
+            <div className=" bg-base-300 p-3 rounded-lg mr-4">
               <FaInfoCircle className="text-blue-600 text-xl" />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+              <h3 className="text-lg font-semibold  text-base-content mb-2">
                 Payment Information
               </h3>
-              <p className="text-gray-600">
+              <p className=" text-base-content">
                 Payments are processed securely. Please ensure payments are made
                 by the due date to avoid policy cancellation. For any
                 payment-related questions, contact our support team.

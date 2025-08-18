@@ -57,7 +57,7 @@ const QuotePage = () => {
   return (
     <div>
       <Header></Header>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 ">
+      <div className="min-h-screen  bg-base-100 to-indigo-50 ">
         <div className="w-11/12 mx-auto py-32">
           <div className="text-center mb-10">
             <motion.h1
@@ -68,7 +68,7 @@ const QuotePage = () => {
               Personalized Life Insurance Quote
             </motion.h1>
             <motion.p
-              className="text-gray-600 max-w-2xl mx-auto"
+              className=" text-base-content max-w-2xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}>
@@ -81,12 +81,12 @@ const QuotePage = () => {
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Form Section */}
             <motion.div
-              className="lg:w-1/2 bg-white rounded-2xl shadow-xl overflow-hidden"
+              className="lg:w-1/2  bg-base-100 rounded-2xl shadow-xl overflow-hidden"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}>
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6">
-                <h2 className="text-xl font-bold text-white">
+                <h2 className="text-xl font-bold  text-base-content">
                   Personal Information
                 </h2>
                 <p className="text-blue-100 text-sm">
@@ -98,7 +98,7 @@ const QuotePage = () => {
                 <div className="space-y-5">
                   {/* Age Field */}
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block  text-base-content font-medium mb-2">
                       Your Age <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -113,7 +113,7 @@ const QuotePage = () => {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         required
                       />
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3  text-base-content">
                         years
                       </div>
                     </div>
@@ -121,7 +121,7 @@ const QuotePage = () => {
 
                   {/* Gender Field */}
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block  text-base-content font-medium mb-2">
                       Gender <span className="text-red-500">*</span>
                     </label>
                     <div className="grid grid-cols-2 gap-4">
@@ -133,7 +133,7 @@ const QuotePage = () => {
                         className={`py-3 px-4 rounded-lg text-center font-medium border ${
                           quoteData.gender === "male"
                             ? "bg-blue-50 border-blue-500 text-blue-600"
-                            : "bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100"
+                            : " bg-base-50 border-gray-300  text-base-content hover:bg-gray-100"
                         }`}>
                         Male
                       </button>
@@ -148,7 +148,7 @@ const QuotePage = () => {
                         className={`py-3 px-4 rounded-lg text-center font-medium border ${
                           quoteData.gender === "female"
                             ? "bg-purple-50 border-purple-500 text-purple-600"
-                            : "bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100"
+                            : " bg-base-50 border-gray-300  text-base-content hover:bg-gray-100"
                         }`}>
                         Female
                       </button>
@@ -157,9 +157,9 @@ const QuotePage = () => {
 
                   {/* Coverage Amount */}
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block  text-base-content font-medium mb-2">
                       Coverage Amount <span className="text-red-500">*</span>
-                      <span className="text-sm font-normal text-gray-500 ml-2">
+                      <span className="text-sm font-normal  text-base-content ml-2">
                         (in BDT)
                       </span>
                     </label>
@@ -176,7 +176,7 @@ const QuotePage = () => {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         required
                       />
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3  text-base-content">
                         ৳
                       </div>
                     </div>
@@ -191,7 +191,7 @@ const QuotePage = () => {
                               coverage: amount,
                             }))
                           }
-                          className="text-xs px-3 py-1 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-700">
+                          className="text-xs px-3 py-1 bg-gray-100 hover: bg-base-200 rounded-full  text-base-content">
                           {new Intl.NumberFormat().format(amount)} ৳
                         </button>
                       ))}
@@ -200,7 +200,7 @@ const QuotePage = () => {
 
                   {/* Duration */}
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block  text-base-content font-medium mb-2">
                       Policy Duration <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -215,7 +215,7 @@ const QuotePage = () => {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         required
                       />
-                      <div className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
+                      <div className="absolute inset-y-0 right-0 flex items-center pr-3  text-base-content">
                         years
                       </div>
                     </div>
@@ -223,7 +223,7 @@ const QuotePage = () => {
 
                   {/* Smoker */}
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block  text-base-content font-medium mb-2">
                       Do you smoke? <span className="text-red-500">*</span>
                     </label>
                     <div className="grid grid-cols-2 gap-4">
@@ -235,7 +235,7 @@ const QuotePage = () => {
                         className={`py-3 px-4 rounded-lg text-center font-medium border ${
                           quoteData.smoker === "no"
                             ? "bg-green-50 border-green-500 text-green-600"
-                            : "bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100"
+                            : " bg-base-50 border-gray-300  text-base-content hover:bg-gray-100"
                         }`}>
                         Non-Smoker
                       </button>
@@ -247,7 +247,7 @@ const QuotePage = () => {
                         className={`py-3 px-4 rounded-lg text-center font-medium border ${
                           quoteData.smoker === "yes"
                             ? "bg-red-50 border-red-500 text-red-600"
-                            : "bg-gray-50 border-gray-300 text-gray-700 hover:bg-gray-100"
+                            : " bg-base-50 border-gray-300  text-base-content hover:bg-gray-100"
                         }`}>
                         Smoker
                       </button>
@@ -258,7 +258,7 @@ const QuotePage = () => {
                   <button
                     type="submit"
                     disabled={isCalculating}
-                    className={`w-full py-4 px-6 rounded-xl font-bold text-white transition-all ${
+                    className={`w-full py-4 px-6 rounded-xl font-bold  text-base-content transition-all ${
                       isCalculating
                         ? "bg-gray-400 cursor-not-allowed"
                         : "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg"
@@ -282,9 +282,9 @@ const QuotePage = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6, duration: 0.5 }}>
-              <div className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl shadow-xl p-8  text-white">
+              <div className="bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl shadow-xl p-8   text-base-content">
                 <div className="flex items-center mb-6">
-                  <div className="bg-white/20 p-3 rounded-xl mr-4">
+                  <div className=" bg-base-100/20 p-3 rounded-xl mr-4">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-8 w-8"
@@ -304,7 +304,7 @@ const QuotePage = () => {
 
                 {estimatedPremium ? (
                   <div className="space-y-6">
-                    <div className="bg-white/10 rounded-2xl p-6 text-center">
+                    <div className=" bg-base-100/10 rounded-2xl p-6 text-center">
                       <p className="text-blue-100 mb-2">
                         Estimated Monthly Premium
                       </p>
@@ -317,7 +317,7 @@ const QuotePage = () => {
                       </p>
                     </div>
 
-                    <div className="bg-white/10 rounded-2xl p-6">
+                    <div className=" bg-base-100/10 rounded-2xl p-6">
                       <h3 className="font-bold text-xl mb-4">
                         Premium Breakdown
                       </h3>
@@ -347,7 +347,7 @@ const QuotePage = () => {
                       </div>
                     </div>
 
-                    <div className="bg-white/10 rounded-2xl p-6">
+                    <div className=" bg-base-100/10 rounded-2xl p-6">
                       <h3 className="font-bold text-xl mb-4">Policy Details</h3>
                       <div className="space-y-3">
                         <div className="flex justify-between">
@@ -377,7 +377,7 @@ const QuotePage = () => {
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={handleApply}
-                      className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 hover:from-yellow-500 hover:to-yellow-600 font-bold px-8 py-4 rounded-lg shadow-lg inline-flex items-center">
+                      className="bg-gradient-to-r from-yellow-400 to-yellow-500  text-base-content hover:from-yellow-500 hover:to-yellow-600 font-bold px-8 py-4 rounded-lg shadow-lg inline-flex items-center">
                       Apply for Policy
                       <motion.span
                         animate={{ x: [0, 5, 0] }}
@@ -393,7 +393,7 @@ const QuotePage = () => {
                   </div>
                 ) : (
                   <div className="text-center py-12">
-                    <div className="bg-white/10 rounded-full p-4 inline-block mb-6">
+                    <div className=" bg-base-100/10 rounded-full p-4 inline-block mb-6">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-12 w-12 text-blue-200"
@@ -421,8 +421,8 @@ const QuotePage = () => {
 
               {/* Additional Info */}
               {estimatedPremium && (
-                <div className="mt-8 bg-white rounded-xl shadow-lg p-6">
-                  <h3 className="font-bold text-lg text-gray-800 mb-4">
+                <div className="mt-8  bg-base-100 rounded-xl shadow-lg p-6">
+                  <h3 className="font-bold text-lg  text-base-content mb-4">
                     Why choose LifePolicyPulse?
                   </h3>
                   <ul className="space-y-3">
@@ -440,7 +440,7 @@ const QuotePage = () => {
                           />
                         </svg>
                       </div>
-                      <span className="text-gray-600">
+                      <span className=" text-base-content">
                         Instant approval for most applicants
                       </span>
                     </li>
@@ -458,7 +458,7 @@ const QuotePage = () => {
                           />
                         </svg>
                       </div>
-                      <span className="text-gray-600">
+                      <span className=" text-base-content">
                         No medical exam required for coverage up to ৳5,000,000
                       </span>
                     </li>
@@ -476,7 +476,7 @@ const QuotePage = () => {
                           />
                         </svg>
                       </div>
-                      <span className="text-gray-600">
+                      <span className=" text-base-content">
                         Money-back guarantee within 30 days
                       </span>
                     </li>
@@ -488,7 +488,7 @@ const QuotePage = () => {
 
           {/* FAQ Section */}
           <div className="mt-16 max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-center mb-8 text-gray-800">
+            <h3 className="text-2xl font-bold text-center mb-8  text-base-content">
               Frequently Asked Questions
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -516,14 +516,14 @@ const QuotePage = () => {
               ].map((faq, index) => (
                 <motion.div
                   key={index}
-                  className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
+                  className=" bg-base-100 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 + index * 0.1, duration: 0.5 }}>
-                  <h4 className="font-bold text-lg text-gray-800 mb-2">
+                  <h4 className="font-bold text-lg  text-base-content mb-2">
                     {faq.question}
                   </h4>
-                  <p className="text-gray-600">{faq.answer}</p>
+                  <p className=" text-base-content">{faq.answer}</p>
                 </motion.div>
               ))}
             </div>

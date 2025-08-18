@@ -83,19 +83,19 @@ const ManageApplications = () => {
     return (
       <div className="text-center py-10">
         <div className="text-red-500 text-5xl mb-4">⚠️</div>
-        <h3 className="text-xl font-semibold text-gray-700">
+        <h3 className="text-xl font-semibold  text-base-content">
           Failed to load applications
         </h3>
         <button
           onClick={() => refetch()}
-          className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition flex items-center justify-center mx-auto">
+          className="mt-4 px-4 py-2 bg-indigo-600  text-base-content rounded-md hover:bg-indigo-700 transition flex items-center justify-center mx-auto">
           <HiOutlineRefresh className="mr-2" /> Retry
         </button>
       </div>
     );
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+    <div className=" bg-base-100 rounded-2xl shadow-lg overflow-hidden">
       {/* Header */}
       <div className="py-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between">
@@ -111,7 +111,7 @@ const ManageApplications = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <HiOutlineSearch className="absolute left-3 top-7 text-gray-400 text-xl" />
+              <HiOutlineSearch className="absolute left-3 top-7  text-base-content text-xl" />
             </div>
 
             <select
@@ -129,25 +129,25 @@ const ManageApplications = () => {
       </div>
 
       {/* Stats Bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-gray-50 border-b">
-        <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-gray-900">
-          <div className="text-gray-500 text-sm">Total</div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4  bg-base-50 border-b">
+        <div className=" bg-base-100 rounded-lg p-4 shadow-sm border-l-4 border-gray-900">
+          <div className=" text-base-content text-sm">Total</div>
           <div className="text-2xl font-bold">{applications.length}</div>
         </div>
-        <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-yellow-600">
-          <div className="text-gray-500 text-sm">Pending</div>
+        <div className=" bg-base-100 rounded-lg p-4 shadow-sm border-l-4 border-yellow-600">
+          <div className=" text-base-content text-sm">Pending</div>
           <div className="text-2xl font-bold text-yellow-600">
             {applications.filter((a) => a.status === "pending").length}
           </div>
         </div>
-        <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-red-600">
-          <div className="text-gray-500 text-sm">Rejected</div>
+        <div className=" bg-base-100 rounded-lg p-4 shadow-sm border-l-4 border-red-600">
+          <div className=" text-base-content text-sm">Rejected</div>
           <div className="text-2xl font-bold text-red-600">
             {applications.filter((a) => a.status === "Rejected").length}
           </div>
         </div>
-        <div className="bg-white rounded-lg p-4 shadow-sm border-l-4 border-green-600">
-          <div className="text-gray-500 text-sm">Approved</div>
+        <div className=" bg-base-100 rounded-lg p-4 shadow-sm border-l-4 border-green-600">
+          <div className=" text-base-content text-sm">Approved</div>
           <div className="text-2xl font-bold text-green-600">
             {applications.filter((a) => a.status === "Approved").length}
           </div>
@@ -158,33 +158,33 @@ const ManageApplications = () => {
       <div className="overflow-x-auto">
         {/* Desktop Table (hidden on mobile) */}
         <table className="min-w-full divide-y divide-gray-200 hidden lg:table">
-          <thead className="bg-gray-50">
+          <thead className=" bg-base-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                 Applicant
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                 Policy
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                 Date
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                 Agent
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                 Actions
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className=" bg-base-100 divide-y divide-gray-200">
             {filteredApplications.length === 0 ? (
               <tr>
                 <td colSpan="6" className="px-6 py-8 text-center">
-                  <div className="text-gray-500 text-lg">
+                  <div className=" text-base-content text-lg">
                     No applications found
                   </div>
                   <button
@@ -199,28 +199,28 @@ const ManageApplications = () => {
               </tr>
             ) : (
               filteredApplications.map((app) => (
-                <tr key={app._id} className="hover:bg-gray-50 transition">
+                <tr key={app._id} className="hover: bg-base-50 transition">
                   <td className="px-2 py-4 whitespace-nowrap">
                     <div className="flex items-center">
-                      <div className="bg-indigo-100 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                      <div className="bg-base-300 text-indigo-500 rounded-full w-10 h-10 flex items-center justify-center mr-3">
                         {app.fullName?.charAt(0) || "U"}
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium  text-base-content">
                           {app.fullName}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm  text-base-content">
                           {app.userEmail}
                         </div>
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-gray-900 font-medium">
+                    <div className=" text-base-content font-medium">
                       {app.policyName}
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm  text-base-content">
                     {new Date(app.appliedAt).toLocaleDateString()}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -231,15 +231,17 @@ const ManageApplications = () => {
                           : app.status === "Rejected"
                           ? "bg-red-100 text-red-800"
                           : app.status === "Assigned"
-                          ? "bg-blue-100 text-blue-800"
+                          ? " bg-base-300 text-blue-800"
                           : "bg-yellow-100 text-yellow-800"
                       }`}>
                       {app.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm  text-base-content">
                     {app.agentEmail ? (
-                      <span className="text-gray-700">{app.agentEmail}</span>
+                      <span className=" text-base-content">
+                        {app.agentEmail}
+                      </span>
                     ) : (
                       <select
                         onChange={(e) =>
@@ -276,7 +278,7 @@ const ManageApplications = () => {
 
                       <button
                         onClick={() => setSelectedApp(app)}
-                        className="text-indigo-600 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 p-2 rounded-md transition"
+                        className="text-indigo-600 hover:text-indigo-600 bg-indigo-50 hover:bg-base-300 p-2 rounded-md transition"
                         title="View Details">
                         <HiOutlineEye className="h-5 w-5" />
                       </button>
@@ -292,13 +294,15 @@ const ManageApplications = () => {
         <div className="lg:hidden">
           {filteredApplications.length === 0 ? (
             <div className="text-center py-8">
-              <div className="text-gray-500 text-lg">No applications found</div>
+              <div className=" text-base-content text-lg">
+                No applications found
+              </div>
               <button
                 onClick={() => {
                   setSearchTerm("");
                   setStatusFilter("all");
                 }}
-                className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-md flex items-center justify-center mx-auto">
+                className="mt-4 px-4 py-2 bg-indigo-600  text-base-content rounded-md flex items-center justify-center mx-auto">
                 <HiOutlineRefresh className="mr-2" /> Clear filters
               </button>
             </div>
@@ -307,42 +311,42 @@ const ManageApplications = () => {
               {filteredApplications.map((app) => (
                 <div
                   key={app._id}
-                  className="bg-white/60 border border-gray-200 rounded-lg shadow-sm p-4">
+                  className=" bg-base-100/60 border border-gray-200 rounded-lg shadow-sm p-4">
                   {/* Row 1: Applicant & Status */}
                   <div className=" grid grid-cols-3 gap-4 justify-between relative ">
                     <div className=" flex items-center">
-                      <div className="bg-indigo-100 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center p-4 mr-3">
+                      <div className="bg-base-300 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center p-4 mr-3">
                         {app.fullName?.charAt(0) || "U"}
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium  text-base-content">
                           {app.fullName}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm  text-base-content">
                           {app.userEmail}
                         </div>
                       </div>
                     </div>
-                     <div className="absolute top-1 right-1">
-                        <span
-                          className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                            app.status === "Approved"
-                              ? "bg-green-100 text-green-800"
-                              : app.status === "Rejected"
-                              ? "bg-red-100 text-red-800"
-                              : app.status === "Assigned"
-                              ? "bg-blue-100 text-blue-800"
-                              : "bg-yellow-100 text-yellow-800"
-                          }`}>
-                          {app.status}
-                        </span>
-                      </div>
+                    <div className="absolute top-0 right-1">
+                      <span
+                        className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                          app.status === "Approved"
+                            ? "bg-base-300 text-green-800"
+                            : app.status === "Rejected"
+                            ? "bg-base-300 text-red-800"
+                            : app.status === "Assigned"
+                            ? " bg-base-300 text-blue-800"
+                            : "bg-yellow-100 text-yellow-800"
+                        }`}>
+                        {app.status}
+                      </span>
+                    </div>
                   </div>
 
                   {/* Row 2: Policy */}
                   <div className="mt-3">
-                    <div className="text-xs text-gray-500">Policy</div>
-                    <div className="font-medium text-gray-900">
+                    <div className="text-xs  text-base-content">Policy</div>
+                    <div className="font-medium  text-base-content">
                       {app.policyName}
                     </div>
                   </div>
@@ -350,15 +354,15 @@ const ManageApplications = () => {
                   {/* Row 3: Date & Agent */}
                   <div className="grid grid-cols-2 gap-4 mt-3">
                     <div>
-                      <div className="text-xs text-gray-500">Date</div>
-                      <div className="text-sm text-gray-900">
+                      <div className="text-xs  text-base-content">Date</div>
+                      <div className="text-sm  text-base-content">
                         {new Date(app.appliedAt).toLocaleDateString()}
                       </div>
                     </div>
                     <div>
-                      <div className="text-xs text-gray-500">Agent</div>
+                      <div className="text-xs  text-base-content">Agent</div>
                       {app.agentEmail ? (
-                        <div className="text-sm text-gray-900">
+                        <div className="text-sm  text-base-content">
                           {app.agentEmail}
                         </div>
                       ) : (
@@ -385,21 +389,21 @@ const ManageApplications = () => {
                   <div className="mt-4 flex justify-end space-x-2">
                     <button
                       onClick={() => handleApprove(app._id)}
-                      className="text-green-600 hover:text-green-900 bg-green-50 hover:bg-green-100 p-2 rounded-md transition"
+                      className="text-green-600 border not-only-of-typehover:text-green-900 bg-base-200 hover:bg-green-100 p-2 rounded-md transition"
                       title="Approve">
                       <HiCheck className="h-5 w-5" />
                     </button>
 
                     <button
                       onClick={() => handleReject(app._id)}
-                      className="text-red-600 hover:text-red-900 bg-red-50 hover:bg-red-100 p-2 rounded-md transition"
+                      className="text-red-600 border hover:text-red-900 bg-base-200 hover:bg-red-100 p-2 rounded-md transition"
                       title="Reject">
                       <HiX className="h-5 w-5" />
                     </button>
 
                     <button
                       onClick={() => setSelectedApp(app)}
-                      className="text-indigo-600 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 p-2 rounded-md transition"
+                      className="text-indigo-600 border  hover:text-indigo-600 bg-base-200 hover:bg-base-300 p-2 rounded-md transition"
                       title="View Details">
                       <HiOutlineEye className="h-5 w-5" />
                     </button>
@@ -412,10 +416,10 @@ const ManageApplications = () => {
       </div>
 
       {/* Pagination */}
-      <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+      <div className=" bg-base-100 px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
         <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
           <div>
-            <p className="text-sm text-gray-700">
+            <p className="text-sm  text-base-content">
               Showing <span className="font-medium">1</span> to{" "}
               <span className="font-medium">{filteredApplications.length}</span>{" "}
               of{" "}
@@ -427,13 +431,13 @@ const ManageApplications = () => {
             <nav
               className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
               aria-label="Pagination">
-              <button className="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+              <button className="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300  bg-base-100 text-sm font-medium  text-base-content hover: bg-base-50">
                 Previous
               </button>
-              <button className="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+              <button className="relative inline-flex items-center px-4 py-2 border border-gray-300  bg-base-100 text-sm font-medium  text-base-content hover: bg-base-50">
                 1
               </button>
-              <button className="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+              <button className="relative inline-flex items-center px-4 py-2 rounded-r-md border border-gray-300  bg-base-100 text-sm font-medium  text-base-content hover: bg-base-50">
                 Next
               </button>
             </nav>

@@ -103,17 +103,17 @@ const ManageUserPage = () => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-indigo-50 min-h-screen ">
+    <div className="bg-base-100 min-h-screen ">
       <div className="w-11/12 mx-auto">
         {/* Header - Mobile Optimized */}
         <div className="flex flex-col mb-6 md:mb-8">
           <div className="flex justify-between items-start">
             <div>
-              <h1 className="text-xl md:text-3xl font-bold text-gray-800 flex items-center">
+              <h1 className="text-xl md:text-3xl font-bold  text-base-content flex items-center">
                 <FaUsers className="mr-2 md:mr-3 text-indigo-600" />
                 User Management
               </h1>
-              <p className="text-gray-600 text-sm md:text-base mt-1">
+              <p className=" text-base-content text-sm md:text-base mt-1">
                 Manage user accounts and roles
               </p>
             </div>
@@ -122,26 +122,26 @@ const ManageUserPage = () => {
 
         {/* Stats Cards - Responsive Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 mb-6 md:mb-8">
-          <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-indigo-500">
+          <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-indigo-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                <p className=" text-base-content text-xs md:text-sm font-medium">
                   Total Users
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
                   {userStats.total}
                 </p>
               </div>
-              <div className="p-2 md:p-3 bg-indigo-100 rounded-lg text-indigo-600">
+              <div className="p-2 md:p-3 bg-base-300 rounded-lg text-indigo-600">
                 <FaUsers className="text-base md:text-xl" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-green-500">
+          <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-green-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                <p className=" text-base-content text-xs md:text-sm font-medium">
                   Admins
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
@@ -154,33 +154,33 @@ const ManageUserPage = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-blue-500">
+          <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-blue-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                <p className=" text-base-content text-xs md:text-sm font-medium">
                   Agents
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
                   {userStats.agents}
                 </p>
               </div>
-              <div className="p-2 md:p-3 bg-blue-100 rounded-lg text-blue-600">
+              <div className="p-2 md:p-3  bg-base-300 rounded-lg text-blue-600">
                 <FaUserShield className="text-base md:text-xl" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-purple-500">
+          <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-purple-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                <p className=" text-base-content text-xs md:text-sm font-medium">
                   Regular Users
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
                   {userStats.regular}
                 </p>
               </div>
-              <div className="p-2 md:p-3 bg-purple-100 rounded-lg text-purple-600">
+              <div className="p-2 md:p-3  bg-base-200 rounded-lg text-purple-600">
                 <FaUser className="text-base md:text-xl" />
               </div>
             </div>
@@ -188,7 +188,7 @@ const ManageUserPage = () => {
         </div>
 
         {/* Search and Filter Controls */}
-        <div className="bg-white rounded-lg md:rounded-xl shadow p-4 md:p-6 mb-6 md:mb-8">
+        <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-4 md:p-6 mb-6 md:mb-8">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="relative w-full">
               <input
@@ -198,7 +198,7 @@ const ManageUserPage = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <FaSearch className="absolute left-3 top-2.5 md:top-3 text-gray-400" />
+              <FaSearch className="absolute left-3 top-2.5 md:top-3  text-base-content" />
             </div>
 
             <div className="flex gap-2">
@@ -214,7 +214,7 @@ const ManageUserPage = () => {
 
               <button
                 onClick={fetchUsers}
-                className="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium flex items-center text-sm md:text-base">
+                className="px-3 py-2 bg-gray-100 hover: bg-base-200 rounded-lg font-medium flex items-center text-sm md:text-base">
                 <HiRefresh className="md:mr-2" />
                 <span className="hidden md:inline">Refresh</span>
               </button>
@@ -223,36 +223,36 @@ const ManageUserPage = () => {
         </div>
 
         {/* Desktop Table - Hidden on Mobile */}
-        <div className="hidden lg:block bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="hidden lg:block  bg-base-100 rounded-xl shadow-md overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className=" bg-base-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     #
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Name
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Email
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Role
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Registered
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className=" bg-base-100 divide-y divide-gray-200">
                 {filteredUsers.length === 0 ? (
                   <tr>
                     <td colSpan="6" className="px-6 py-8 text-center">
-                      <div className="text-gray-500 text-lg">
+                      <div className=" text-base-content text-lg">
                         No users found
                       </div>
                       <button
@@ -267,26 +267,26 @@ const ManageUserPage = () => {
                   </tr>
                 ) : (
                   filteredUsers.map((user, idx) => (
-                    <tr key={user._id} className="hover:bg-gray-50 transition">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    <tr key={user._id} className="hover: bg-base-50 transition">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium  text-base-content">
                         {idx + 1}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
-                          <div className="bg-indigo-100 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                          <div className="bg-base-300 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
                             {user.name?.charAt(0) || "U"}
                           </div>
                           <div>
-                            <div className="font-medium text-gray-900">
+                            <div className="font-medium  text-base-content">
                               {user.name || "N/A"}
                             </div>
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm  text-base-content">
                               ID: {user._id.substring(0, 8)}
                             </div>
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm  text-base-content">
                         {user.email}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -295,13 +295,13 @@ const ManageUserPage = () => {
                             user.role === "admin"
                               ? "bg-red-100 text-red-800"
                               : user.role === "agent"
-                              ? "bg-blue-100 text-blue-800"
+                              ? " bg-base-300 text-blue-800"
                               : "bg-green-100 text-green-800"
                           }`}>
                           {user.role}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm  text-base-content">
                         {new Date(user.registrationDate).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -309,7 +309,7 @@ const ManageUserPage = () => {
                           {user.role === "user" && (
                             <button
                               onClick={() => promoteToAgent(user._id)}
-                              className="text-blue-600 hover:text-blue-900 bg-blue-50 hover:bg-blue-100 p-2 rounded-md transition flex items-center"
+                              className="text-blue-600 hover:text-blue-900 bg-blue-50 hover: bg-base-300 p-2 rounded-md transition flex items-center"
                               title="Promote to Agent">
                               <FaUserShield className="mr-1" />
                               <span className="hidden sm:inline">Promote</span>
@@ -346,8 +346,8 @@ const ManageUserPage = () => {
         {/* Mobile User Cards - Hidden on Desktop */}
         <div className="lg:hidden">
           {filteredUsers.length === 0 ? (
-            <div className="bg-white rounded-lg shadow p-6 text-center">
-              <div className="text-gray-500 text-lg">No users found</div>
+            <div className=" bg-base-100 rounded-lg shadow p-6 text-center">
+              <div className=" text-base-content text-lg">No users found</div>
               <button
                 onClick={() => {
                   setSearchTerm("");
@@ -360,23 +360,25 @@ const ManageUserPage = () => {
           ) : (
             <div className="space-y-4">
               {filteredUsers.map((user) => (
-                <div key={user._id} className="bg-white rounded-lg shadow p-4">
+                <div
+                  key={user._id}
+                  className=" bg-base-100 rounded-lg shadow p-4">
                   <div className="flex justify-between items-start">
                     <div className="flex items-center">
-                      <div className="bg-indigo-100 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                      <div className="bg-base-300 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
                         {user.name?.charAt(0) || "U"}
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium  text-base-content">
                           {user.name || "N/A"}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm  text-base-content">
                           {user.email}
                         </div>
                       </div>
                     </div>
                     <div className="relative">
-                      <button className="text-gray-500 hover:text-gray-700 p-1">
+                      <button className=" text-base-content hover: text-base-content p-1">
                         <FaEllipsisV />
                       </button>
                     </div>
@@ -388,13 +390,13 @@ const ManageUserPage = () => {
                         user.role === "admin"
                           ? "bg-red-100 text-red-800"
                           : user.role === "agent"
-                          ? "bg-blue-100 text-blue-800"
+                          ? " bg-base-300 text-blue-800"
                           : "bg-green-100 text-green-800"
                       }`}>
                       {user.role}
                     </span>
 
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs  text-base-content">
                       {new Date(user.registrationDate).toLocaleDateString()}
                     </div>
                   </div>
@@ -403,7 +405,7 @@ const ManageUserPage = () => {
                     {user.role === "user" && (
                       <button
                         onClick={() => promoteToAgent(user._id)}
-                        className="flex-1 bg-blue-50 hover:bg-blue-100 text-blue-700 py-2 rounded-md text-sm flex items-center justify-center"
+                        className="flex-1 bg-blue-50 hover: bg-base-300 text-blue-700 py-2 rounded-md text-sm flex items-center justify-center"
                         title="Promote to Agent">
                         <FaUserShield className="mr-1" />
                         Promote
@@ -437,13 +439,13 @@ const ManageUserPage = () => {
         {/* Pagination - Responsive */}
         <div className="mt-6 md:mt-8 flex justify-center">
           <div className="inline-flex rounded-md shadow-sm">
-            <button className="px-3 py-1.5 md:px-4 md:py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-50">
+            <button className="px-3 py-1.5 md:px-4 md:py-2 text-sm font-medium  text-base-content  bg-base-100 border border-gray-300 rounded-l-lg hover: bg-base-50">
               Prev
             </button>
-            <button className="px-3 py-1.5 md:px-4 md:py-2 text-sm font-medium text-gray-500 bg-white border-t border-b border-gray-300 hover:bg-gray-50">
+            <button className="px-3 py-1.5 md:px-4 md:py-2 text-sm font-medium  text-base-content  bg-base-100 border-t border-b border-gray-300 hover: bg-base-50">
               1
             </button>
-            <button className="px-3 py-1.5 md:px-4 md:py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-50">
+            <button className="px-3 py-1.5 md:px-4 md:py-2 text-sm font-medium  text-base-content  bg-base-100 border border-gray-300 rounded-r-lg hover: bg-base-50">
               Next
             </button>
           </div>

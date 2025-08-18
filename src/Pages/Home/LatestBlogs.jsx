@@ -57,7 +57,7 @@ const LatestBlogs = () => {
         </div>
         <button
           onClick={() => window.location.reload()}
-          className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg">
+          className="bg-gradient-to-r from-blue-600 to-purple-600  text-base-content px-6 py-3 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-md hover:shadow-lg">
           Try Again
         </button>
       </div>
@@ -65,7 +65,7 @@ const LatestBlogs = () => {
   }
 
   return (
-    <div className="py-16  bg-gradient-to-b from-white to-indigo-50">
+    <div className="py-16   bg-base-100">
       <div className="w-11/12 mx-auto">
         <div className="text-center mb-16">
           <motion.h2
@@ -75,7 +75,7 @@ const LatestBlogs = () => {
             className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
             Latest Insights & Articles
           </motion.h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg  text-base-content max-w-3xl mx-auto">
             Stay updated with our latest insurance insights, tips, and industry
             news to make informed decisions.
           </p>
@@ -89,7 +89,7 @@ const LatestBlogs = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
+              className=" bg-base-100 rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col h-full">
               {/* Blog image */}
               <div className="relative h-48 overflow-hidden">
                 {blog.image ? (
@@ -106,14 +106,14 @@ const LatestBlogs = () => {
 
                 {/* Category badge */}
                 <div className="absolute top-4 left-4">
-                  <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                  <span className="bg-gradient-to-r from-blue-500 to-purple-500  text-base-content text-xs font-bold px-3 py-1 rounded-full">
                     {blog.category || "Insurance"}
                   </span>
                 </div>
               </div>
 
               <div className="p-6 flex flex-col flex-grow">
-                <div className="flex items-center text-sm text-gray-500 mb-4">
+                <div className="flex items-center text-sm  text-base-content mb-4">
                   <div className="flex items-center mr-4">
                     <FiCalendar className="mr-1 text-blue-500" />
                     <span>{formatDate(blog.date)}</span>
@@ -124,17 +124,17 @@ const LatestBlogs = () => {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-xl font-bold  text-base-content mb-3">
                   {blog.title}
                 </h3>
-                <p className="text-gray-600 text-sm mb-6 flex-grow">
+                <p className=" text-base-content text-sm mb-6 flex-grow">
                   {blog.details}
                 </p>
 
                 <div className="flex items-center justify-between border-t border-gray-100 pt-4">
                   <div className="flex items-center">
-                    <div className="bg-gray-200 border-2 border-dashed rounded-xl w-10 h-10" />
-                    <span className="ml-3 text-sm font-medium text-gray-700">
+                    <div className=" bg-base-200 border-2 border-dashed rounded-xl w-10 h-10" />
+                    <span className="ml-3 text-sm font-medium  text-base-content">
                       {blog.author || "Admin"}
                     </span>
                   </div>
@@ -159,7 +159,7 @@ const LatestBlogs = () => {
           transition={{ delay: 0.8 }}>
           <a
             href="/blog"
-            className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl">
+            className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600  text-base-content px-8 py-4 rounded-full text-lg font-medium hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl">
             Explore All Articles
             <FiArrowRight className="ml-3" />
           </a>

@@ -14,11 +14,9 @@ const MyPolicies = () => {
   const [testimonials, setTestimonials] = useState([]);
 
   useEffect(() => {
-    AuthSecureAxios
-      .get("/policies")
-      .then((res) => {
-        setPolicies(res.data.result);
-      });
+    AuthSecureAxios.get("/policies").then((res) => {
+      setPolicies(res.data.result);
+    });
   }, []);
   const handleViewDetails = (policy) => {
     setSelectedPolicy(policy);
@@ -44,10 +42,7 @@ const MyPolicies = () => {
 
       try {
         // POST to backend
-        const res = await AuthSecureAxios.post(
-          "/testimonials",
-          newTestimonial
-        );
+        const res = await AuthSecureAxios.post("/testimonials", newTestimonial);
 
         if (res.data.insertedId || res.data.acknowledged) {
           // Update policy as reviewed in frontend state
@@ -80,17 +75,17 @@ const MyPolicies = () => {
       case "Rejected":
         return "bg-red-100 text-red-800";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-100  text-base-content";
     }
   };
 
   return (
     <div className="w-11/12 mx-auto">
       <div className="mb-10 text-center">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+        <h1 className="text-3xl md:text-4xl font-bold  text-base-content mb-3">
           My Insurance Policies
         </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className=" text-base-content max-w-2xl mx-auto">
           Manage your insurance policies, view details, and submit reviews for
           your purchased policies.
         </p>

@@ -36,10 +36,7 @@ const ApplicationFormPage = () => {
     };
 
     try {
-      const res = await AuthSecureAxios.post(
-        "/applications",
-        applicationData
-      );
+      const res = await AuthSecureAxios.post("/applications", applicationData);
       if (res.data.insertedId) {
         Swal.fire({
           title: "Application Submitted!",
@@ -72,7 +69,7 @@ const ApplicationFormPage = () => {
         {
           name: "policyName",
           label: "Policy Name",
-          icon: <FaNotesMedical className="text-gray-400" />,
+          icon: <FaNotesMedical className=" text-base-content" />,
           isSelect: true,
           options: [
             { value: "", label: "Select a Policy" },
@@ -91,25 +88,25 @@ const ApplicationFormPage = () => {
         {
           name: "fullName",
           label: "Full Name",
-          icon: <FaUser className="text-gray-400" />,
+          icon: <FaUser className=" text-base-content" />,
           required: true,
         },
         {
           name: "email",
           label: "Email",
-          icon: <FaEnvelope className="text-gray-400" />,
+          icon: <FaEnvelope className=" text-base-content" />,
           readOnly: true,
         },
         {
           name: "phone",
           label: "Phone Number",
-          icon: <FaPhone className="text-gray-400" />,
+          icon: <FaPhone className=" text-base-content" />,
           required: true,
         },
         {
           name: "nid",
           label: "NID No / Birth Certificate",
-          icon: <FaIdCard className="text-gray-400" />,
+          icon: <FaIdCard className=" text-base-content" />,
           required: true,
         },
       ],
@@ -121,7 +118,7 @@ const ApplicationFormPage = () => {
         {
           name: "address",
           label: "Full Address",
-          icon: <FaHome className="text-gray-400" />,
+          icon: <FaHome className=" text-base-content" />,
           isTextarea: true,
           required: true,
         },
@@ -134,13 +131,13 @@ const ApplicationFormPage = () => {
         {
           name: "nomineeName",
           label: "Nominee's Full Name",
-          icon: <FaUser className="text-gray-400" />,
+          icon: <FaUser className=" text-base-content" />,
           required: true,
         },
         {
           name: "nomineeRelation",
           label: "Relationship to Nominee",
-          icon: <FaUserFriends className="text-gray-400" />,
+          icon: <FaUserFriends className=" text-base-content" />,
           required: true,
         },
       ],
@@ -184,7 +181,7 @@ const ApplicationFormPage = () => {
   return (
     <div>
       <Header></Header>
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 py-32">
+      <div className="min-h-screen  bg-base-100 py-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -198,7 +195,7 @@ const ApplicationFormPage = () => {
               Life Insurance Application
             </motion.h1>
             <motion.p
-              className="text-lg text-gray-600 w-11/12 mx-auto"
+              className="text-lg  text-base-content w-11/12 mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}>
@@ -208,11 +205,11 @@ const ApplicationFormPage = () => {
           </div>
 
           <motion.div
-            className="bg-white rounded-2xl shadow-xl overflow-hidden"
+            className=" bg-base-100 rounded-2xl shadow-xl overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}>
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6 text-white">
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-6  text-base-content">
               <h2 className="text-xl font-bold">Application Progress</h2>
               <p className="text-blue-100">
                 Step 1 of 1 - Complete your application
@@ -228,10 +225,10 @@ const ApplicationFormPage = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + sectionIndex * 0.1 }}>
                   <div className="flex items-center mb-6 pb-2 border-b border-gray-200">
-                    <div className="bg-blue-100 p-3 rounded-lg mr-4">
+                    <div className=" bg-base-300 p-3 rounded-lg mr-4">
                       {section.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-800">
+                    <h3 className="text-xl font-bold  text-base-content">
                       {section.title}
                     </h3>
                   </div>
@@ -245,7 +242,7 @@ const ApplicationFormPage = () => {
                             ? "md:col-span-2"
                             : ""
                         }`}>
-                        <label className="block text-gray-700 font-medium mb-2">
+                        <label className="block  text-base-content font-medium mb-2">
                           {field.label}{" "}
                           {field.required && (
                             <span className="text-red-500">*</span>
@@ -269,7 +266,7 @@ const ApplicationFormPage = () => {
                                 </option>
                               ))}
                             </select>
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none  text-base-content">
                               {field.icon}
                             </div>
                             {errors[field.name] && (
@@ -283,14 +280,14 @@ const ApplicationFormPage = () => {
                             {field.options.map((option, optIndex) => (
                               <label
                                 key={optIndex}
-                                className="flex items-center bg-gray-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100 transition-colors">
+                                className="flex items-center  bg-base-50 rounded-lg p-3 cursor-pointer hover:bg-gray-100 transition-colors">
                                 <input
                                   type="checkbox"
                                   value={option.value}
                                   {...register(field.name)}
                                   className="h-5 w-5 text-blue-600 rounded focus:ring-blue-500"
                                 />
-                                <span className="ml-3 text-gray-700">
+                                <span className="ml-3  text-base-content">
                                   {option.label}
                                 </span>
                               </label>
@@ -310,7 +307,7 @@ const ApplicationFormPage = () => {
                               } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                               rows={4}
                             />
-                            <div className="absolute top-4 left-3 text-gray-400">
+                            <div className="absolute top-4 left-3  text-base-content">
                               {field.icon}
                             </div>
                             {errors[field.name] && (
@@ -324,9 +321,9 @@ const ApplicationFormPage = () => {
                             <input
                               value={user?.email || ""}
                               readOnly
-                              className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 bg-gray-50"
+                              className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300  bg-base-50"
                             />
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none  text-base-content">
                               {field.icon}
                             </div>
                           </div>
@@ -342,7 +339,7 @@ const ApplicationFormPage = () => {
                                   : "border-gray-300"
                               } focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
                             />
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none  text-base-content">
                               {field.icon}
                             </div>
                             {errors[field.name] && (
@@ -371,7 +368,7 @@ const ApplicationFormPage = () => {
                     {...register("terms", { required: true })}
                     className="h-5 w-5 text-blue-600 rounded focus:ring-blue-500 mt-1"
                   />
-                  <label htmlFor="terms" className="ml-3 text-gray-700">
+                  <label htmlFor="terms" className="ml-3  text-base-content">
                     I hereby declare that all the information provided in this
                     application is true and accurate to the best of my
                     knowledge. I understand that any misrepresentation may
@@ -393,15 +390,13 @@ const ApplicationFormPage = () => {
                 transition={{ delay: 0.9 }}>
                 <button
                   type="submit"
-                  className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg flex items-center justify-center transition-all">
+                  className="w-full py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700  text-base-content font-bold rounded-xl shadow-lg flex items-center justify-center transition-all">
                   <FaFileSignature className="mr-2" />
                   Submit Application
                 </button>
               </motion.div>
             </form>
           </motion.div>
-
-       
         </motion.div>
       </div>
     </div>

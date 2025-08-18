@@ -119,15 +119,15 @@ const Register = () => {
           initial={{ scale: 0.95 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, duration: 0.3 }}
-          className="bg-white rounded-2xl shadow-xl overflow-hidden border border-indigo-100">
+          className=" bg-base-100 rounded-2xl shadow-xl overflow-hidden border border-indigo-100">
           {/* Header with gradient */}
           <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-center">
             <div className="flex justify-center mb-4">
-              <div className="bg-white rounded-full p-1.5">
+              <div className=" bg-base-100 rounded-full p-1.5">
                 <Logo></Logo>
               </div>
             </div>
-            <motion.h2 className="text-3xl font-bold text-white">
+            <motion.h2 className="text-3xl font-bold  text-base-content">
               Create Account
             </motion.h2>
             <motion.p className="text-indigo-100 mt-2">
@@ -139,7 +139,7 @@ const Register = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               {/* Full Name Field */}
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium  text-base-content">
                   Full Name
                 </label>
                 <input
@@ -163,7 +163,7 @@ const Register = () => {
 
               {/* Email Field */}
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium  text-base-content">
                   Email Address
                 </label>
                 <input
@@ -187,9 +187,9 @@ const Register = () => {
 
               {/* Photo URL Field */}
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium  text-base-content">
                   Profile Photo URL{" "}
-                  <span className="text-gray-500">(optional)</span>
+                  <span className=" text-base-content">(optional)</span>
                 </label>
                 <input
                   type="text"
@@ -201,7 +201,7 @@ const Register = () => {
 
               {/* Password Field */}
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium  text-base-content">
                   Password
                 </label>
                 <div className="relative">
@@ -224,7 +224,7 @@ const Register = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 hover:text-indigo-600">
+                    className="absolute top-1/2 right-3 transform -translate-y-1/2  text-base-content hover:text-indigo-600">
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
                 </div>
@@ -233,7 +233,7 @@ const Register = () => {
                     {errors.password.message}
                   </p>
                 )}
-                <div className="mt-1 text-xs text-gray-500">
+                <div className="mt-1 text-xs  text-base-content">
                   <p>Password must include:</p>
                   <ul className="list-disc pl-4 space-y-1">
                     <li
@@ -258,7 +258,7 @@ const Register = () => {
 
               {/* Confirm Password Field */}
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium  text-base-content">
                   Confirm Password
                 </label>
                 <div className="relative">
@@ -275,7 +275,7 @@ const Register = () => {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 hover:text-indigo-600">
+                    className="absolute top-1/2 right-3 transform -translate-y-1/2  text-base-content hover:text-indigo-600">
                     {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
                 </div>
@@ -300,7 +300,9 @@ const Register = () => {
                   />
                 </div>
                 <div className="ml-3 text-sm">
-                  <label htmlFor="terms" className="font-medium text-gray-700">
+                  <label
+                    htmlFor="terms"
+                    className="font-medium  text-base-content">
                     I agree to the{" "}
                     <a
                       href="#"
@@ -321,11 +323,11 @@ const Register = () => {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full py-3 px-4 mt-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex justify-center items-center"
+                className="w-full py-3 px-4 mt-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700  text-base-content font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex justify-center items-center"
                 disabled={loading}>
                 {loading ? (
                   <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    className="animate-spin -ml-1 mr-3 h-5 w-5  text-base-content"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24">
@@ -351,7 +353,7 @@ const Register = () => {
                 <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
+                <span className="px-2  bg-base-100  text-base-content">
                   OR SIGN UP WITH
                 </span>
               </div>
@@ -362,13 +364,13 @@ const Register = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleGoogleSignIn}
-              className="w-full py-3 px-4 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-700 font-medium hover:bg-gray-50 transition-colors flex justify-center items-center"
+              className="w-full py-3 px-4  bg-base-100 border border-gray-300 rounded-lg shadow-sm  text-base-content font-medium hover: bg-base-50 transition-colors flex justify-center items-center"
               disabled={loading}>
               <FaGoogle className="text-red-500 mr-3" size={18} />
               Sign up with Google
             </motion.button>
 
-            <p className="mt-6 text-center text-sm text-gray-600">
+            <p className="mt-6 text-center text-sm  text-base-content">
               Already have an account?{" "}
               <Link
                 to="/login"
@@ -380,7 +382,7 @@ const Register = () => {
         </motion.div>
 
         <motion.div
-          className="mt-6 text-center text-gray-500 text-sm"
+          className="mt-6 text-center  text-base-content text-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}>

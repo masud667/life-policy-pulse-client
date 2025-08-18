@@ -42,7 +42,6 @@ const DashboardHome = () => {
   // Simulate data fetching
   useEffect(() => {
     const fetchData = () => {
-      
       setTimeout(() => {
         setMetrics({
           totalUsers: 1245,
@@ -174,15 +173,13 @@ const DashboardHome = () => {
 
   // Metric card component
   const MetricCard = ({ title, value, icon, change, changeType }) => (
-    <div className="bg-white rounded-xl shadow-md p-6 flex flex-col">
+    <div className=" bg-base-100 rounded-xl shadow-md p-6 flex flex-col border-1 border-purple-200">
       <div className="flex justify-between items-start">
         <div>
-          <p className="text-gray-500 text-sm font-medium">{title}</p>
+          <p className=" text-base-content text-sm font-medium">{title}</p>
           <p className="text-2xl font-bold mt-1">{value}</p>
         </div>
-        <div className="p-3 bg-indigo-100 rounded-lg text-indigo-600">
-          {icon}
-        </div>
+        <div className="p-3 bg-base-300 rounded-lg text-indigo-600">{icon}</div>
       </div>
       {change !== undefined && (
         <div
@@ -206,7 +203,7 @@ const DashboardHome = () => {
   }
 
   return (
-    <div className=" bg-gray-50">
+    <div className="  bg-base-50">
       {/* Header */}
       <div className="py-2">
         <div className="">
@@ -222,14 +219,13 @@ const DashboardHome = () => {
                 <select
                   value={timeFilter}
                   onChange={(e) => setTimeFilter(e.target.value)}
-                  className="bg-indigo-700 border-0 rounded-lg px-4 py-2 text-white">
+                  className="bg-indigo-700 border-0 rounded-lg px-4 py-2  text-white">
                   <option value="week">Last Week</option>
                   <option value="month">Last Month</option>
                   <option value="quarter">Last Quarter</option>
                   <option value="year">Last Year</option>
                 </select>
               </div>
-             
             </div>
           </div>
         </div>
@@ -238,7 +234,7 @@ const DashboardHome = () => {
       {/* Main Content */}
       <div className="w-11/12 mx-auto px-4 sm:px-6 py-8">
         {/* Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 ">
           <MetricCard
             title="Total Users"
             value={metrics.totalUsers}
@@ -267,12 +263,12 @@ const DashboardHome = () => {
 
         {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-          <div className="lg:col-span-2 bg-white rounded-xl shadow-md p-6">
+          <div className="lg:col-span-2  bg-base-100 rounded-xl shadow-md p-6 border-1 border-purple-200">
             <div className="h-80">
               <Bar data={applicationTrendsData} options={barOptions} />
             </div>
           </div>
-          <div className="bg-white rounded-xl shadow-md p-6">
+          <div className=" bg-base-100 rounded-xl shadow-md p-6 border-1 border-purple-200">
             <div className="h-80">
               <Pie data={statusDistributionData} options={pieOptions} />
             </div>
@@ -280,9 +276,9 @@ const DashboardHome = () => {
         </div>
 
         {/* Recent Activity */}
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
+        <div className=" bg-base-100 rounded-xl shadow-md overflow-hidden border-1 border-purple-200">
           <div className="px-6 py-4 border-b border-gray-200">
-            <h2 className="text-lg font-semibold text-gray-800">
+            <h2 className="text-lg font-semibold  text-base-content">
               Recent Activity
             </h2>
           </div>
@@ -290,25 +286,27 @@ const DashboardHome = () => {
             {metrics.recentActivity.map((activity) => (
               <li
                 key={activity.id}
-                className="px-6 py-4 hover:bg-gray-50 transition">
+                className="px-6 py-4 hover: bg-base-50 transition">
                 <div className="flex items-center">
-                  <div className="bg-indigo-100 rounded-full p-3 text-indigo-600 mr-4">
+                  <div className="bg-base-300 rounded-full p-3 text-indigo-600 mr-4">
                     <HiCheckCircle className="h-5 w-5" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900 truncate">
+                    <p className="text-sm font-medium  text-base-content truncate">
                       {activity.user}
                     </p>
-                    <p className="text-sm text-gray-500 truncate">
+                    <p className="text-sm  text-base-content truncate">
                       {activity.action}
                     </p>
                   </div>
-                  <div className="text-sm text-gray-500">{activity.time}</div>
+                  <div className="text-sm  text-base-content">
+                    {activity.time}
+                  </div>
                 </div>
               </li>
             ))}
           </ul>
-          <div className="px-6 py-4 bg-gray-50 text-center">
+          <div className="px-6 py-4  bg-base-50 text-center">
             <button className="text-indigo-600 hover:text-indigo-800 font-medium">
               View All Activity
             </button>

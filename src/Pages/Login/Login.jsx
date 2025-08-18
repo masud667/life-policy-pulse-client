@@ -7,12 +7,10 @@ import { AuthContext } from "../../Context/AuthContext";
 import { useForm } from "react-hook-form";
 import Logo from "../../Components/Logo";
 
-
 const Login = () => {
   const navigate = useNavigate();
   const { logIn, signInWithGoogle } = useContext(AuthContext);
 
-  
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -22,52 +20,52 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
- const onSubmit = async (data) => {
-  setLoading(true);
+  const onSubmit = async (data) => {
+    setLoading(true);
 
-  try {
-    await logIn(data.email, data.password);
+    try {
+      await logIn(data.email, data.password);
 
-    Swal.fire({
-      icon: "success",
-      title: "Login Successful!",
-      showConfirmButton: false,
-      timer: 1500,
-    });
-
-    navigate("/");
-  } catch (error) {
-    Swal.fire({
-      icon: "error",
-      title: "Login Failed!",
-      text: error.message,
-    });
-  } finally {
-    setLoading(false);
-  }
-};
-const handleGoogleLogin = () => {
-  setLoading(true);
-
-  signInWithGoogle()
-    .then(() => {
       Swal.fire({
         icon: "success",
-        title: "Google Login Successful!",
+        title: "Login Successful!",
         showConfirmButton: false,
         timer: 1500,
       });
+
       navigate("/");
-    })
-    .catch((error) => {
+    } catch (error) {
       Swal.fire({
         icon: "error",
-        title: "Google Login Failed!",
+        title: "Login Failed!",
         text: error.message,
       });
-    })
-    .finally(() => setLoading(false));
-};
+    } finally {
+      setLoading(false);
+    }
+  };
+  const handleGoogleLogin = () => {
+    setLoading(true);
+
+    signInWithGoogle()
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Google Login Successful!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "Google Login Failed!",
+          text: error.message,
+        });
+      })
+      .finally(() => setLoading(false));
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -79,15 +77,15 @@ const handleGoogleLogin = () => {
           initial={{ scale: 0.95 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, duration: 0.3 }}
-          className="bg-white rounded-2xl shadow-xl overflow-hidden border border-indigo-100">
+          className=" bg-base-100 rounded-2xl shadow-xl overflow-hidden border border-indigo-100">
           {/* Header with gradient */}
           <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-center">
             <div className="flex justify-center mb-4">
-              <div className="bg-white rounded-full p-1.5">
+              <div className=" bg-base-100 rounded-full p-1.5">
                 <Logo></Logo>
               </div>
             </div>
-            <motion.h2 className="text-3xl font-bold text-white">
+            <motion.h2 className="text-3xl font-bold  text-base-content">
               Welcome Back
             </motion.h2>
             <motion.p className="text-indigo-100 mt-2">
@@ -99,7 +97,7 @@ const handleGoogleLogin = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               {/* Email Field */}
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium  text-base-content">
                   Email Address
                 </label>
                 <div className="relative">
@@ -125,7 +123,7 @@ const handleGoogleLogin = () => {
 
               {/* Password Field */}
               <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
+                <label className="block text-sm font-medium  text-base-content">
                   Password
                 </label>
                 <div className="relative">
@@ -144,7 +142,7 @@ const handleGoogleLogin = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute top-1/2 right-3 transform -translate-y-1/2 text-gray-500 hover:text-indigo-600">
+                    className="absolute top-1/2 right-3 transform -translate-y-1/2  text-base-content hover:text-indigo-600">
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
                 </div>
@@ -166,7 +164,7 @@ const handleGoogleLogin = () => {
                   />
                   <label
                     htmlFor="remember-me"
-                    className="ml-2 block text-sm text-gray-700">
+                    className="ml-2 block text-sm  text-base-content">
                     Remember me
                   </label>
                 </div>
@@ -184,11 +182,11 @@ const handleGoogleLogin = () => {
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex justify-center items-center"
+                className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700  text-base-content font-bold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex justify-center items-center"
                 disabled={loading}>
                 {loading ? (
                   <svg
-                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    className="animate-spin -ml-1 mr-3 h-5 w-5  text-base-content"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24">
@@ -214,7 +212,7 @@ const handleGoogleLogin = () => {
                 <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">
+                <span className="px-2  bg-base-100  text-base-content">
                   OR CONTINUE WITH
                 </span>
               </div>
@@ -225,13 +223,13 @@ const handleGoogleLogin = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleGoogleLogin}
-              className="w-full py-3 px-4 bg-white border border-gray-300 rounded-lg shadow-sm text-gray-700 font-medium hover:bg-gray-50 transition-colors flex justify-center items-center"
+              className="w-full py-3 px-4  bg-base-100 border border-gray-300 rounded-lg shadow-sm  text-base-content font-medium hover: bg-base-50 transition-colors flex justify-center items-center"
               disabled={loading}>
               <FaGoogle className="text-red-500 mr-3" size={18} />
               Sign in with Google
             </motion.button>
 
-            <p className="mt-6 text-center text-sm text-gray-600">
+            <p className="mt-6 text-center text-sm  text-base-content">
               Don't have an account?{" "}
               <Link
                 to="/register"
@@ -243,7 +241,7 @@ const handleGoogleLogin = () => {
         </motion.div>
 
         <motion.div
-          className="mt-6 text-center text-gray-500 text-sm"
+          className="mt-6 text-center  text-base-content text-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}>

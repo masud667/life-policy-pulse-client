@@ -35,7 +35,7 @@ const BlogArticles = () => {
   return (
     <div>
       <Header></Header>
-      <div className="min-h-screen px-4 py-8 bg-gradient-to-br from-indigo-25 to-violet-50">
+      <div className="min-h-screen px-4 py-28  bg-base-100">
         <h1 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-indigo-600 to-purple-500 bg-clip-text text-transparent">
           Policy Insights
         </h1>
@@ -44,21 +44,21 @@ const BlogArticles = () => {
           {blogs.map((blog) => (
             <div
               key={blog._id}
-              className="bg-white rounded-2xl shadow-xl overflow-hidden border border-indigo-100 transition-all duration-300 hover:shadow-2xl hover:border-indigo-200">
+              className=" bg-base-100 rounded-2xl shadow-xl overflow-hidden border-1 border-purple-200 transition-all duration-300 hover:shadow-2xl hover:border-indigo-200">
               <div className="relative">
                 <img
                   src={blog?.image}
                   alt={blog.title}
                   className="w-full h-52 object-cover"
                 />
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                <div className="absolute top-4 right-4 bg-gradient-to-r from-indigo-500 to-purple-600  text-base-content text-xs font-bold px-3 py-1 rounded-full">
                   New
                 </div>
               </div>
 
               <div className="p-5 space-y-3">
                 <div className="flex items-center gap-2">
-                  <span className="px-2 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded">
+                  <span className="px-2 py-1 bg-base-200 text-indigo-700 text-xs font-semibold rounded">
                     Policy Analysis
                   </span>
                   <span className="w-2 h-2 rounded-full bg-indigo-400"></span>
@@ -67,10 +67,10 @@ const BlogArticles = () => {
                   </span>
                 </div>
 
-                <h2 className="text-xl font-bold text-indigo-900">
+                <h2 className="text-xl font-bold text-indigo-700">
                   {blog.title}
                 </h2>
-                <p className="text-gray-600 text-sm">
+                <p className=" text-base-content text-sm">
                   {blog.details.slice(0, 120)}...
                 </p>
 
@@ -89,7 +89,7 @@ const BlogArticles = () => {
 
                 <button
                   onClick={() => handleReadMore(blog)}
-                  className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold text-white bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                  className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-3 text-sm font-bold  text-white bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600 rounded-lg transition-all duration-300 transform hover:-translate-y-0.5">
                   Read Analysis <FaArrowRight className="text-xs" />
                 </button>
               </div>
@@ -107,7 +107,7 @@ const BlogArticles = () => {
             aria-hidden="true"
           />
           <div className="fixed inset-0 flex items-center justify-center p-4">
-            <Dialog.Panel className="w-full max-w-2xl mx-auto rounded-2xl bg-white shadow-2xl overflow-hidden border border-indigo-100">
+            <Dialog.Panel className="w-full max-w-2xl mx-auto rounded-2xl  bg-base-100 shadow-2xl overflow-hidden border border-indigo-100">
               {selectedBlog && (
                 <div className="p-6">
                   <div className="flex justify-between items-start">
@@ -128,20 +128,20 @@ const BlogArticles = () => {
                     className="w-full h-64 object-cover rounded-xl my-6 border border-indigo-100"
                   />
 
-                  <p className="text-gray-700 mb-6">
+                  <p className=" text-base-content mb-6">
                     {selectedBlog.fullDetails}
                   </p>
 
                   <div className="flex justify-between items-center pt-4 border-t border-indigo-100">
                     <div className="flex items-center gap-2">
                       <FaUserCircle className="text-indigo-500" />
-                      <span className="font-medium text-indigo-700">
+                      <span className="font-medium text-indigo-500">
                         {selectedBlog.author}
                       </span>
                     </div>
                     <Link
                       to={`/blog/${selectedBlog._id}`}
-                      className="flex items-center gap-1 text-indigo-600 font-semibold hover:text-purple-700 transition-colors">
+                      className="flex items-center gap-1 text-purple-500 font-semibold hover:text-purple-700 transition-colors">
                       Full Policy Brief{" "}
                       <FaArrowRight className="text-xs mt-0.5" />
                     </Link>

@@ -56,22 +56,22 @@ const AllPoliciesPage = () => {
   return (
     <div>
       <Header />
-      <div className=" bg-gradient-to-br from-blue-50 via-purple-50 to-indigo-50 py-32 ">
+      <div className="bg-base-100  py-32 ">
         <div className="w-11/12 mx-auto">
           {/* Header */}
           <div className="text-center mb-10">
             <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
               All Life Insurance Policies
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className=" text-base-content mt-2">
               Choose the best plan tailored for you
             </p>
           </div>
 
           {/* Search & Filter */}
-          <div className="bg-white rounded-xl shadow p-6 flex flex-col md:flex-row gap-4 mb-8">
+          <div className=" bg-base-100 rounded-xl shadow p-6 flex flex-col md:flex-row gap-4 mb-8">
             <div className="relative flex-1">
-              <FiSearch className="absolute top-3 left-3 text-gray-400" />
+              <FiSearch className="absolute top-3 left-3  text-base-content" />
               <input
                 type="text"
                 placeholder="Search policy..."
@@ -99,24 +99,26 @@ const AllPoliciesPage = () => {
 
           {/* Stats */}
           <div className="flex gap-4 mb-4">
-            <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded">
+            <span className=" bg-base-300 text-blue-800 px-3 py-1 rounded">
               Total: {total}
             </span>
-            <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded">
+            <span className=" bg-base-200 text-purple-600 px-3 py-1 rounded">
               Categories: {categories.length || 0}
             </span>
           </div>
 
           {/* Policy Cards */}
           {filteredPolicies.length === 0 ? (
-            <div className="bg-white p-10 rounded-xl shadow text-center">
-              <p className="text-gray-500 mb-4">No matching policies found.</p>
+            <div className=" bg-base-100 p-10 rounded-xl shadow text-center">
+              <p className=" text-base-content mb-4">
+                No matching policies found.
+              </p>
               <button
                 onClick={() => {
                   setSearch("");
                   setSelectedCategory("all");
                 }}
-                className="bg-blue-600 text-white px-6 py-2 rounded-lg">
+                className="bg-blue-600  text-base-content px-6 py-2 rounded-lg">
                 Reset Filters
               </button>
             </div>
@@ -125,14 +127,14 @@ const AllPoliciesPage = () => {
               {filteredPolicies.map((policy) => (
                 <div
                   key={policy?._id}
-                  className="bg-white p-6 rounded-xl shadow hover:shadow-md transition">
+                  className=" bg-base-100 p-6 rounded-xl shadow hover:shadow-md transition border-1 border-purple-200">
                   <img
                     src={policy?.image}
                     alt={policy?.title}
                     className="w-full h-40 object-cover rounded mb-4"
                   />
                   <h2 className="text-xl font-semibold">{policy?.title}</h2>
-                  <p className="text-sm text-gray-500 mb-2">
+                  <p className="text-sm  text-base-content mb-2">
                     {policy?.shortDetails}
                   </p>
                   <div className="flex justify-between items-center mt-4">
@@ -141,7 +143,7 @@ const AllPoliciesPage = () => {
                     </span>
                     <Link
                       to={`/policies/${policy._id}`}
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 btn rounded p-2 text-white hover:bg-gradient-to-l flex items-center gap-1">
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 btn rounded p-2  text-base-content hover:bg-gradient-to-l flex items-center gap-1">
                       View Details <FiArrowRight />
                     </Link>
                   </div>
@@ -158,8 +160,8 @@ const AllPoliciesPage = () => {
                 onClick={() => setCurrentPage(number + 1)}
                 className={`px-4 py-2 rounded ${
                   currentPage === number + 1
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 text-gray-700"
+                    ? "bg-blue-600  text-base-content"
+                    : " bg-base-200  text-base-content"
                 }`}>
                 {number + 1}
               </button>

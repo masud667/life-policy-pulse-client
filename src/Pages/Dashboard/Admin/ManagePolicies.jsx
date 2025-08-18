@@ -127,36 +127,36 @@ const ManagePolicies = () => {
   }
 
   return (
-    <div className="bg-gradient-to-br from-gray-50 to-indigo-50 px-5">
+    <div className="bg-base-100 px-5">
       <div className="">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 md:mb-8">
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+            <h1 className="text-2xl md:text-3xl font-bold  text-base-content">
               Insurance Policy Management
             </h1>
-            <p className="text-gray-600 mt-1 text-sm md:text-base">
+            <p className=" text-base-content mt-1 text-sm md:text-base">
               Manage and customize insurance policies
             </p>
           </div>
           <button
             onClick={() => openModal()}
-            className="mt-4 md:mt-0 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium flex items-center justify-center transition text-sm md:text-base">
+            className="mt-4 md:mt-0 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700  text-white rounded-lg font-medium flex items-center justify-center transition text-sm md:text-base">
             <FaPlus className="mr-2" /> Add New Policy
           </button>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 mb-6 md:mb-8">
-          <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-indigo-500">
+          <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-indigo-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                <p className=" text-base-content text-xs md:text-sm font-medium">
                   Total Policies
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">{total}</p>
               </div>
-              <div className="p-2 md:p-3 bg-indigo-100 rounded-lg text-indigo-600">
+              <div className="p-2 md:p-3 bg-base-300 rounded-lg text-indigo-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 md:h-6 md:w-6"
@@ -174,17 +174,17 @@ const ManagePolicies = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-green-500">
+          <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-green-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                <p className=" text-base-content text-xs md:text-sm font-medium">
                   Term Life Policies
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
                   {policies?.filter((p) => p.category === "Term Life").length}
                 </p>
               </div>
-              <div className="p-2 md:p-3 bg-green-100 rounded-lg text-green-600">
+              <div className="p-2 md:p-3 bg-base-300 rounded-lg text-green-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 md:h-6 md:w-6"
@@ -202,17 +202,17 @@ const ManagePolicies = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-blue-500">
+          <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-blue-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                <p className=" text-base-content text-xs md:text-sm font-medium">
                   Life Policies
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
                   {policies.filter((p) => p.category === "Life").length}
                 </p>
               </div>
-              <div className="p-2 md:p-3 bg-blue-100 rounded-lg text-blue-600">
+              <div className="p-2 md:p-3  bg-base-300 rounded-lg text-blue-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 md:h-6 md:w-6"
@@ -230,17 +230,17 @@ const ManagePolicies = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-purple-500">
+          <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-3 md:p-6 border-l-4 border-purple-500">
             <div className="flex justify-between items-center">
               <div>
-                <p className="text-gray-500 text-xs md:text-sm font-medium">
+                <p className=" text-base-content text-xs md:text-sm font-medium">
                   Senior Policies
                 </p>
                 <p className="text-lg md:text-2xl font-bold mt-1">
                   {policies.filter((p) => p.category === "Senior").length}
                 </p>
               </div>
-              <div className="p-2 md:p-3 bg-purple-100 rounded-lg text-purple-600">
+              <div className="p-2 md:p-3  bg-base-200 rounded-lg text-purple-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 md:h-6 md:w-6"
@@ -260,7 +260,7 @@ const ManagePolicies = () => {
         </div>
 
         {/* Controls */}
-        <div className="bg-white rounded-lg md:rounded-xl shadow p-4 md:p-6 mb-6 md:mb-8">
+        <div className=" bg-base-100 rounded-lg md:rounded-xl shadow p-4 md:p-6 mb-6 md:mb-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div className="relative w-full">
               <input
@@ -270,7 +270,7 @@ const ManagePolicies = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              <FaSearch className="absolute left-3 top-2.5 md:top-3 text-gray-400" />
+              <FaSearch className="absolute left-3 top-2.5 md:top-3  text-base-content" />
             </div>
 
             <div className="flex gap-2">
@@ -288,7 +288,7 @@ const ManagePolicies = () => {
 
               <button
                 onClick={fetchPolicies}
-                className="px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium flex items-center text-sm md:text-base">
+                className="px-3 py-2  hover: bg-base-200 rounded-lg font-medium flex items-center text-sm md:text-base">
                 <HiRefresh className="md:mr-2" />
                 <span className="hidden md:inline">Refresh</span>
               </button>
@@ -297,42 +297,42 @@ const ManagePolicies = () => {
         </div>
 
         {/* Desktop Table */}
-        <div className="hidden lg:block bg-white rounded-xl shadow-md overflow-hidden">
+        <div className="hidden lg:block  bg-base-100 rounded-xl shadow-md overflow-hidden">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+              <thead className=" bg-base-50">
                 <tr>
-                  <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-2 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     #
                   </th>
-                  <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-2 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Policy
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Category
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Age Range
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Coverage
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Duration
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Premium
                   </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th className="px-6 py-3 text-left text-xs font-medium  text-base-content uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody className=" bg-base-100 divide-y divide-gray-200">
                 {filteredPolicies.length === 0 ? (
                   <tr>
                     <td colSpan="8" className="px-6 py-8 text-center">
-                      <div className="text-gray-500 text-lg">
+                      <div className=" text-base-content text-lg">
                         No policies found
                       </div>
                       <button
@@ -349,61 +349,61 @@ const ManagePolicies = () => {
                   filteredPolicies.map((policy, idx) => (
                     <tr
                       key={policy._id}
-                      className="hover:bg-gray-50 transition">
-                      <td className="px-2 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      className="hover: bg-base-50 transition">
+                      <td className="px-2 py-4 whitespace-nowrap text-sm font-medium  text-base-content">
                         {idx + 1}
                       </td>
                       <td className="px-2 py-4 whitespace-nowrap">
                         <div className="flex items-center">
-                          <div className="bg-indigo-100 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                          <div className="bg-base-300 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
                             {policy.title?.charAt(0) || "P"}
                           </div>
                           <div>
-                            <div className="font-medium text-gray-900">
+                            <div className="font-medium  text-base-content">
                               {policy.title}
                             </div>
-                            <div className="text-sm text-gray-500">
+                            <div className="text-sm  text-base-content">
                               ID: {policy._id.substring(0, 8)}
                             </div>
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm  text-base-content">
                         <span
                           className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
                             policy.category === "Health"
                               ? "bg-green-100 text-green-800"
                               : policy.category === "Life"
-                              ? "bg-blue-100 text-blue-800"
-                              : "bg-purple-100 text-purple-800"
+                              ? " bg-base-300 text-blue-800"
+                              : " bg-base-200 text-purple-800"
                           }`}>
                           {policy.category}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm  text-base-content">
                         {policy.minAge} - {policy.maxAge} yrs
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm  text-base-content">
                         ${policy.coverageRange}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm  text-base-content">
                         {policy.durationOptions} yrs
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm  text-base-content">
                         ${policy.basePremiumRate}/mo
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <div className="flex space-x-2">
                           <button
                             onClick={() => openModal(policy)}
-                            className="text-indigo-600 hover:text-indigo-900 bg-indigo-50 hover:bg-indigo-100 p-2 rounded-md transition flex items-center"
+                            className="text-indigo-600 hover:text-indigo-600 bg-base-300 hover:bg-base-200 p-2 rounded-md transition flex items-center"
                             title="Edit Policy">
                             <FaEdit className="mr-1" />
                             <span>Edit</span>
                           </button>
                           <button
                             onClick={() => deletePolicy(policy._id)}
-                            className="text-red-600 hover:text-red-900 bg-red-50 hover:bg-red-100 p-2 rounded-md transition flex items-center"
+                            className="text-red-600 hover:text-red-900 bg-base-300 hover:bg-base-200 p-2 rounded-md transition flex items-center"
                             title="Delete Policy">
                             <FaTrash className="mr-1" />
                             <span>Delete</span>
@@ -421,8 +421,10 @@ const ManagePolicies = () => {
         {/* Mobile Policy Cards */}
         <div className="md:hidden">
           {filteredPolicies.length === 0 ? (
-            <div className="bg-white rounded-lg shadow p-6 text-center">
-              <div className="text-gray-500 text-lg">No policies found</div>
+            <div className=" bg-base-100 rounded-lg shadow p-6 text-center">
+              <div className=" text-base-content text-lg">
+                No policies found
+              </div>
               <button
                 onClick={() => {
                   setSearchTerm("");
@@ -437,17 +439,17 @@ const ManagePolicies = () => {
               {filteredPolicies.map((policy) => (
                 <div
                   key={policy._id}
-                  className="bg-white rounded-lg shadow p-4">
+                  className=" bg-base-100 rounded-lg shadow p-4 border border-purple-300">
                   <div className="flex justify-between items-start">
                     <div className="flex items-center">
-                      <div className="bg-indigo-100 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                      <div className="bg-base-300 text-indigo-800 rounded-full w-10 h-10 flex items-center justify-center mr-3">
                         {policy.title?.charAt(0) || "P"}
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900">
+                        <div className="font-medium  text-base-content">
                           {policy.title}
                         </div>
-                        <div className="text-sm text-gray-500">
+                        <div className="text-sm  text-base-content">
                           ID: {policy._id.substring(0, 8)}
                         </div>
                       </div>
@@ -456,38 +458,38 @@ const ManagePolicies = () => {
 
                   <div className="mt-4 grid grid-cols-2 gap-3">
                     <div>
-                      <p className="text-xs text-gray-500">Category</p>
+                      <p className="text-xs  text-base-content">Category</p>
                       <span
                         className={`px-2 inline-flex text-xs font-semibold rounded-full ${
                           policy.category === "Health"
                             ? "bg-green-100 text-green-800"
                             : policy.category === "Life"
-                            ? "bg-blue-100 text-blue-800"
-                            : "bg-purple-100 text-purple-800"
+                            ? " bg-base-300 text-blue-800"
+                            : " bg-base-200 text-purple-800"
                         }`}>
                         {policy.category}
                       </span>
                     </div>
 
                     <div>
-                      <p className="text-xs text-gray-500">Age Range</p>
+                      <p className="text-xs  text-base-content">Age Range</p>
                       <p className="text-sm">
                         {policy.minAge} - {policy.maxAge} yrs
                       </p>
                     </div>
 
                     <div>
-                      <p className="text-xs text-gray-500">Coverage</p>
+                      <p className="text-xs  text-base-content">Coverage</p>
                       <p className="text-sm">${policy.coverageRange}</p>
                     </div>
 
                     <div>
-                      <p className="text-xs text-gray-500">Duration</p>
+                      <p className="text-xs  text-base-content">Duration</p>
                       <p className="text-sm">{policy.durationOptions} yrs</p>
                     </div>
 
                     <div>
-                      <p className="text-xs text-gray-500">Premium</p>
+                      <p className="text-xs  text-base-content">Premium</p>
                       <p className="text-sm">${policy.basePremiumRate}/mo</p>
                     </div>
                   </div>
@@ -495,7 +497,7 @@ const ManagePolicies = () => {
                   <div className="mt-4 flex space-x-2">
                     <button
                       onClick={() => openModal(policy)}
-                      className="flex-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 py-2 rounded-md text-sm flex items-center justify-center"
+                      className="flex-1 bg-base-300 hover:bg-base-200 text-indigo-600 py-2 rounded-md text-sm flex items-center justify-center"
                       title="Edit Policy">
                       <FaEdit className="mr-1" />
                       Edit
@@ -503,7 +505,7 @@ const ManagePolicies = () => {
 
                     <button
                       onClick={() => deletePolicy(policy._id)}
-                      className="flex-1 bg-red-50 hover:bg-red-100 text-red-700 py-2 rounded-md text-sm flex items-center justify-center"
+                      className="flex-1 bg-base-300 hover:bg-base-200 text-red-600 py-2 rounded-md text-sm flex items-center justify-center"
                       title="Delete Policy">
                       <FaTrash className="mr-1" />
                       Delete
@@ -522,8 +524,8 @@ const ManagePolicies = () => {
               onClick={() => setCurrentPage(number + 1)}
               className={`px-4 py-2 rounded ${
                 currentPage === number + 1
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 text-gray-700"
+                  ? "bg-blue-600  text-base-content"
+                  : " bg-base-200  text-base-content"
               }`}>
               {number + 1}
             </button>
@@ -532,22 +534,22 @@ const ManagePolicies = () => {
         {/* Modal */}
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 p-4">
-            <div className="bg-white rounded-xl shadow-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className=" bg-base-100 rounded-xl shadow-lg w-full max-w-2xl max-h-[90vh] overflow-y-auto">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-bold text-gray-800">
+                  <h3 className="text-xl font-bold  text-base-content">
                     {editingPolicy ? "Edit Policy" : "Create New Policy"}
                   </h3>
                   <button
                     onClick={closeModal}
-                    className="text-gray-500 hover:text-gray-700">
+                    className=" text-base-content hover: text-base-content">
                     <FaTimes />
                   </button>
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium  text-base-content mb-1">
                       Policy Title
                     </label>
                     <input
@@ -566,7 +568,7 @@ const ManagePolicies = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium  text-base-content mb-1">
                         Category
                       </label>
                       <select
@@ -591,7 +593,7 @@ const ManagePolicies = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium  text-base-content mb-1">
                         Image URL
                       </label>
                       <input
@@ -603,7 +605,7 @@ const ManagePolicies = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium  text-base-content mb-1">
                       Description
                     </label>
                     <textarea
@@ -626,7 +628,7 @@ const ManagePolicies = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium  text-base-content mb-1">
                         Minimum Age
                       </label>
                       <input
@@ -648,7 +650,7 @@ const ManagePolicies = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium  text-base-content mb-1">
                         Maximum Age
                       </label>
                       <input
@@ -672,7 +674,7 @@ const ManagePolicies = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium  text-base-content mb-1">
                         Coverage Range ($)
                       </label>
                       <input
@@ -694,7 +696,7 @@ const ManagePolicies = () => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium  text-base-content mb-1">
                         Duration Options (years)
                       </label>
                       <input
@@ -717,7 +719,7 @@ const ManagePolicies = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium  text-base-content mb-1">
                       Base Premium Rate ($/month)
                     </label>
                     <input
@@ -748,12 +750,12 @@ const ManagePolicies = () => {
                     <button
                       type="button"
                       onClick={closeModal}
-                      className="px-5 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-lg font-medium">
+                      className="px-5 py-2.5 bg-gray-100 hover: bg-base-200 rounded-lg font-medium">
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-medium">
+                      className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700  text-base-content rounded-lg font-medium">
                       {editingPolicy ? "Update Policy" : "Create Policy"}
                     </button>
                   </div>
